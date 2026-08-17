@@ -3,7 +3,7 @@ title: Enterprise Network Topology
 date: 2026-08-15 00:00:00 +0800
 categories: [Networking, Infrastructure]
 tags: [cisco, topology, network-design, enterprise]
-redirect_to: https://github.com/eunicecallueng/Enterprise-Network-Topology
+redirect_to: https://eunicecallueng.github.io/Enterprise-Network-Topology/
 ---
 
 # Description
