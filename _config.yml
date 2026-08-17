@@ -99,7 +99,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://github.com/eunicecallueng.png"
+avatar: "https://images.credly.com/images/0120b762-8326-475a-b9ff-6011e21ededa/standard_Nyce_profile_400px.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
