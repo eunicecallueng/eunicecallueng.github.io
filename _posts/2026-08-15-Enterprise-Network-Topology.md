@@ -8,8 +8,5 @@ redirect_to: https://github.com/eunicecallueng/Enterprise-Network-Topology#readm
 
 Hands-on enterprise-grade 3-Tier network topology simulation in Cisco Packet Tracer featuring Multi-Area OSPF, EIGRP route redistribution, and high availability via optimized HSRP v2 and STP load balancing.
 
-🔗 **Visit Project Web Page:**
-[View WebPage Here]
-
 📦 **GitHub Repository:**
 [View Source Code on GitHub](https://github.com/eunicecallueng/Enterprise-Network-Topology)
