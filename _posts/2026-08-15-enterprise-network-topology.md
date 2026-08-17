@@ -5,7 +5,7 @@ categories: [Networking, Infrastructure]
 tags: [cisco, topology, network-design, enterprise]
 ---
 
-Documentation and visual topology for an Enterprise Network setup, including routing, switching, VLAN segmentations, and infrastructure design.
+Hands-on enterprise-grade 3-Tier network topology simulation in Cisco Packet Tracer featuring Multi-Area OSPF, EIGRP route redistribution, and high availability via optimized HSRP v2 and STP load balancing.
 
 🔗 **Visit Project Web Page:**
 [View Live README Web Page](https://eunicecallueng.github.io/Enterprise-Network-Topology/)
