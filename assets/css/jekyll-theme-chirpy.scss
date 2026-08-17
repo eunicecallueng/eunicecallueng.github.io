@@ -1,0 +1,70 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main'
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+;
+
+/* append your custom style below */
+
+#sidebar {
+  background-color: #071952 !important;
+
+  .site-title a {
+    color: #97FEED !important;
+  }
+
+  .site-subtitle {
+    color: #35A29F !important;
+  }
+
+  #avatar img {
+    border: 2px solid #97FEED !important;
+  }
+
+  .nav-link {
+    color: #35A29F !important;
+
+    i {
+      color: #35A29F !important;
+    }
+
+    &:hover {
+      background-color: #0B666A !important;
+      color: #97FEED !important;
+
+      i {
+        color: #97FEED !important;
+      }
+    }
+  }
+
+  .nav-item.active .nav-link {
+    background-color: rgba(11, 102, 106, 0.6) !important;
+    color: #97FEED !important;
+    border-left: 3px solid #97FEED !important;
+
+    i {
+      color: #97FEED !important;
+    }
+  }
+
+  .sidebar-bottom {
+    border-top: 1px solid #0B666A !important;
+
+    a {
+      color: #35A29F !important;
+
+      &:hover {
+        color: #97FEED !important;
+      }
+    }
+  }
+}
