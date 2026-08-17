@@ -1,0 +1,19 @@
+@mixin dark-scheme {
+  --sidebar-bg: #071952;
+  --sidebar-muted-color: #35A29F;
+  --sidebar-active-color: #97FEED;
+  --sidebar-hover-bg: #0B666A;
+  --site-title-color: #97FEED;
+  --site-subtitle-color: #35A29F;
+  --avatar-border-color: #97FEED;
+}
+
+@mixin light-scheme {
+  --sidebar-bg: #071952;
+  --sidebar-muted-color: #35A29F;
+  --sidebar-active-color: #97FEED;
+  --sidebar-hover-bg: #0B666A;
+  --site-title-color: #97FEED;
+  --site-subtitle-color: #35A29F;
+  --avatar-border-color: #97FEED;
+}
