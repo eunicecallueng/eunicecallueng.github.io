@@ -1,0 +1,31 @@
+/* ==========================================
+   Main Site Accents
+   ========================================== */
+
+#main-wrapper {
+  /* Link colors */
+  a {
+    color: #0B666A;
+    &:hover {
+      color: #35A29F;
+    }
+  }
+
+  /* Post Card Hover Border */
+  .card-wrapper:hover {
+    border-color: #35A29F !important;
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Category & Tag Badges */
+  .post-tag, .post-category {
+    background-color: rgba(11, 102, 106, 0.1) !important;
+    color: #0B666A !important;
+
+    &:hover {
+      background-color: #0B666A !important;
+      color: #97FEED !important;
+    }
+  }
+}
