@@ -237,3 +237,5 @@ jekyll-archives:
     category: /categories/:name/
 
 
+plugins:
+  - jekyll-redirect-from
