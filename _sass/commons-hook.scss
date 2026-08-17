@@ -23,14 +23,14 @@
     i {
       color: #35A29F !important;
     }
-  }
 
-  .nav-link:hover {
-    background-color: #0B666A !important;
-    color: #97FEED !important;
-
-    i {
+    &:hover {
+      background-color: #0B666A !important;
       color: #97FEED !important;
+
+      i {
+        color: #97FEED !important;
+      }
     }
   }
 
