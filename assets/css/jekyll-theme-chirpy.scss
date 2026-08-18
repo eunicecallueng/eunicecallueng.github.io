@@ -177,61 +177,72 @@
 }
 
 /* ==========================================
-   6. RIGHT PANEL LAYOUT (SEARCH, RECENTLY UPDATED, TRENDING TAGS)
-   ========================================== */
-/* ==========================================
-   WIDE LAYOUT + RIGHT-ALIGNED SEARCH & PANEL
+   6. POST CARDS BOUNDARY & RIGHT PANEL FIX
    ========================================== */
 @media (min-width: 992px) {
-  /* 1. Palapadin ang container para maisagad sa kanan ang right panel */
-  #main-wrapper > .container,
-  #topbar-wrapper > .container,
-  .container {
-    max-width: 95% !important; /* Pinalapad mula sa default na masikip na width */
-    width: 100% !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-  }
-
-  /* 2. Ilagay sa KANAN ang Search Bar at i-align sa topbar */
-  #topbar-wrapper #topbar,
-  #topbar {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-  }
-
-  #search-wrapper,
-  .search-wrapper,
-  #search-input-wrapper {
-    margin-left: auto !important; /* Nagpapagalaw sa Search pakanang-kanan */
-    width: 280px !important;
-    max-width: 300px !important;
-  }
-
-  /* 3. Gitnang Post Area at Kanang Panel */
+  /* 1. Dalawang Column Container (Posts sa Gitna + Panel sa Kanan) */
+  #main-wrapper > .container > .row,
   #main-wrapper .row {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     justify-content: space-between !important;
+    align-items: flex-start !important;
     width: 100% !important;
   }
 
-  /* Main Posts - Mas malawak na space sa gitna */
+  /* 2. Gitnang Post Area - Nilimitahan ang lapad (Max Width) */
   main,
   main[aria-label="Main Content"] {
     flex: 1 1 auto !important;
-    max-width: calc(100% - 340px) !important;
+    max-width: 750px !important; /* Sakto lang ang lapad ng cards area */
+    width: 100% !important;
     padding-right: 2rem !important;
   }
 
-  /* Right Panel - Sagad sa kanan */
+  /* 3. Mismong Post Cards - Clickable/Active Area Boundary */
+  #post-list .card-wrapper {
+    display: block !important;
+    text-decoration: none !important;
+    margin-bottom: 1.25rem !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+
+    /* Hover effect sa loob lang ng card */
+    &:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    article.card {
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      border-radius: 0.75rem !important;
+      background-color: var(--card-bg, #ffffff) !important;
+      padding: 1.5rem !important;
+      margin: 0 !important;
+      width: 100% !important;
+    }
+  }
+
+  /* 4. Right Panel (Search, Recently Updated, Trending Tags) */
   #panel-wrapper,
   aside[aria-label="Panel"] {
-    flex: 0 0 300px !important;
-    width: 300px !important;
-    margin-left: auto !important; /* Isasagad sa pinaka-kanang border */
-    margin-right: 0 !important;
-    padding-left: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    position: sticky !important;
+    top: 2rem !important;
+    margin-left: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Search bar sa taas ng Right Panel */
+  #search-wrapper {
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
   }
 }
