@@ -41,16 +41,23 @@
     padding-right: 0 !important;
   }
 
+  /* Avatar without white border */
   #avatar {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     margin: 0 auto 0.75rem auto !important;
     text-align: center !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    outline: none !important;
 
     img {
       margin: 0 auto !important;
       display: block !important;
+      border: none !important;
+      box-shadow: none !important;
     }
   }
 
@@ -157,20 +164,20 @@
 :root,
 [data-mode='light'],
 [data-mode='dark'] {
-  /* 30% Structural Base (Sidebar & Headers) */
-  --sidebar-bg: #464B71 !important;
-  --sidebar-active-color: #7CD5C7 !important;
-  --sidebar-muted-color: #7CD5C7 !important;
+  /* 60% Main Canvas & Base */
+  --main-bg: #0D1164 !important;
+  --card-bg: #161A7A !important;
+  --card-header-bg: #161A7A !important;
 
-  /* 10% Accent (Hover, Highlights, Buttons) */
-  --nav-cursor-hover-bg: #118AB2 !important;
-  --link-color: #118AB2 !important;
-  --link-hover-color: #7CD5C7 !important;
+  /* 30% Structural Base (Sidebar & Panels) */
+  --sidebar-bg: #640D5F !important;
+  --sidebar-active-color: #F78D60 !important;
+  --sidebar-muted-color: #F78D60 !important;
 
-  /* 60% Canvas & Card Surfaces */
-  --main-bg: #F2F2ED !important;
-  --card-bg: #FFFFFF !important;
-  --card-header-bg: #FFFFFF !important;
+  /* 10% Accent (Buttons, Active States & Links) */
+  --nav-cursor-hover-bg: #0D1164 !important;
+  --link-color: #EA2264 !important;
+  --link-hover-color: #F78D60 !important;
 }
 
 /* ==========================================
@@ -235,14 +242,14 @@
 
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(70, 75, 113, 0.15) !important;
+      box-shadow: 0 4px 12px rgba(234, 34, 100, 0.25) !important;
     }
 
     article.card {
       position: relative !important;
-      border: 1px solid rgba(70, 75, 113, 0.12) !important;
+      border: 1px solid rgba(234, 34, 100, 0.2) !important;
       border-radius: 0.75rem !important;
-      background-color: var(--card-bg, #ffffff) !important;
+      background-color: var(--card-bg, #161A7A) !important;
       padding: 2rem !important;
       margin: 0 !important;
       width: 100% !important;
