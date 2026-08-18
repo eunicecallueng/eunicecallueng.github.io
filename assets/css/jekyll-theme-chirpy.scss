@@ -213,9 +213,18 @@
 
   /* Kapal / Taas ng Cards */
 #post-list article.card .card-body {
-  padding-top: 3rem !important;    /* Taas ng space sa itaas (default: ~1.5rem) */
-  padding-bottom: 3rem !important; /* Taas ng space sa ibaba */
-  min-height: 50px !important;   /* Minimum height ng mismong loob ng card */
+  padding-top: 1rem !important;    /* Taas ng space sa itaas (default: ~1.5rem) */
+  padding-bottom: 1rem !important; /* Taas ng space sa ibaba */
+  min-height: 100px !important;   /* Minimum height ng mismong loob ng card */
+}
+
+/* Alisin ang margin sa itaas ng Card Title */
+#post-list .card-body .card-title,
+#post-list .card-body h1,
+#post-list .card-body h2,
+#post-list .card-body h3 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
   /* Post Card Boundaries & Link Containment Fix */
