@@ -164,20 +164,20 @@
 :root,
 [data-mode='light'],
 [data-mode='dark'] {
-  /* 60% Main Canvas & Card Surface */
-  --main-bg: #0B192C !important;
-  --card-bg: #1E3E62 !important;
-  --card-header-bg: #1E3E62 !important;
+  /* 60% Main Canvas & Base */
+  --main-bg: #D0E7E6 !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
 
-  /* 30% Structural Base (Sidebar & Panels) */
-  --sidebar-bg: #000000 !important;
-  --sidebar-active-color: #FF6500 !important;
-  --sidebar-muted-color: #FF6500 !important;
+  /* 30% Structural Base (Sidebar & Layout Structure) */
+  --sidebar-bg: #293681 !important;
+  --sidebar-active-color: #95CCDD !important;
+  --sidebar-muted-color: #95CCDD !important;
 
   /* 10% Accent (Buttons, Active Highlights & Links) */
-  --nav-cursor-hover-bg: #1E3E62 !important;
-  --link-color: #FF6500 !important;
-  --link-hover-color: #FFA366 !important;
+  --nav-cursor-hover-bg: #4274D9 !important;
+  --link-color: #4274D9 !important;
+  --link-hover-color: #293681 !important;
 }
 
 /* ==========================================
@@ -242,14 +242,14 @@
 
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(255, 101, 0, 0.3) !important;
+      box-shadow: 0 4px 12px rgba(66, 116, 217, 0.2) !important;
     }
 
     article.card {
       position: relative !important;
-      border: 1px solid rgba(255, 101, 0, 0.2) !important;
+      border: 1px solid rgba(41, 54, 129, 0.12) !important;
       border-radius: 0.75rem !important;
-      background-color: var(--card-bg, #1E3E62) !important;
+      background-color: var(--card-bg, #ffffff) !important;
       padding: 2rem !important;
       margin: 0 !important;
       width: 100% !important;
