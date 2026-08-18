@@ -9,7 +9,64 @@
 @use 'main';
 
 /* ==========================================
-   CUSTOM COLOR OVERRIDES
+   1. REMOVE BULLETS & RESET LIST PADDING
+   ========================================== */
+#sidebar ul,
+#sidebar li,
+#sidebar .nav,
+#sidebar .dropdown-menu,
+#sidebar .dropdown-menu li {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* ==========================================
+   2. CENTER ALIGN ALL SIDEBAR ELEMENTS
+   ========================================== */
+#sidebar {
+  text-align: center !important;
+
+  /* Center the navigation menu items */
+  .nav {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .nav-item {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .nav-link {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Center social icons and bottom controls */
+  .sidebar-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+
+/* Center theme switcher menu options */
+#sidebar .dropdown-menu {
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* ==========================================
+   3. CUSTOM COLOR OVERRIDES
    ========================================== */
 :root,
 [data-mode='light'],
