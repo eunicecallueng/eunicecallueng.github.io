@@ -1,38 +1,25 @@
 ---
+# Custom styles for Chirpy
 ---
 
-/* Custom Sidebar Color Setup */
-#sidebar {
-  background-color: #112D4E !important; /* Main background color ng sidebar */
-}
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
 
-/* Kulay ng Pangalan at Tagline */
-#sidebar .site-title a {
-  color: #F9F7F7 !important;
-}
-#sidebar .site-subtitle {
-  color: #DBE2EF !important;
-}
+@use 'main';
 
-/* Kulay ng mga Links sa Sidebar */
-#sidebar .nav-link {
-  color: #DBE2EF !important;
+/* ==========================================
+   CUSTOM COLOR OVERRIDES
+   ========================================== */
+:root,
+[data-mode='light'],
+[data-mode='dark'] {
+  --sidebar-bg: #112D4E !important;
+  --sidebar-active-color: #F9F7F7 !important;
+  --sidebar-muted-color: #DBE2EF !important;
+  --nav-cursor-hover-bg: #3F72AF !important;
 
-  /* Kulay kapag itinaas ang mouse/cursor (Hover effect) */
-  &:hover {
-    background-color: #3F72AF !important;
-    color: #FFFFFF !important;
-  }
-}
-
-/* Custom Main Content Background Setup */
-body, 
-#main-wrapper {
-  background-color: #F9F7F7 !important; /* Palitan ang hex code sa gusto mong kulay ng background */
-}
-
-/* Kulay ng Card Containers sa Main Content (kung may mga post cards) */
-.card, 
-#main-wrapper article {
-  background-color: #FFFFFF !important; /* Puti o anumang gustong kulay para sa cards */
+  --main-bg: #F9F7F7 !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
 }
