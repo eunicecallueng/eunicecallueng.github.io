@@ -1,0 +1,23 @@
+# I-enable ang Visual Editor, Content Editor, at Code Editor
+_enabled_editors:
+  - visual
+  - content
+  - code
+
+# I-bind ang mga folder ng Chirpy theme
+collections_config:
+  posts:
+    path: _posts
+    output: true
+    url: /posts/[title]/
+    icon: auto_stories
+  tabs:
+    path: _tabs
+    output: true
+    url: /[title]/
+    icon: tab
+  pages:
+    path: ""
+    output: true
+    filter: strict
+    icon: description
