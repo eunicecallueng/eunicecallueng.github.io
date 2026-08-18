@@ -21,3 +21,15 @@
     color: #FFFFFF !important;
   }
 }
+
+/* Custom Main Content Background Setup */
+body, 
+#main-wrapper {
+  background-color: #F9F7F7 !important; /* Palitan ang hex code sa gusto mong kulay ng background */
+}
+
+/* Kulay ng Card Containers sa Main Content (kung may mga post cards) */
+.card, 
+#main-wrapper article {
+  background-color: #FFFFFF !important; /* Puti o anumang gustong kulay para sa cards */
+}
