@@ -158,17 +158,17 @@
 [data-mode='light'],
 [data-mode='dark'] {
   /* 30% Structural Base (Sidebar & Headers) */
-  --sidebar-bg: #1B262C !important;
-  --sidebar-active-color: #BBE1FA !important;
-  --sidebar-muted-color: #3282B8 !important;
+  --sidebar-bg: #464B71 !important;
+  --sidebar-active-color: #7CD5C7 !important;
+  --sidebar-muted-color: #7CD5C7 !important;
 
   /* 10% Accent (Hover, Highlights, Buttons) */
-  --nav-cursor-hover-bg: #0F4C75 !important;
-  --link-color: #0F4C75 !important;
-  --link-hover-color: #3282B8 !important;
+  --nav-cursor-hover-bg: #118AB2 !important;
+  --link-color: #118AB2 !important;
+  --link-hover-color: #7CD5C7 !important;
 
   /* 60% Canvas & Card Surfaces */
-  --main-bg: #BBE1FA !important;
+  --main-bg: #F2F2ED !important;
   --card-bg: #FFFFFF !important;
   --card-header-bg: #FFFFFF !important;
 }
@@ -235,12 +235,12 @@
 
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(15, 76, 117, 0.15) !important;
+      box-shadow: 0 4px 12px rgba(70, 75, 113, 0.15) !important;
     }
 
     article.card {
       position: relative !important;
-      border: 1px solid rgba(15, 76, 117, 0.12) !important;
+      border: 1px solid rgba(70, 75, 113, 0.12) !important;
       border-radius: 0.75rem !important;
       background-color: var(--card-bg, #ffffff) !important;
       padding: 2rem !important;
