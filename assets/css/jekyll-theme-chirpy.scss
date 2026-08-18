@@ -9,23 +9,19 @@
 @use 'main';
 
 /* ==========================================
-   1. REMOVE ALL BULLETS & EXTRA PADDING
-   ========================================== */
-#sidebar ul,
-#sidebar li,
-#sidebar .nav,
-#sidebar .dropdown-menu,
-#sidebar .dropdown-menu li {
-  list-style: none !important;
-  list-style-type: none !important;
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-}
-
-/* ==========================================
-   2. SIDEBAR CUSTOMIZATION
+   1. SIDEBAR & NAVIGATION STYLES
    ========================================== */
 #sidebar {
+  &,
+  ul,
+  li,
+  .nav,
+  .dropdown-menu {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
   /* Profile Area (Avatar, Title, Subtitle) */
   header,
   .profile-wrapper {
@@ -35,19 +31,16 @@
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
   }
 
-  /* Avatar without white border */
+  /* Avatar without border */
   #avatar {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    margin: 0 auto 0.75rem auto !important;
-    text-align: center !important;
+    margin: 0 auto 0.75rem !important;
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
@@ -62,15 +55,12 @@
   }
 
   .site-title,
-  .site-subtitle,
-  p.site-subtitle {
+  .site-subtitle {
     display: block !important;
     text-align: center !important;
     width: 90% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    margin-inline: auto !important;
+    padding-inline: 0.5rem !important;
   }
 
   /* Navigation Menu Block */
@@ -81,18 +71,18 @@
     width: fit-content !important;
     min-width: 180px !important;
     margin: 0 auto !important;
-  }
 
-  .nav-item {
-    width: 100% !important;
-  }
+    .nav-item {
+      width: 100% !important;
+    }
 
-  .nav-link {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    width: 100% !important;
+    .nav-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      width: 100% !important;
+    }
   }
 
   /* Bottom Social & Utility Icons */
@@ -103,9 +93,8 @@
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: .9rem !important;
+    gap: 0.9rem !important;
     width: 100% !important;
-
     margin-top: 19rem !important;
     margin-bottom: 2rem !important;
 
@@ -123,7 +112,7 @@
       padding: 0 !important;
     }
 
-    /* Gear Icon Button */
+    /* Gear / Theme Toggle Button */
     #mode-toggle,
     .mode-toggle,
     button[data-bs-toggle="dropdown"],
@@ -133,11 +122,6 @@
       min-width: 38px !important;
       min-height: 38px !important;
       border-radius: 50% !important;
-      padding: 0 !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin: 0 !important;
       box-sizing: border-box !important;
     }
 
@@ -159,33 +143,31 @@
 }
 
 /* ==========================================
-   3. CUSTOM COLOR OVERRIDES (60-30-10 Rule)
+   2. CUSTOM COLOR OVERRIDES (60-30-10 Rule)
    ========================================== */
 :root,
 [data-mode='light'],
 [data-mode='dark'] {
-  /* 60% Main Canvas & Base */
-  --main-bg: #D0E7E6 !important;
-  --card-bg: #FFFFFF !important;
-  --card-header-bg: #FFFFFF !important;
+  /* 60% Canvas & Base */
+  --main-bg: #1E104E !important;
+  --card-bg: #452E5A !important;
+  --card-header-bg: #452E5A !important;
 
-  /* 30% Structural Base (Sidebar & Layout Structure) */
-  --sidebar-bg: #293681 !important;
-  --sidebar-active-color: #95CCDD !important;
-  --sidebar-muted-color: #95CCDD !important;
+  /* 30% Structure (Sidebar & Layout) */
+  --sidebar-bg: #1E104E !important;
+  --sidebar-active-color: #FFC85C !important;
+  --sidebar-muted-color: #FFC85C !important;
 
-  /* 10% Accent (Buttons, Active Highlights & Links) */
-  --nav-cursor-hover-bg: #4274D9 !important;
-  --link-color: #4274D9 !important;
-  --link-hover-color: #293681 !important;
+  /* 10% Accents & Interactive Elements */
+  --nav-cursor-hover-bg: #FF653F !important;
+  --link-color: #FF653F !important;
+  --link-hover-color: #FFC85C !important;
 }
 
 /* ==========================================
-   4. DESKTOP LAYOUT (SEARCH, CARDS, RIGHT PANEL)
+   3. DESKTOP LAYOUT (SEARCH, CARDS, PANEL)
    ========================================== */
 @media (min-width: 992px) {
-  /* Search Bar positioning sa TOP-RIGHT */
-  #topbar-wrapper #topbar,
   #topbar {
     display: flex !important;
     justify-content: flex-end !important;
@@ -201,62 +183,68 @@
     max-width: 280px !important;
   }
 
-  /* Main Container Row */
-  #main-wrapper > .container > .row,
-  #main-wrapper .row {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    width: 100% !important;
+  #main-wrapper {
+    .row {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+    }
+
+    > .container {
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
   }
 
-  /* Gitnang Posts Area */
-  main,
-  main[aria-label="Main Content"] {
+  main {
     flex: 1 1 auto !important;
     max-width: 1400px !important;
     width: 100% !important;
     padding-right: 2rem !important;
   }
 
-  /* Alisin ang margin sa itaas ng Card Title */
-  #post-list .card-body .card-title,
-  #post-list .card-body h1,
-  #post-list .card-body h2,
-  #post-list .card-body h3 {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* Post Card Boundaries & Link Containment Fix */
-  #post-list .card-wrapper {
-    display: block !important;
-    position: relative !important;
-    text-decoration: none !important;
-    margin-bottom: 1.25rem !important;
-    border-radius: 0.75rem !important;
-    overflow: hidden !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-
-    &:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(66, 116, 217, 0.2) !important;
+  #post-list {
+    .card-body {
+      .card-title,
+      h1,
+      h2,
+      h3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
     }
 
-    article.card {
+    .card-wrapper {
+      display: block !important;
       position: relative !important;
-      border: 1px solid rgba(41, 54, 129, 0.12) !important;
+      text-decoration: none !important;
+      margin-bottom: 1.25rem !important;
       border-radius: 0.75rem !important;
-      background-color: var(--card-bg, #ffffff) !important;
-      padding: 2rem !important;
-      margin: 0 !important;
-      width: 100% !important;
+      overflow: hidden !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+
+      &:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(255, 101, 63, 0.25) !important;
+      }
+
+      article.card {
+        position: relative !important;
+        border: 1px solid rgba(255, 101, 63, 0.2) !important;
+        border-radius: 0.75rem !important;
+        background-color: var(--card-bg, #452E5A) !important;
+        padding: 2rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
     }
   }
 
-  /* Right Panel (Recently Updated & Trending Tags) */
+  /* Right Panel (Recently Updated & Tags) */
   #panel-wrapper,
   aside[aria-label="Panel"] {
     display: flex !important;
@@ -275,20 +263,13 @@
     background: center;
     border: 0;
     border-radius: 0;
-    padding: 1rem 0rem;
+    padding: 1rem 0;
     color: var(--text-color);
     height: auto;
 
     &:focus {
       box-shadow: none;
     }
-  }
-
-  /* Fix para Bumaba ang Footer sa Pinaka-Bottom */
-  #main-wrapper > .container {
-    min-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
   }
 
   footer {
