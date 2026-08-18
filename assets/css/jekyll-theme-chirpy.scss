@@ -207,7 +207,7 @@
   main[aria-label="Main Content"] {
     flex: 1 1 auto !important;
     max-width: 1400px !important;
-    width: 50% !important;
+    width: 100% !important;
     padding-right: 2rem !important;
   }
 
@@ -215,7 +215,7 @@
 #post-list article.card .card-body {
   padding-top: 3rem !important;    /* Taas ng space sa itaas (default: ~1.5rem) */
   padding-bottom: 3rem !important; /* Taas ng space sa ibaba */
-  min-height: 200px !important;   /* Minimum height ng mismong loob ng card */
+  min-height: 50px !important;   /* Minimum height ng mismong loob ng card */
 }
 
   /* Post Card Boundaries & Link Containment Fix */
