@@ -149,19 +149,19 @@
 [data-mode='light'],
 [data-mode='dark'] {
   /* 60% Canvas & Base */
-  --main-bg: #040D12 !important;
-  --card-bg: #183D3D !important;
-  --card-header-bg: #183D3D !important;
+  --main-bg: #EAE0CF !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
 
   /* 30% Structure (Sidebar & Layout) */
-  --sidebar-bg: #040D12 !important;
-  --sidebar-active-color: #93B1A6 !important;
-  --sidebar-muted-color: #5C8374 !important;
+  --sidebar-bg: #213448 !important;
+  --sidebar-active-color: #94B4C1 !important;
+  --sidebar-muted-color: #94B4C1 !important;
 
   /* 10% Accents & Interactive Elements */
-  --nav-cursor-hover-bg: #5C8374 !important;
-  --link-color: #93B1A6 !important;
-  --link-hover-color: #5C8374 !important;
+  --nav-cursor-hover-bg: #547792 !important;
+  --link-color: #213448 !important;
+  --link-hover-color: #547792 !important;
 }
 
 /* ==========================================
@@ -229,14 +229,14 @@
 
       &:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 4px 12px rgba(92, 131, 116, 0.25) !important;
+        box-shadow: 0 4px 12px rgba(33, 52, 72, 0.18) !important;
       }
 
       article.card {
         position: relative !important;
-        border: 1px solid rgba(147, 177, 166, 0.2) !important;
+        border: 1px solid rgba(33, 52, 72, 0.12) !important;
         border-radius: 0.75rem !important;
-        background-color: var(--card-bg, #183D3D) !important;
+        background-color: var(--card-bg, #ffffff) !important;
         padding: 2rem !important;
         margin: 0 !important;
         width: 100% !important;
