@@ -211,13 +211,6 @@
     padding-right: 2rem !important;
   }
 
-  /* Kapal / Taas ng Cards */
-/*#post-list article.card .card-body {
-  padding-top: 1rem !important;    /* Taas ng space sa itaas (default: ~1.5rem) */
- /* padding-bottom: 1rem !important; /* Taas ng space sa ibaba */
-  /*min-height: 100px !important;   /* Minimum height ng mismong loob ng card */
-/*}
-
 /* Alisin ang margin sa itaas ng Card Title */
 #post-list .card-body .card-title,
 #post-list .card-body h1,
@@ -267,4 +260,28 @@
     visibility: visible !important;
     opacity: 1 !important;
   }
+
+  #search-input {
+  background: center;
+  border: 0;
+  border-radius: 0;
+  padding: 1rem 0rem;
+  color: var(--text-color);
+  height: auto;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+  /* Fix para Bumaba ang Footer sa Pinaka-Bottom */
+#main-wrapper > .container {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+footer {
+  margin-top: auto !important;
+  padding-bottom: 1.25rem !important;
 }
