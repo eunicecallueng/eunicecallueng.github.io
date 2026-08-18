@@ -211,14 +211,11 @@
     padding-right: 2rem !important;
   }
 
-  /* Kapal / Taas ng Post Cards */
-#post-list .card-wrapper article.card {
-  /* Option 1: Baguhin ang padding sa loob (Taas at Baba) */
-  padding-top: 2rem !important;    /* Dagdagan para kumapal sa itaas */
-  padding-bottom: 2rem !important; /* Dagdagan para kumapal sa ibaba */
-
-  /* Option 2: Set ng minimum height para sa mismong card */
-  min-height: 1000px !important;   /* Palitan ang value para sa gustong kapal/taas */
+  /* Kapal / Taas ng Cards */
+#post-list article.card .card-body {
+  padding-top: 3rem !important;    /* Taas ng space sa itaas (default: ~1.5rem) */
+  padding-bottom: 3rem !important; /* Taas ng space sa ibaba */
+  min-height: 850px !important;   /* Minimum height ng mismong loob ng card */
 }
 
   /* Post Card Boundaries & Link Containment Fix */
