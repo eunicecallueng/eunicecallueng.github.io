@@ -1,5 +1,4 @@
 ---
-# Custom styles for Chirpy
 ---
 
 @use 'abstracts/variables' with (
@@ -89,17 +88,54 @@
     width: 100% !important;
   }
 
+  /* ==========================================
+     4. GEAR ICON (BILOG) & THEME DROPDOWN TOGGLE FIX
+     ========================================== */
   .sidebar-bottom {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Gawing perpektong bilog ang gear icon button */
+  #mode-toggle,
+  .mode-toggle,
+  button[data-bs-toggle="dropdown"],
+  .mode-toggle-wrapper button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Itago ang dropdown menu sa simula (Lalabas lang kapag pinindot) */
+  .dropdown-menu {
+    display: none !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0.5rem !important;
+    text-align: center !important;
+    z-index: 1050 !important;
+
+    &.show {
+      display: block !important;
+    }
   }
 }
 
 /* ==========================================
-   4. CUSTOM COLOR OVERRIDES
+   5. CUSTOM COLOR OVERRIDES
    ========================================== */
 :root,
 [data-mode='light'],
