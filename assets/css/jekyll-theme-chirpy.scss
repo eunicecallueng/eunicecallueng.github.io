@@ -9,7 +9,7 @@
 @use 'main';
 
 /* ==========================================
-   1. REMOVE BULLETS & RESET LIST PADDING
+   1. REMOVE ALL BULLETS
    ========================================== */
 #sidebar ul,
 #sidebar li,
@@ -23,33 +23,54 @@
 }
 
 /* ==========================================
-   2. CENTER ALIGN ALL SIDEBAR ELEMENTS
+   2. CENTER AVATAR, TITLE & TAGLINE
    ========================================== */
 #sidebar {
-  text-align: center !important;
+  #avatar {
+    display: block !important;
+    margin: 0 auto 0.75rem auto !important;
+    text-align: center !important;
 
-  /* Center the navigation menu items */
-  .nav {
+    img {
+      margin: 0 auto !important;
+      display: block !important;
+    }
+  }
+
+  .site-title,
+  .site-subtitle {
+    display: block !important;
+    text-align: center !important;
     width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* ==========================================
+     3. CENTER NAV MENU BLOCK (PANTAY ANG UNANG LETRA)
+     ========================================== */
+  ul.nav {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-start !important; /* Pantay ang simula sa kaliwa */
+    width: fit-content !important;       /* Sukat batay sa haba ng item */
+    min-width: 180px !important;         /* Uniform width para sa buttons */
+    margin: 0 auto !important;           /* Gitna ang buong menu sa sidebar */
   }
 
   .nav-item {
     width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
   }
 
   .nav-link {
-    justify-content: center !important;
-    text-align: center !important;
-    width: 80% !important;
-    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Left-aligned ang icon + text */
+    text-align: left !important;
+    width: 100% !important;
   }
 
-  /* Center social icons and bottom controls */
+  /* Center social icons and bottom controls block */
   .sidebar-bottom {
     display: flex !important;
     flex-direction: column !important;
@@ -59,14 +80,8 @@
   }
 }
 
-/* Center theme switcher menu options */
-#sidebar .dropdown-menu {
-  margin: 0 auto !important;
-  text-align: center !important;
-}
-
 /* ==========================================
-   3. CUSTOM COLOR OVERRIDES
+   4. CUSTOM COLOR OVERRIDES
    ========================================== */
 :root,
 [data-mode='light'],
