@@ -26,6 +26,8 @@
    2. FORCE CENTER PROFILE (AVATAR, TITLE, TAGLINE)
    ========================================== */
 #sidebar {
+  position: relative !important;
+
   header,
   .profile-wrapper {
     width: 100% !important;
@@ -90,21 +92,25 @@
   }
 
   /* ==========================================
-     4. HORIZONTAL BOTTOM ICONS (GEAR + SOCIAL)
+     4. POSITION ICONS AT THE ORANGE LINE LEVEL
      ========================================== */
   .sidebar-bottom {
     display: flex !important;
-    flex-direction: row !important; /* Naka-pahalang / horizontal */
-    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.75rem !important;       /* Agwat sa pagitan ng mga icons */
+    gap: 0.75rem !important;
     width: 100% !important;
-    margin-top: 2rem !important;     /* Distansya mula sa ABOUT link */
-    margin-bottom: 2rem !important;  /* Distansya mula sa pinakababa */
+
+    /* Pinababa sa eksaktong pwesto ng orange line */
+    position: absolute !important;
+    bottom: 3rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
     padding: 0 0.5rem !important;
 
-    /* Tanggalin ang maliit na tuldok/separator sa pagitan ng icons kung mayroon man */
     span, .icon-border {
       display: none !important;
     }
@@ -134,7 +140,7 @@
       box-sizing: border-box !important;
     }
 
-    /* Dropdown theme options (Pataas ang bukas para hindi lumagpas sa screen) */
+    /* Dropdown theme options */
     .dropdown-menu {
       display: none !important;
       position: absolute !important;
