@@ -105,7 +105,7 @@
     /* Distansya mula sa ABOUT menu button pababa sa ilalim */
     margin-top: 15rem !important; 
     margin-bottom: 2rem !important;
-    margin-left: - !important;
+    margin-left: -10 !important;
     margin-right: 0 !important;
 
     /* Inilipat sa KALIWA ang alignment */
@@ -174,4 +174,67 @@
   --main-bg: #F9F7F7 !important;
   --card-bg: #FFFFFF !important;
   --card-header-bg: #FFFFFF !important;
+}
+
+/* ==========================================
+   6. RIGHT PANEL LAYOUT (SEARCH, RECENTLY UPDATED, TRENDING TAGS)
+   ========================================== */
+@media (min-width: 992px) {
+  /* Flexbox container para sa main content at right panel */
+  #main-wrapper > .container > .row,
+  #main-wrapper .row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+  }
+
+  /* Gitnang column (Blog Posts Area) */
+  main,
+  main[aria-label="Main Content"] {
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 320px) !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Kanang column (Right Panel Wrapper) */
+  #panel-wrapper,
+  aside[aria-label="Panel"] {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 300px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+    position: sticky !important;
+    top: 2rem !important;
+    margin-top: 0 !important;
+    padding-left: 1rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Search bar sa pinaka-taas ng Right Panel */
+  #search-wrapper,
+  .search-wrapper,
+  #search-bar {
+    display: flex !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Recently Updated & Trending Tags sa ilalim ng Search */
+  #panel-wrapper .access,
+  .access {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  #access-lastmod,
+  #access-tags {
+    display: block !important;
+    width: 100% !important;
+  }
 }
