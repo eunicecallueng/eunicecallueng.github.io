@@ -23,11 +23,27 @@
 }
 
 /* ==========================================
-   2. CENTER AVATAR, TITLE & TAGLINE
+   2. FORCE CENTER PROFILE (AVATAR, TITLE, TAGLINE)
    ========================================== */
 #sidebar {
+  header,
+  .profile-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   #avatar {
-    display: block !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     margin: 0 auto 0.75rem auto !important;
     text-align: center !important;
 
@@ -38,12 +54,15 @@
   }
 
   .site-title,
-  .site-subtitle {
+  .site-subtitle,
+  p.site-subtitle {
     display: block !important;
     text-align: center !important;
     width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 
   /* ==========================================
@@ -52,10 +71,10 @@
   ul.nav {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important; /* Pantay ang simula sa kaliwa */
-    width: fit-content !important;       /* Sukat batay sa haba ng item */
-    min-width: 180px !important;         /* Uniform width para sa buttons */
-    margin: 0 auto !important;           /* Gitna ang buong menu sa sidebar */
+    align-items: flex-start !important;
+    width: fit-content !important;
+    min-width: 180px !important;
+    margin: 0 auto !important;
   }
 
   .nav-item {
@@ -65,12 +84,11 @@
   .nav-link {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Left-aligned ang icon + text */
+    justify-content: flex-start !important;
     text-align: left !important;
     width: 100% !important;
   }
 
-  /* Center social icons and bottom controls block */
   .sidebar-bottom {
     display: flex !important;
     flex-direction: column !important;
