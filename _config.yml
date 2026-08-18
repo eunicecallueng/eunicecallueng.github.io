@@ -18,7 +18,8 @@ timezone: Asia/Manila
 title: nycehomelab # the main title
 
 tagline: >- 
-  Documentation site for my homelab and IT projects
+ Documentation site for 
+ my homelab and IT projects
 
 description: >-
  Documenting hands-on IT infrastructure, Active Directory setups, enterprise networking, and sysadmin experiments in my personal homelab environment.
