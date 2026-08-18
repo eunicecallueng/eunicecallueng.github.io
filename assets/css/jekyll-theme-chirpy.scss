@@ -96,10 +96,10 @@
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 0.75rem !important;
+    gap: .9rem !important;
     width: 100% !important;
 
-    margin-top: 15rem !important;
+    margin-top: 21rem !important;
     margin-bottom: 2rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -285,4 +285,13 @@
 footer {
   margin-top: auto !important;
   padding-bottom: 1.25rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+
+  p {
+    margin: 0 !important;
+  }
 }
