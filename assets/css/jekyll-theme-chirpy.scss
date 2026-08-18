@@ -149,19 +149,19 @@
 [data-mode='light'],
 [data-mode='dark'] {
   /* 60% Canvas & Base */
-  --main-bg: #1E104E !important;
-  --card-bg: #452E5A !important;
-  --card-header-bg: #452E5A !important;
+  --main-bg: #F2EFE7 !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
 
   /* 30% Structure (Sidebar & Layout) */
-  --sidebar-bg: #1E104E !important;
-  --sidebar-active-color: #FFC85C !important;
-  --sidebar-muted-color: #FFC85C !important;
+  --sidebar-bg: #3368A0 !important;
+  --sidebar-active-color: #C8DFDB !important;
+  --sidebar-muted-color: #C8DFDB !important;
 
   /* 10% Accents & Interactive Elements */
-  --nav-cursor-hover-bg: #FF653F !important;
-  --link-color: #FF653F !important;
-  --link-hover-color: #FFC85C !important;
+  --nav-cursor-hover-bg: #66A3BF !important;
+  --link-color: #3368A0 !important;
+  --link-hover-color: #66A3BF !important;
 }
 
 /* ==========================================
@@ -229,14 +229,14 @@
 
       &:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 4px 12px rgba(255, 101, 63, 0.25) !important;
+        box-shadow: 0 4px 12px rgba(51, 104, 160, 0.18) !important;
       }
 
       article.card {
         position: relative !important;
-        border: 1px solid rgba(255, 101, 63, 0.2) !important;
+        border: 1px solid rgba(51, 104, 160, 0.12) !important;
         border-radius: 0.75rem !important;
-        background-color: var(--card-bg, #452E5A) !important;
+        background-color: var(--card-bg, #ffffff) !important;
         padding: 2rem !important;
         margin: 0 !important;
         width: 100% !important;
