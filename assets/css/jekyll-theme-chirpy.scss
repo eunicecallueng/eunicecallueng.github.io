@@ -1,0 +1,23 @@
+/* Custom Sidebar Color Setup */
+#sidebar {
+  background-color: #112D4E !important; /* Main background color ng sidebar */
+}
+
+/* Kulay ng Pangalan at Tagline */
+#sidebar .site-title a {
+  color: #F9F7F7 !important;
+}
+#sidebar .site-subtitle {
+  color: #DBE2EF !important;
+}
+
+/* Kulay ng mga Links sa Sidebar */
+#sidebar .nav-link {
+  color: #DBE2EF !important;
+
+  /* Kulay kapag itinaas ang mouse/cursor (Hover effect) */
+  &:hover {
+    background-color: #3F72AF !important;
+    color: #FFFFFF !important;
+  }
+}
