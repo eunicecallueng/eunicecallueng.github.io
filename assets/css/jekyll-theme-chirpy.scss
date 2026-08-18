@@ -206,10 +206,20 @@
   main,
   main[aria-label="Main Content"] {
     flex: 1 1 auto !important;
-    max-width: 1500px !important;
+    max-width: 1400px !important;
     width: 100% !important;
     padding-right: 2rem !important;
   }
+
+  /* Kapal / Taas ng Post Cards */
+#post-list .card-wrapper article.card {
+  /* Option 1: Baguhin ang padding sa loob (Taas at Baba) */
+  padding-top: 2rem !important;    /* Dagdagan para kumapal sa itaas */
+  padding-bottom: 2rem !important; /* Dagdagan para kumapal sa ibaba */
+
+  /* Option 2: Set ng minimum height para sa mismong card */
+  min-height: 200px !important;   /* Palitan ang value para sa gustong kapal/taas */
+}
 
   /* Post Card Boundaries & Link Containment Fix */
   #post-list .card-wrapper {
