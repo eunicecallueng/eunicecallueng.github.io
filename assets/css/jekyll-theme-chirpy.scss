@@ -101,9 +101,6 @@
 
     margin-top: 19rem !important;
     margin-bottom: 2rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 1.5rem !important;
 
     span,
     .icon-border {
@@ -155,17 +152,23 @@
 }
 
 /* ==========================================
-   3. CUSTOM COLOR OVERRIDES
+   3. CUSTOM COLOR OVERRIDES (60-30-10 Rule)
    ========================================== */
 :root,
 [data-mode='light'],
 [data-mode='dark'] {
-  --sidebar-bg: #112D4E !important;
-  --sidebar-active-color: #F9F7F7 !important;
-  --sidebar-muted-color: #DBE2EF !important;
-  --nav-cursor-hover-bg: #3F72AF !important;
+  /* 30% Structural Base (Sidebar & Headers) */
+  --sidebar-bg: #1B262C !important;
+  --sidebar-active-color: #BBE1FA !important;
+  --sidebar-muted-color: #3282B8 !important;
 
-  --main-bg: #F9F7F7 !important;
+  /* 10% Accent (Hover, Highlights, Buttons) */
+  --nav-cursor-hover-bg: #0F4C75 !important;
+  --link-color: #0F4C75 !important;
+  --link-hover-color: #3282B8 !important;
+
+  /* 60% Canvas & Card Surfaces */
+  --main-bg: #BBE1FA !important;
   --card-bg: #FFFFFF !important;
   --card-header-bg: #FFFFFF !important;
 }
@@ -182,14 +185,13 @@
     align-items: center !important;
     width: 100% !important;
   }
-}
 
   #search-wrapper,
   .search-wrapper,
   #search-input-wrapper {
     margin-left: auto !important;
     width: 280px !important;
-    max-width: 300px !important;
+    max-width: 280px !important;
   }
 
   /* Main Container Row */
@@ -212,19 +214,19 @@
     padding-right: 2rem !important;
   }
 
-/* Alisin ang margin sa itaas ng Card Title */
-#post-list .card-body .card-title,
-#post-list .card-body h1,
-#post-list .card-body h2,
-#post-list .card-body h3 {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
+  /* Alisin ang margin sa itaas ng Card Title */
+  #post-list .card-body .card-title,
+  #post-list .card-body h1,
+  #post-list .card-body h2,
+  #post-list .card-body h3 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 
   /* Post Card Boundaries & Link Containment Fix */
   #post-list .card-wrapper {
     display: block !important;
-    position: relative !important; /* Pinipigilan ang link na umapaw sa buong screen */
+    position: relative !important;
     text-decoration: none !important;
     margin-bottom: 1.25rem !important;
     border-radius: 0.75rem !important;
@@ -233,17 +235,17 @@
 
     &:hover {
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 12px rgba(15, 76, 117, 0.15) !important;
     }
 
     article.card {
-      position: relative !important; /* Nililimitahan ang stretched-link sa loob lang ng card box */
-      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      position: relative !important;
+      border: 1px solid rgba(15, 76, 117, 0.12) !important;
       border-radius: 0.75rem !important;
       background-color: var(--card-bg, #ffffff) !important;
       padding: 2rem !important;
       margin: 0 !important;
-      width: 150% !important;
+      width: 100% !important;
     }
   }
 
@@ -263,35 +265,36 @@
   }
 
   #search-input {
-  background: center;
-  border: 0;
-  border-radius: 0;
-  padding: 1rem 0rem;
-  color: var(--text-color);
-  height: auto;
+    background: center;
+    border: 0;
+    border-radius: 0;
+    padding: 1rem 0rem;
+    color: var(--text-color);
+    height: auto;
 
-  &:focus {
-    box-shadow: none;
+    &:focus {
+      box-shadow: none;
+    }
   }
-}
-  
-/* Fix para Bumaba ang Footer sa Pinaka-Bottom */
-#main-wrapper > .container {
-  min-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
 
-footer {
-  margin-top: auto !important;
-  padding-bottom: 1.25rem !important;
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
+  /* Fix para Bumaba ang Footer sa Pinaka-Bottom */
+  #main-wrapper > .container {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
 
-  p {
-    margin: 0 !important;
+  footer {
+    margin-top: auto !important;
+    padding-bottom: 1.25rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+
+    p {
+      margin: 0 !important;
+    }
   }
 }
