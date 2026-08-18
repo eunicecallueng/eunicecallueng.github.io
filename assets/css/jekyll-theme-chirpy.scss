@@ -99,7 +99,7 @@
     gap: 0.75rem !important;
     width: 100% !important;
 
-    margin-top: 2.5rem !important;
+    margin-top: 15rem !important;
     margin-bottom: 2rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -202,7 +202,7 @@
     width: 100% !important;
   }
 
-  /* Gitnang Posts Area (Nilimitahan ang lapad ng Clickable Cards) */
+  /* Gitnang Posts Area */
   main,
   main[aria-label="Main Content"] {
     flex: 1 1 auto !important;
@@ -211,9 +211,10 @@
     padding-right: 2rem !important;
   }
 
-  /* Post Card Boundaries */
+  /* Post Card Boundaries & Link Containment Fix */
   #post-list .card-wrapper {
     display: block !important;
+    position: relative !important; /* Pinipigilan ang link na umapaw sa buong screen */
     text-decoration: none !important;
     margin-bottom: 1.25rem !important;
     border-radius: 0.75rem !important;
@@ -226,6 +227,7 @@
     }
 
     article.card {
+      position: relative !important; /* Nililimitahan ang stretched-link sa loob lang ng card box */
       border: 1px solid rgba(0, 0, 0, 0.08) !important;
       border-radius: 0.75rem !important;
       background-color: var(--card-bg, #ffffff) !important;
