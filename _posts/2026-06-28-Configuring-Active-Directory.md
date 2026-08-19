@@ -75,7 +75,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 ## Step 2: Preparing the Server (Pre-Requisites)
 
 > [!NOTE]
-> <div style="background-color: #5b8500; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
+> <div style="background-color: #7DB700; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
 
 1. **Change Hostname:**
    * Open **Server Manager** > **Local Server**.
