@@ -296,11 +296,9 @@
   }
 }
 
-/* Hide post description/excerpt in post view header */
-#post-wrapper {
-  p.post-desc,
-  .post-desc,
-  header p.description {
-    display: none !important;
-  }
+/* Hide post header description only */
+#post-wrapper article header p.post-desc,
+#post-wrapper article header p.description,
+#post-wrapper article header > p:not([class]) {
+  display: none !important;
 }
