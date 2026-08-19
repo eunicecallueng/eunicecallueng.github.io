@@ -1,5 +1,4 @@
 ---
-# Custom styles for Chirpy
 ---
 
 @use 'abstracts/variables' with (
@@ -26,7 +25,7 @@
   .nav-item {
     &:hover, &.active {
       .nav-link {
-        color: #0d0d0d !important; /* Gagawing Puti ang text at icon kapag hovered/active */
+        color: #0d0d0d !important;
         
         i {
           color: #FFFFFF !important;
@@ -156,25 +155,36 @@
 }
 
 /* ==========================================
-   2. CUSTOM COLOR OVERRIDES (60-30-10 Rule)
+   2. CUSTOM COLOR OVERRIDES
    ========================================== */
 :root,
 [data-mode='light'],
 [data-mode='dark'] {
-  /* 60% Canvas & Base */
-  --main-bg: #EAE0CF !important;
-  --card-bg: #FFFFFF !important;
-  --card-header-bg: #FFFFFF !important;
+  /* Canvas & Cards */
+  --main-bg: #F8FAFC !important;
+  --card-bg: #F1F5F9 !important;
+  --card-header-bg: #F1F5F9 !important;
 
-  /* 30% Structure (Sidebar & Layout) */
-  --sidebar-bg: #213448 !important;
-  --sidebar-active-color: #94B4C1 !important;
-  --sidebar-muted-color: #94B4C1 !important;
+  /* Typography Colors */
+  --text-color: #0F172A !important;
+  --heading-color: #0F172A !important;
+  --text-muted-color: #475569 !important;
 
-  /* 10% Accents & Interactive Elements */
-  --nav-cursor-hover-bg: #547792 !important;
-  --link-color: #213448 !important;
-  --link-hover-color: #547792 !important;
+  /* Sidebar Structure */
+  --sidebar-bg: #F1F5F9 !important;
+  --sidebar-active-color: #2563EB !important;
+  --sidebar-muted-color: #475569 !important;
+
+  /* Interactive Elements & Accents */
+  --nav-cursor-hover-bg: #E2E8F0 !important;
+  --link-color: #2563EB !important;
+  --link-hover-color: #1D4ED8 !important;
+}
+
+/* Base Body Text Fallbacks */
+body {
+  background-color: var(--main-bg) !important;
+  color: var(--text-color) !important;
 }
 
 /* ==========================================
@@ -228,6 +238,7 @@
       h3 {
         margin-top: 0 !important;
         padding-top: 0 !important;
+        color: var(--heading-color) !important;
       }
     }
 
@@ -242,14 +253,14 @@
 
       &:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 4px 12px rgba(33, 52, 72, 0.18) !important;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
       }
 
       article.card {
         position: relative !important;
-        border: 1px solid rgba(33, 52, 72, 0.12) !important;
+        border: 1px solid #E2E8F0 !important;
         border-radius: 0.75rem !important;
-        background-color: var(--card-bg, #ffffff) !important;
+        background-color: var(--card-bg) !important;
         padding: 2rem !important;
         margin: 0 !important;
         width: 100% !important;
@@ -277,7 +288,7 @@
     border: 0;
     border-radius: 0;
     padding: 1rem 0;
-    color: var(--text-color);
+    color: var(--text-color) !important;
     height: auto;
 
     &:focus {
@@ -293,6 +304,7 @@
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
+    color: var(--text-muted-color) !important;
 
     p {
       margin: 0 !important;
