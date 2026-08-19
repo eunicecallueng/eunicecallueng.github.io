@@ -306,6 +306,7 @@
   #toc-wrapper {
     order: 1 !important;
     display: block !important;
+    padding-left: 0.75rem !important; /* Align Contents heading with section elements */
   }
 
   /* Move Recently Updated and Trending Tags below TOC */
