@@ -297,17 +297,19 @@
   }
 }
 
-/* Reorder Right Panel Contents */
-#panel-wrapper .access {
+/* Reorder Right Panel Sections */
+#panel-wrapper {
   display: flex !important;
   flex-direction: column !important;
-}
 
-#panel-wrapper #toc-wrapper {
-  order: 1 !important;
-}
+  /* Force Table of Contents to the top */
+  #toc-wrapper {
+    order: 1 !important;
+    display: block !important;
+  }
 
-#panel-wrapper .access > div:not(#toc-wrapper),
-#panel-wrapper .access > section {
-  order: 2 !important;
+  /* Move Recently Updated and Trending Tags below TOC */
+  .access {
+    order: 2 !important;
+  }
 }
