@@ -39,7 +39,7 @@ Since I’m using **Windows OS**, here’s what I did:
 
 1. Pressed **Ctrl + Shift + Esc** to open Task Manager → went to the **Performance tab → CPU** to check if Virtualization was Enabled.  
    - In my case, it was already enabled (you can see it under CPU details).
-      ![CPU details showing Virtualization Enabled](CPU-details.jpg)
+      ![CPU details showing Virtualization Enabled](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/CPU-details.jpg)
 
 
 
@@ -80,13 +80,13 @@ Follow these steps to install **VMware Workstation Pro** on Windows:
    - To download the latest VMware Workstation Pro installer for Windows, you’ll need to create a **Broadcom account**.
    - Once logged in, click **My Downloads → Here**, then search for **VMware Workstation Pro** in the list.
    
-     ![Broadcom My Downloads](Broadcom1.png)
+     ![Broadcom My Downloads](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/Broadcom1.png)
 
-     ![Search VMWare Workstation Pro](Broadcom2.png)
+     ![Search VMWare Workstation Pro](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/Broadcom2.png)
 
    - Choose the version you want (at the time of creating this repo, the latest was **26H1**, so that’s what I installed).
 
-     ![VMware lists](Broadcom3.png)
+     ![VMware lists](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/Broadcom3.png)
      
    - You’ll be redirected to another page — accept the **Terms and Conditions** before the download starts.  
 
@@ -97,7 +97,7 @@ Follow these steps to install **VMware Workstation Pro** on Windows:
      - Choose installation directory (default is fine)  
      - I didn’t select the **Join Customer Experience Improvement Program** option
     
-       ![VMware installation wizard](VMware-installation-wizard.png)
+       ![VMware installation wizard](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/VMware-installation-wizard.png)
 
 4. **Create Shortcuts**  
    - Select whether you want desktop/start menu shortcuts.  
@@ -120,11 +120,11 @@ To verify this, you can check your **Network Connections**:
 1. Press **Win + R** to open the Run dialog.  
 2. Type `ncpa.cpl` and press **Enter**.
 
-![ncpa.cpl](ncpa.cpl.png)
+![ncpa.cpl](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/ncpa.cpl.png)
  
 3. The **Network Connections** window will open.
 
-![Network Connections](Network-connections.png)
+![Network Connections](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/01.VMware-Workstation-Pro/Network-connections.png)
 
 4. You’ll notice that VMware has installed a new **network adapter**.  
 
