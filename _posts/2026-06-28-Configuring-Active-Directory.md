@@ -1,18 +1,13 @@
 ---
-title: "Configuring Active Directory Virtual Machine"
-date: 2026-06-21 21:30:00 +0800
+title: "Setting up Windows Server 2022 in VMware Workstation"
+date: 2026-06-28
 categories: [Infrastructure, Virtualization]
 tags: [vmware, windows-server, active-directory, homelab, networking]
-description: A friendly, step-by-step breakdown of how I set up my first Windows Server 2022 domain controller in VMware Workstation Pro—from hardware configs to active directory promotion.
+description: >- 
+   This is a step-by-step documentation of how I successfully installed **Windows Server 2022** inside **VMware Workstation Pro** and promote it to a Domain Controller.
 ---
   
 
-This is a step-by-step documentation of how I successfully installed **Windows Server 2022** and configured **Active Directory (AD DS)** inside **VMware Workstation Pro**.
-
-I wrote this guide to document my learning process and help fellow beginners who want to build their first IT lab for free!
-
-
----
 
 ## Prerequisites & Free Tools I Used
 
