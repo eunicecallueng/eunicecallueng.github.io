@@ -100,16 +100,13 @@
 
   /* Bottom Social & Utility Icons */
   .sidebar-bottom {
-    position: static !important;
+    position: absolute !important;
+    bottom: 1rem !important
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: flex-start !important;
     gap: 0.9rem !important;
     width: 100% !important;
-    margin-top: 10rem !important;
-    margin-bottom: 2rem !important;
 
     .icon-border {
       display: none !important;
@@ -286,7 +283,7 @@
 
   footer {
     margin-top: auto !important;
-    padding-bottom: 1.25rem !important;
+    //padding-bottom: 1.25rem !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
