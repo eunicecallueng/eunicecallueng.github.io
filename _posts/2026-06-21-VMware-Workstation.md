@@ -5,9 +5,6 @@ categories: [Networking, Infrastructure]
 tags: [cisco, github]
 description: >- 
   Before diving into my bigger network labs, I decided to set up VMware Workstation Pro first to give everything a solid base. Here’s my step-by-step experience to getting my very first VM running smoothly!
-
-pin: true
-pin_order: 2
 ---
 
 ## Why Install VMware First?
