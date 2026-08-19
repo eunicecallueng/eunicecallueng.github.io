@@ -45,13 +45,13 @@ Here is how I configured the VM settings in VMware before booting up the OS:
 7. **Attach the ISO File** — Before finishing, we need to make sure the VM actually boots from our downloaded Windows Server ISO:
    * Click **Customize Hardware...**
    
-     ![Customize Hardware](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Customize-Hardware.jpg)
+     ![Customize Hardware](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Customize-Hardware.jpg)
      
    * Select **New CD/DVD (SATA)** from the left menu.
    * Under **Connection** on the right side, choose **Use ISO image file**.
    * Click **Browse...** and select your downloaded Windows Server 2022 `.iso` file.
 
-     ![ISO Image file](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/ISO-image-file.jpg)
+     ![ISO Image file](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/ISO-image-file.jpg)
      
 8. **Finish Up** — Click **Close**, then hit **Finish**!
 
@@ -64,14 +64,14 @@ Now that our VM container is ready, it's time to fire it up and install the OS:
 1. **Wait for the VM to automatically boot up** — Press any key **immediately** when prompted to boot from the CD/DVD.
 2. **Basic Setup** — Choose your preferred language, time zone, and keyboard layout, then click **Next** > **Install Now**.
 
-     ![Setting up Win Server](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Setting-up-Win-Server.jpg)
+     ![Setting up Win Server](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Setting-up-Win-Server.jpg)
   
 3. **Select Edition** — Make sure to select **Windows Server 2022 (Desktop Experience)** so you get the full Graphical User Interface (GUI) instead of just a command prompt!
 4. **Installation Type** — Pick **Custom: Install Windows only (advanced)**.
 5. **Select Storage Drive** — Double-check that you're picking the **30 GB** drive we allocated earlier in Step 6, then click **Next**.
 6. **Wait for Installation** — Grab a coffee ☕ while Windows finishes copying files and reboots.
 
-     ![Installing](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Installing.jpg)
+     ![Installing](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Installing.jpg)
 
 7. **Set Administrator Account** — Upon first startup, create a strong local **Administrator Password**.
 
@@ -90,14 +90,14 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
    * Click the default Computer Name (e.g., `WIN-XXXXXXX`).
    * Rename the computer to your preference, I renamed it to **`NYCE-DC01`** and restart the virtual machine.
 
-   ![Rename the server](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Rename-the-Server.jpg)
+   ![Rename the server](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Rename-the-Server.jpg)
 
 2. **Configure Static IP Address:**
    * Press `Win + R`, type `ncpa.cpl`, and press **Enter**.
    * Right-click your network adapter > **Properties** > **Internet Protocol Version 4 (TCP/IPv4)**.
    * Manually assign a static IP address (e.g., IP: `192.168.120.100`, Subnet: `255.255.255.0`, Gateway: `192.168.120.1`, Preferred DNS: `127.0.0.1`).
 
-   ![Configure-Static-IP](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Configure-Static-IP.jpg)
+   ![Configure-Static-IP](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Configure-Static-IP.jpg)
 
 Best practice requires assigning a proper hostname and a static IP address before promoting to a Domain Controller.
 
@@ -109,7 +109,7 @@ Best practice requires assigning a proper hostname and a static IP address befor
 ### Phase A: Adding the AD DS Role
 1. In **Server Manager**, click **Manage** > **Add Roles and Features**.
 
-   ![Add Features](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Add-Features.jpg)
+   ![Add Features](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Add-Features.jpg)
    
 2. Progress through the wizard until reaching **Server Roles**.
 3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
@@ -119,7 +119,7 @@ Best practice requires assigning a proper hostname and a static IP address befor
 1. Click the **Yellow Notification Flag** in Server Manager.
 2. Select **Promote this server to a domain controller**.
 
-   ![Promote to DC](https://github.com/eunicecallueng/Virtualization-Labs/blob/main/02.Microsoft-Active-Directory/Configuring%20Active%20Directory/Screenshots/Promote-to-Domain-Controller.png)
+   ![Promote to DC](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Promote-to-Domain-Controller.png)
    
 3. Choose **Add a new forest** and enter your domain name:
    * **Root Domain Name:** `nycehomelab.local`
