@@ -7,10 +7,6 @@ description: A friendly, step-by-step breakdown of how I set up my first Windows
 ---
   
 
----
-
-
-
 This is a step-by-step documentation of how I successfully installed **Windows Server 2022** and configured **Active Directory (AD DS)** inside **VMware Workstation Pro**.
 
 I wrote this guide to document my learning process and help fellow beginners who want to build their first IT lab for free!
