@@ -9,7 +9,7 @@ description: >-
   
 
 
-## Prerequisites & Free Tools I Used
+# Step 1: Prerequisites & Free Tools I Used
 
 Before starting with Active Directory, you'll need to have your hypervisor ready and download the Windows Server ISO:
 
@@ -72,7 +72,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 ---
 
 
-## Step 2: Preparing the Server (Pre-Requisites)
+# Step 2: Preparing the Server (Pre-Requisites)
 
 > [!NOTE]
 > <div style="background-color: #7DB700; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
