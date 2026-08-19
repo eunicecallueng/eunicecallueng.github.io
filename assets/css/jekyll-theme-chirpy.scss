@@ -309,6 +309,11 @@
     padding-left: 0.75rem !important; /* Align Contents heading with section elements */
   }
 
+  .panel-heading {
+    color: #004d4d;
+    font-weight: 700;
+  }
+
   /* Move Recently Updated and Trending Tags below TOC */
   .access {
     order: 2 !important;
