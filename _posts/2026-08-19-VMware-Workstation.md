@@ -8,9 +8,7 @@ description: >-
 
 ---
 
-# VMware Workstation Pro Installation Lab
-
-## Why Install VMware First?
+# Why Install VMware First?
 
 I chose to install **VMware Workstation Pro** before setting up my IT infrastructure because it acts as the ***base virtualization platform*** for all my labs.  
 The reason is that during GNS3 setup, it will detect VMware and make configuration easier. If I install GNS3 first and VMware later, I might need to reconfigure some settings manually which is extra work I would rather avoid.  
@@ -21,16 +19,15 @@ By installing VMware first, I make sure my environment is ready and smooth for t
 
 ---
 
-## Why VMware Workstation Pro?
-- Reliable virtualization platform for running multiple VMs.  
-- Easy integration with networking labs (like GNS3, Active Directory).  
-- Good balance of performance and usability for practice environments.  
+# Why VMware Workstation Pro?
+   * Reliable virtualization platform for running multiple VMs. 
+   * Easy integration with networking labs (like GNS3, Active Directory).  
+   * Good balance of performance and usability for practice environments.  
 
 
 
 ---
-
-## Pre‑Installation (Windows Host)
+# Pre‑Installation (Windows Host)
 
 First things first — before installing **VMware Workstation Pro** or any kind of virtualization base, you have to make sure you computer has **virtualization enabled**.  
 
@@ -42,8 +39,8 @@ Since I’m using **Windows OS**, here’s what I did:
 
 
 
-
-## If virtualization is disabled, you’ll need to enable it via BIOS/UEFI. Follow these steps:
+---
+# If virtualization is disabled, you’ll need to enable it via BIOS/UEFI. Follow these steps:
 
 1. **Restart your PC** and press the BIOS/UEFI access key repeatedly during boot.  
    - Common keys: **F2, F10, F12, Delete, or Esc** (varies by manufacturer).  
