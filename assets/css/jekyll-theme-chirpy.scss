@@ -101,7 +101,7 @@
   /* Bottom Social & Utility Icons */
   .sidebar-bottom {
     position: absolute !important;
-    bottom: 1rem !important
+    bottom: 1rem !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -158,7 +158,7 @@
 [data-mode='light'],
 [data-mode='dark'] {
   /* 60% Canvas & Base */
-  --main-bg: #f6f9fb !important;
+  --main-bg: ##d2d9e0 !important;
   --card-bg: #FFFFFF !important;
   --card-header-bg: #FFFFFF !important;
 
