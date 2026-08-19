@@ -17,3 +17,16 @@
   --site-subtitle-color: #35A29F;
   --avatar-border-color: #97FEED;
 }
+
+/* Baguhin ang background at text color ng buong NOTE callout box */
+.callout.callout-note {
+  background-color: #7DB700 !important;
+  color: #000000 !important;
+  border-left-color: #5a8500 !important; /* Border Accent */
+}
+
+/* Siguraduhing bold at itim din ang NOTE title */
+.callout.callout-note .callout-title {
+  color: #000000 !important;
+  font-weight: bold !important;
+}
