@@ -75,10 +75,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 ## Step 2: Preparing the Server (Pre-Requisites)
 
 > [!NOTE]
-> <span style="color: #ff5722;"></span>
-```Bash
-Best practice requires assigning a proper hostname and a static IP address before promoting the server to a Domain Controller.
-```
+> <div style="background-color: #5b8500; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
 
 1. **Change Hostname:**
    * Open **Server Manager** > **Local Server**.
@@ -93,8 +90,6 @@ Best practice requires assigning a proper hostname and a static IP address befor
    * Manually assign a static IP address (e.g., IP: `192.168.120.100`, Subnet: `255.255.255.0`, Gateway: `192.168.120.1`, Preferred DNS: `127.0.0.1`).
 
    ![Configure-Static-IP](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Configure-Static-IP.jpg)
-
-Best practice requires assigning a proper hostname and a static IP address before promoting to a Domain Controller.
 
 
 ---
