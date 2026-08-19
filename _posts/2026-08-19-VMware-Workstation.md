@@ -15,7 +15,7 @@ description: >-
 ## Why Install VMware First?
 
 I chose to install **VMware Workstation Pro** before setting up my IT infrastructure because it acts as the ***base virtualization platform*** for all my labs.  
-The reason is that during GNS3 setup, it will detect VMware and make configuration easier. If I install GNS3 first and VMware later, I might need to reconfigure some settings manually which is extra work I’d rather avoid.  
+The reason is that during GNS3 setup, it will detect VMware and make configuration easier. If I install GNS3 first and VMware later, I might need to reconfigure some settings manually which is extra work I would rather avoid.  
 
 By installing VMware first, I make sure my environment is ready and smooth for the next steps.
 
@@ -147,6 +147,6 @@ To verify this, you can check your **Network Connections**:
 This lab is for **practice documentation only**.  
 I’m using it to:  
 - Learn how to set up virtualization environments.  
-- Prepare a base VM for my other labs (GNS3, Wireshark, Zabbix, Active Directory/Entra ID).  
+- Prepare a base VM for my other labs (GNS3, Wireshark, Zabbix, Active Directory/Entra ID, etc.).  
 - Share reproducible steps for anyone following along.  
 
