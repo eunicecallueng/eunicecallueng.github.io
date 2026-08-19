@@ -299,10 +299,3 @@
     }
   }
 }
-
-/* Hide dates on post cards */
-#post-list .post-meta,
-#post-list .card-body .post-meta,
-#post-list time {
-  display: none !important;
-}
