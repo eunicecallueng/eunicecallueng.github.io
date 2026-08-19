@@ -22,6 +22,19 @@
     margin-left: 0 !important;
   }
 
+  /* Fix Hover Text & Icon Visibility */
+  .nav-item {
+    &:hover, &.active {
+      .nav-link {
+        color: #0d0d0d !important; /* Gagawing Puti ang text at icon kapag hovered/active */
+        
+        i {
+          color: #FFFFFF !important;
+        }
+      }
+    }
+  }
+
   /* Profile Area (Avatar, Title, Subtitle) */
   header,
   .profile-wrapper {
