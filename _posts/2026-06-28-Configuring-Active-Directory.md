@@ -20,7 +20,7 @@ Before starting with Active Directory, you'll need to have your hypervisor ready
 
 ---
 
-## Setting Up the Virtual Machine Container
+# Step 2: Setting Up the Virtual Machine Container
 
 Here is how I configured the VM settings in VMware before booting up the OS:
 
@@ -49,7 +49,7 @@ Here is how I configured the VM settings in VMware before booting up the OS:
 
 ---
 
-## Installing & Setting Up Windows Server 2022
+# Step 3: Installing & Setting Up Windows Server 2022
 
 Now that our VM container is ready, it's time to fire it up and install the OS:
 
@@ -72,7 +72,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 ---
 
 
-# Step 2: Preparing the Server (Pre-Requisites)
+# Step 4: Preparing the Server (Pre-Requisites)
 
 > [!NOTE]
 > <div style="background-color: #7DB700; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
@@ -94,9 +94,9 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 
 ---
 
-## Step 3: Installing & Promoting AD DS
+# Step 5: Installing & Promoting AD DS
 
-### Phase A: Adding the AD DS Role
+## Phase A: Adding the AD DS Role
 1. In **Server Manager**, click **Manage** > **Add Roles and Features**.
 
    ![Add Features](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Add-Features.jpg)
@@ -105,7 +105,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
 4. Click **Install** and wait for completion.
 
-### Phase B: Promoting to Domain Controller
+## Phase B: Promoting to Domain Controller
 1. Click the **Yellow Notification Flag** in Server Manager.
 2. Select **Promote this server to a domain controller**.
 
@@ -118,7 +118,7 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 
 ---
 
-## Step 4: Testing & Verification
+# Step 6: Testing & Verification
 
 1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
 2. Open **Server Manager** > **Tools**.
