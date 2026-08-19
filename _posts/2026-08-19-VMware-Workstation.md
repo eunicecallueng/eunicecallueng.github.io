@@ -4,7 +4,7 @@ date: 2026-08-19 18:45:00 +0800
 categories: [Networking, Infrastructure]
 tags: [cisco, github]
 description: >- 
-  Before diving into my bigger network labs, I decided to set up VMware Workstation Pro first to give everything a solid base. Here’s my step-by-step experience from checking BIOS virtualization settings and navigating Broadcom to getting my very first VM running smoothly!
+  Before diving into my bigger network labs, I decided to set up VMware Workstation Pro first to give everything a solid base. Here’s my step-by-step experience to getting my very first VM running smoothly!
 
 ---
 

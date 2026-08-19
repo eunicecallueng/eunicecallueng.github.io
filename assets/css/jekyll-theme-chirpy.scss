@@ -295,3 +295,12 @@
     }
   }
 }
+
+/* Hide post description/excerpt in post view header */
+#post-wrapper {
+  p.post-desc,
+  .post-desc,
+  header p.description {
+    display: none !important;
+  }
+}
