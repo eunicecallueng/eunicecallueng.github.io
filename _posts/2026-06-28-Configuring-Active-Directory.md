@@ -4,7 +4,7 @@ date: 2026-06-28
 categories: [Infrastructure, Virtualization]
 tags: [vmware, windows-server, active-directory, homelab, networking]
 description: >- 
-   This is a step-by-step documentation of how I successfully installed **Windows Server 2022** inside **VMware Workstation Pro** and promote it to a Domain Controller.
+   This is a step-by-step documentation of how I successfully installed Windows Server 2022 inside VMware Workstation Pro and promote it to a Domain Controller.
 ---
   
 
@@ -75,7 +75,10 @@ And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smo
 ## Step 2: Preparing the Server (Pre-Requisites)
 
 > [!NOTE]
-> Best practice requires assigning a proper hostname and a static IP address ***before*** promoting the server to a Domain Controller.
+> <span style="color: #ff5722;"></span>
+```Bash
+Best practice requires assigning a proper hostname and a static IP address before promoting the server to a Domain Controller.
+```
 
 1. **Change Hostname:**
    * Open **Server Manager** > **Local Server**.
