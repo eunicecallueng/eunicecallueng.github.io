@@ -5,8 +5,6 @@ categories: [Networking, Infrastructure]
 tags: [cisco, topology, network-design, enterprise]
 description: Hands-on enterprise-grade 3-Tier network topology simulation in Cisco Packet Tracer featuring Multi-Area OSPF, EIGRP route redistribution, and high availability via optimized HSRP v2 and STP load balancing.
 redirect_to: https://eunicecallueng.github.io/Enterprise-Network-Topology
-pin: true
-pin_order: 1
 ---
 
 
