@@ -1,6 +1,6 @@
 ---
 title: "VMware Workstation Pro Installation Lab"
-date: 2026-08-19 18:45:00 +0800
+date: 2026-06-21 21:30:00 +0800
 categories: [Networking, Infrastructure]
 tags: [cisco, github]
 description: >- 
