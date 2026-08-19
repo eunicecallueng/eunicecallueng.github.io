@@ -296,3 +296,18 @@
     }
   }
 }
+
+/* Reorder Right Panel Contents */
+#panel-wrapper .access {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#panel-wrapper #toc-wrapper {
+  order: 1 !important;
+}
+
+#panel-wrapper .access > div:not(#toc-wrapper),
+#panel-wrapper .access > section {
+  order: 2 !important;
+}
