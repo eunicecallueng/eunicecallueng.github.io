@@ -60,7 +60,7 @@
     display: block;
     padding-left: 0.75rem;
     align-self: flex-start; /* Pinapanatili ang position: sticky */
-    position: sticky;
+    position: sticky !important;
   }
 
   .panel-heading {
