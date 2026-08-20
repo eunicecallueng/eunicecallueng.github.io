@@ -321,27 +321,23 @@
   }
 }
 
-/* ==========================================
-   4. HOMEPAGE FEED THUMBNAIL (LEFT POSITION)
-   ========================================== */
-
-/* 1. Gawing Flexbox at ilipat sa KALIWA ang thumbnail */
-#post-list .card-wrapper {
+/* Target the inner article card flex layout */
+#post-list .card-wrapper article.card {
   display: flex !important;
-  flex-direction: row-reverse !important;
+  flex-direction: row-reverse !important; /* KALIWA = row-reverse | KANAN = row */
   align-items: center !important;
+  padding: 1.25rem !important;
 }
 
-/* 2. Pantayin ang laki ng thumbnail container */
+/* Fix thumbnail sizing and prevent horizontal stretched gaps */
 #post-list .card-wrapper .preview-img {
   width: 30% !important;
-  max-width: 280px !important;
-  min-width: 150px !important;
+  max-width: 250px !important;
+  min-width: 140px !important;
   flex-shrink: 0 !important;
   margin: 0 !important;
 }
 
-/* 3. Siguraduhing full-fill ang image sa container */
 #post-list .card-wrapper .preview-img img {
   width: 100% !important;
   height: 100% !important;
