@@ -1,3 +1,326 @@
+---
+# Custom styles for Chirpy
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+@use 'main';
+
+/* ==========================================
+   1. SIDEBAR & NAVIGATION STYLES
+   ========================================== */
+#sidebar {
+  &,
+  ul,
+  li,
+  .nav,
+  .dropdown-menu {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* Fix Hover Text & Icon Visibility */
+  .nav-item {
+    &:hover, &.active {
+      .nav-link {
+        color: #0d0d0d !important; /* Gagawing Puti ang text at icon kapag hovered/active */
+        
+        i {
+          color: #FFFFFF !important;
+        }
+      }
+    }
+  }
+
+  /* Profile Area (Avatar, Title, Subtitle) */
+  header,
+  .profile-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+  }
+
+  /* Avatar without border */
+  #avatar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 0.75rem !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    outline: none !important;
+
+    img {
+      margin: 0 auto !important;
+      display: block !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .site-title,
+  .site-subtitle {
+    display: block !important;
+    text-align: center !important;
+    width: 90% !important;
+    margin-inline: auto !important;
+    padding-inline: 0.5rem !important;
+  }
+
+  /* Navigation Menu Block */
+  ul.nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: fit-content !important;
+    min-width: 180px !important;
+    margin: 0 auto !important;
+
+    .nav-item {
+      width: 100% !important;
+    }
+
+    .nav-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      width: 100% !important;
+    }
+  }
+
+  /* Bottom Social & Utility Icons */
+  .sidebar-bottom {
+    position: absolute !important;
+    bottom: 1rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.9rem !important;
+    width: 100% !important;
+
+    .icon-border {
+      display: none !important;
+    }
+
+    a,
+    button {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Gear / Theme Toggle Button */
+    #mode-toggle,
+    .mode-toggle,
+    button[data-bs-toggle="dropdown"],
+    .mode-toggle-wrapper button {
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      min-height: 38px !important;
+      border-radius: 50% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Dropdown Theme Options */
+    .dropdown-menu {
+      display: none !important;
+      position: absolute !important;
+      bottom: 100% !important;
+      left: 1.5rem !important;
+      margin-bottom: 0.5rem !important;
+      text-align: left !important;
+      z-index: 1050 !important;
+
+      &.show {
+        display: block !important;
+      }
+    }
+  }
+}
+
+/* ==========================================
+   2. CUSTOM COLOR OVERRIDES (60-30-10 Rule)
+   ========================================== */
+:root,
+[data-mode='light'],
+[data-mode='dark'] {
+  /* 60% Canvas & Base */
+  --main-bg: #e9eff5 !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
+
+  /* 30% Structure (Sidebar & Layout) */
+  --sidebar-bg: #213448 !important;
+  --sidebar-active-color: #94B4C1 !important;
+  --sidebar-muted-color: #94B4C1 !important;
+
+  /* 10% Accents & Interactive Elements */
+  --nav-cursor-hover-bg: #547792 !important;
+  --link-color: #213448 !important;
+  --link-hover-color: #547792 !important;
+}
+
+/* ==========================================
+   3. DESKTOP LAYOUT (SEARCH, CARDS, PANEL)
+   ========================================== */
+@media (min-width: 992px) {
+  #topbar {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  #search-wrapper,
+  .search-wrapper,
+  #search-input-wrapper {
+    margin-left: auto !important;
+    width: 280px !important;
+    max-width: 280px !important;
+  }
+
+  #main-wrapper {
+    .row {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+    }
+
+    > .container {
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      max-width: 1500px;
+    }
+  }
+
+  main {
+    flex: 1 1 auto !important;
+    max-width: 1400px !important;
+    width: 100% !important;
+    padding-right: 2rem !important;
+  }
+
+  #post-list {
+    .card-body {
+      .card-title,
+      h1,
+      h2,
+      h3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+    }
+
+    .card-wrapper {
+      display: block !important;
+      position: relative !important;
+      text-decoration: none !important;
+      margin-bottom: 1.25rem !important;
+      border-radius: 0.75rem !important;
+      overflow: hidden !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+
+      &:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(33, 52, 72, 0.18) !important;
+      }
+
+      article.card {
+        position: relative !important;
+        border: 1px solid rgba(33, 52, 72, 0.12) !important;
+        border-radius: 0.75rem !important;
+        background-color: var(--card-bg, #ffffff) !important;
+        padding: 2rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+    }
+  }
+
+  /* Right Panel (Recently Updated & Tags) */
+  #panel-wrapper,
+  aside[aria-label="Panel"] {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    position: sticky !important;
+    top: 2rem !important;
+    margin-left: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  #search-input {
+    background: center;
+    border: 0;
+    border-radius: 0;
+    padding: 1rem 0;
+    color: var(--text-color);
+    height: auto;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  footer {
+    margin-top: auto !important;
+    //padding-bottom: 1.25rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+
+    p {
+      margin: 0 !important;
+    }
+  }
+}
+
+/* Reorder Right Panel Sections */
+#panel-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+
+  /* Force Table of Contents to the top */
+  #toc-wrapper {
+    order: 1 !important;
+    display: block !important;
+    padding-left: 0.75rem !important; /* Align Contents heading with section elements */
+  }
+
+  .panel-heading {
+    color: #004d4d;
+    font-weight: 700;
+  }
+
+  /* Move Recently Updated and Trending Tags below TOC */
+  .access {
+    order: 2 !important;
+    margin-top: 0rem;
+  }
+}
+
 /* ==========================================
    4. HOMEPAGE FEED THUMBNAIL (LEFT POSITION)
    ========================================== */
