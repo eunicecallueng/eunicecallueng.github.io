@@ -59,7 +59,8 @@
     order: 1;
     display: block;
     padding-left: 0.75rem;
-    align-self: flex-start; /* Pinapanatili ang position: sticky */
+    /*align-self: flex-start; /* Pinapanatili ang position: sticky */
+    position: sticky;
   }
 
   .panel-heading {
