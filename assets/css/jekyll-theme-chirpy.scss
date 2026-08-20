@@ -52,22 +52,6 @@ html[data-mode='light'] a:hover {
   color: var(--link-hover-color);
 }
 
-/* ==========================================================================
-   CARD SHADOW (Gagana sa Light at Dark Mode)
-   ========================================================================== */
-
-#post-list .card,
-.card {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-#post-list .card:hover,
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.18), 0 10px 12px -6px rgba(0, 0, 0, 0.1) !important;
-}
-
 /* ====================================
    SHADOW EFFECT
    ====================================*/
