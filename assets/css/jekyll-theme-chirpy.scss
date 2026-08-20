@@ -323,11 +323,11 @@
 
 /*thumbnail position */
 #post-list .card-wrapper {
-  flex-direction: row !important;
+  flex-direction: right !important;
 }
 
   /* thumbnail size */
 #post-list .card-wrapper .preview-img {
   width: 30% !important; 
-  max-width: 800px !important;
+  max-width: 2500px !important;
 }
