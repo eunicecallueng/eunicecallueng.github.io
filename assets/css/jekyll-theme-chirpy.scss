@@ -321,20 +321,24 @@
   }
 }
 
-/*thumbnail position */
+/* 1. Iposisyon ang image sa KALIWA at i-align sa text */
 #post-list .card-wrapper {
   flex-direction: row-reverse !important;
+  align-items: stretch !important;
 }
 
-  /* thumbnail size */
+/* 2. Ayusin ang lapad ng image container */
 #post-list .card-wrapper .preview-img {
-  width: 35% !important;
-  max-width: 280px !important;
-  height: auto !important;
+  width: 100% !important;
+  max-width: 2500px !important;
+  min-width: 150px !important;
+  margin: 0 !important;
 }
 
+/* 3. Siguraduhing napupuno ng image ang buong container space */
 #post-list .card-wrapper .preview-img img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-radius: 0 !important;
 }
