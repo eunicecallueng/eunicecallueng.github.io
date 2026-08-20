@@ -320,3 +320,12 @@
     margin-top: 0rem;
   }
 }
+
+/*thumbnail position */
+#post-list .card-wrapper {
+  flex-direction: row-reverse !important;
+
+  /* thumbnail size */
+#post-list .card-wrapper .preview-img {
+  width: 30% !important; /* Default ay ~40%. Gawing 25% para lumiliit, o 40% para lumaki */
+  max-width: 250px !important;
