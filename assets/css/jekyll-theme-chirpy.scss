@@ -7,8 +7,7 @@
    CUSTOM LIGHT PALETTE OVERRIDES
    ========================================================================== */
 
-html[data-mode='light'],
-html:not([data-mode]) {
+html[data-mode='light'] {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5 !important;
   --mask-bg: #dbe4ed !important;
@@ -53,10 +52,4 @@ html:not([data-mode]) {
 html[data-mode='light'] a:hover,
 html:not([data-mode]) a:hover {
   color: var(--link-hover-color) !important;
-}
-
-@media (min-width: 1650px) {
-  #main-wrapper {
-    max-width: 1250px;
-  }
 }
