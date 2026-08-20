@@ -1,7 +1,7 @@
 ---
 ---
 
-@use 'main' {%- if jekyll.environment == 'production' -%} .bundle {%- endif -%};
+@use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
 
 /* ==========================================================================
    CUSTOM PALETTE OVERRIDES
@@ -50,7 +50,7 @@ html[data-mode='dark'] {
   --search-tag-bg: #e9eff5;
 }
 
-/* Ensure link hover color applies cleanly */
+/* Link hover behavior */
 a:hover {
   color: var(--link-hover-color);
 }
