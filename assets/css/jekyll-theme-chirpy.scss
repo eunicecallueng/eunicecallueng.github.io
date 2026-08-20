@@ -1,56 +1,57 @@
 ---
 ---
 
-// @use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
+@use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
 
 /* ==========================================================================
-   CUSTOM PALETTE OVERRIDES
+   FORCE CUSTOM PALETTE OVERRIDES
    ========================================================================== */
 
-:root,
-[data-mode='light'],
-[data-mode='dark'] {
+html,
+html[data-mode='light'],
+html[data-mode='dark'],
+html:not([data-mode]) {
   /* 60% Canvas & Base */
-  --main-bg: #e9eff5;
-  --mask-bg: #dbe4ed;
-  --article-bg: #FFFFFF;
-  --card-bg: #FFFFFF;
-  --card-header-bg: #FFFFFF;
-  --tb-bg: #FFFFFF;
+  --main-bg: #e9eff5 !important;
+  --mask-bg: #dbe4ed !important;
+  --article-bg: #FFFFFF !important;
+  --card-bg: #FFFFFF !important;
+  --card-header-bg: #FFFFFF !important;
+  --tb-bg: #FFFFFF !important;
 
   /* 30% Structure (Sidebar & Layout) */
-  --sidebar-bg: #213448;
-  --sidebar-active-color: #FFFFFF;
-  --sidebar-muted-color: #94B4C1;
-  --sidebar-hover-bg: #2c455e;
-  --nav-cursor-color: #94B4C1;
-  --nav-cursor-hover-bg: #547792;
+  --sidebar-bg: #213448 !important;
+  --sidebar-active-color: #FFFFFF !important;
+  --sidebar-muted-color: #94B4C1 !important;
+  --sidebar-hover-bg: #2c455e !important;
+  --nav-cursor-color: #94B4C1 !important;
+  --nav-cursor-hover-bg: #547792 !important;
 
   /* 10% Accents & Interactive Elements */
-  --link-color: #213448;
-  --link-hover-color: #547792;
-  --link-underline-color: rgba(33, 52, 72, 0.25);
-  --blockquote-border-color: #547792;
-  --blockquote-bg: #f1f5f9;
+  --link-color: #213448 !important;
+  --link-hover-color: #547792 !important;
+  --link-underline-color: rgba(33, 52, 72, 0.25) !important;
+  --blockquote-border-color: #547792 !important;
+  --blockquote-bg: #f1f5f9 !important;
 
   /* Typography & Contrast */
-  --text-color: #213448;
-  --text-muted-color: #547792;
-  --text-muted-hightlight-color: #213448;
-  --heading-color: #213448;
-  --label-color: #547792;
+  --text-color: #213448 !important;
+  --text-muted-color: #547792 !important;
+  --text-muted-hightlight-color: #213448 !important;
+  --heading-color: #213448 !important;
+  --label-color: #547792 !important;
 
   /* Borders, UI Controls & Search */
-  --main-border-color: #d2deea;
-  --btn-border-color: #c4d3e2;
-  --btn-backtotop-bg: #FFFFFF;
-  --btn-backtotop-color: #213448;
-  --search-bg: #FFFFFF;
-  --search-border-color: #c4d3e2;
-  --search-tag-bg: #e9eff5;
+  --main-border-color: #d2deea !important;
+  --btn-border-color: #c4d3e2 !important;
+  --btn-backtotop-bg: #FFFFFF !important;
+  --btn-backtotop-color: #213448 !important;
+  --search-bg: #FFFFFF !important;
+  --search-border-color: #c4d3e2 !important;
+  --search-tag-bg: #e9eff5 !important;
 }
 
-/* Link hover behavior */
+/* Link Hover State */
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--link-hover-color) !important;
 }
