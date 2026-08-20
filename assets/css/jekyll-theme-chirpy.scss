@@ -4,49 +4,52 @@
 @use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
 
 /* ==========================================================================
-   CUSTOM LIGHT PALETTE OVERRIDES
+   CUSTOM LIGHT PALETTE OVERRIDES (Gagana LANG kapag naka-Light Mode)
    ========================================================================== */
 
-:root,
-[data-mode='light'] {
+html[data-mode='light'] {
   /* 60% Canvas & Base */
-  --main-bg: #e9eff5 !important;
-  --mask-bg: #dbe4ed !important;
-  --article-bg: #FFFFFF !important;
-  --card-bg: #FFFFFF !important;
-  --card-header-bg: #FFFFFF !important;
-  --tb-bg: #FFFFFF !important;
+  --main-bg: #e9eff5;
+  --mask-bg: #dbe4ed;
+  --article-bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --card-header-bg: #FFFFFF;
+  --tb-bg: #FFFFFF;
 
   /* 30% Structure (Sidebar & Layout) */
-  --sidebar-bg: #213448 !important;
-  --sidebar-active-color: #FFFFFF !important;
-  --sidebar-muted-color: #94B4C1 !important;
-  --sidebar-hover-bg: #2c455e !important;
-  --nav-cursor-color: #94B4C1 !important;
-  --nav-cursor-hover-bg: #547792 !important;
+  --sidebar-bg: #213448;
+  --sidebar-active-color: #FFFFFF;
+  --sidebar-muted-color: #94B4C1;
+  --sidebar-hover-bg: #2c455e;
+  --nav-cursor-color: #94B4C1;
+  --nav-cursor-hover-bg: #547792;
 
   /* 10% Accents & Interactive Elements */
-  --link-color: #213448 !important;
-  --link-hover-color: #547792 !important;
-  --link-underline-color: rgba(33, 52, 72, 0.25) !important;
-  --blockquote-border-color: #547792 !important;
-  --blockquote-bg: #f1f5f9 !important;
+  --link-color: #213448;
+  --link-hover-color: #547792;
+  --link-underline-color: rgba(33, 52, 72, 0.25);
+  --blockquote-border-color: #547792;
+  --blockquote-bg: #f1f5f9;
 
   /* Typography & Contrast */
-  --text-color: #213448 !important;
-  --text-muted-color: #547792 !important;
-  --text-muted-hightlight-color: #213448 !important;
-  --heading-color: #213448 !important;
-  --label-color: #547792 !important;
+  --text-color: #213448;
+  --text-muted-color: #547792;
+  --text-muted-hightlight-color: #213448;
+  --heading-color: #213448;
+  --label-color: #547792;
 
   /* Borders, UI Controls & Search */
-  --main-border-color: #d2deea !important;
-  --btn-border-color: #c4d3e2 !important;
-  --btn-backtotop-bg: #FFFFFF !important;
-  --btn-backtotop-color: #213448 !important;
-  --search-bg: #FFFFFF !important;
-  --search-border-color: #c4d3e2 !important;
-  --search-tag-bg: #e9eff5 !important;
+  --main-border-color: #d2deea;
+  --btn-border-color: #c4d3e2;
+  --btn-backtotop-bg: #FFFFFF;
+  --btn-backtotop-color: #213448;
+  --search-bg: #FFFFFF;
+  --search-border-color: #c4d3e2;
+  --search-tag-bg: #e9eff5;
+}
+
+html[data-mode='light'] a:hover {
+  color: var(--link-hover-color);
 }
 
 /* Link Hover State (Light Mode Only) */
@@ -63,18 +66,10 @@ html:not([data-mode]) a:hover {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/*
-#post-list .card,
-.card {
-  box-shadow: 0 10px 30px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-  border: 5px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-*/
-
-/* Optional: Lift effect kapag in-hover ang card */
+/* Optional: Lift effect kapag in-hover ang card 
 #post-list .card:hover,
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.18), 0 10px 12px -6px rgba(0, 0, 0, 0.1) !important;
 }
+*/
