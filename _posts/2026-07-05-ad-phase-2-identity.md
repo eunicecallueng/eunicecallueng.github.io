@@ -7,3 +7,5 @@ hidden: true
 sitemap: false
 permalink: /posts/ad-phase-2-identity/
 ---
+
+[← Back to AD Series Overview](/posts/active-directory-series/)
