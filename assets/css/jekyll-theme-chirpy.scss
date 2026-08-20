@@ -8,8 +8,8 @@
    ========================================================================== */
 
 :root,
-html[data-mode='light'],
-html[data-mode='dark'] {
+[data-mode='light'],
+[data-mode='dark'] {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5;
   --mask-bg: #dbe4ed;
