@@ -15,6 +15,21 @@
 }
 
 /* ====================================
+   SHADOW EFFECT
+   ====================================*/
+#post-list .card,
+.card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+#post-list .card:hover,
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.18), 0 10px 12px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ====================================
    SIDEBAR Fix Hover Text & Icon Visibility
    ====================================*/
 #sidebar {
@@ -34,16 +49,17 @@
 /* ====================================
    RIGHT PANEL SECTION
    ====================================*/
-
+/* Reorder Right Panel Sections */
 #panel-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
 
-  /* Force Table of Contents to the top */
+  /* Force Table of Contents to the top & preserve sticky behavior */
   #toc-wrapper {
-    order: 1 !important;
-    display: block !important;
-    padding-left: 0.75rem !important; /* Align Contents heading with section elements */
+    order: 1;
+    display: block;
+    padding-left: 0.75rem;
+    align-self: flex-start; /* Pinapanatili ang position: sticky */
   }
 
   .panel-heading {
@@ -53,27 +69,8 @@
 
   /* Move Recently Updated and Trending Tags below TOC */
   .access {
-    order: 2 !important;
-    margin-top: 0rem;
+    order: 2;
+    margin-top: 0;
   }
 }
 
-
-/* ====================================
-   SHADOW EFFECT
-   ====================================*/
-
-/* Card Soft Drop Shadow */
-#post-list .card,
-.card {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
-  border: 2px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-/* Optional: Lift effect kapag in-hover ang card */
-#post-list .card:hover,
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.18), 0 10px 12px -6px rgba(0, 0, 0, 0.1) !important;
-}
