@@ -3,9 +3,9 @@
 
 @use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
 
-/* ==========================================================================
-   CUSTOM LIGHT PALETTE OVERRIDES (Gagana LANG kapag naka-Light Mode)
-   ========================================================================== */
+/* ====================================
+   LIGHT PALETTE OVERRIDE
+   ====================================*/
 
 :root,
 [data-mode="light"] {
@@ -13,6 +13,51 @@
   --sidebar-active-color: #94B4C1 !important;
   --sidebar-muted-color: #000000 !important;
 }
+
+/* ====================================
+   SIDEBAR Fix Hover Text & Icon Visibility
+   ====================================*/
+#sidebar {
+  .nav-item {
+    &:hover, &.active {
+      .nav-link {
+        color: #0d0d0d !important;
+        
+        i {
+          color: #FFFFFF !important;
+        }
+      }
+    }
+  }
+}
+
+/* ====================================
+   RIGHT PANEL SECTION
+   ====================================*/
+
+#panel-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+
+  /* Force Table of Contents to the top */
+  #toc-wrapper {
+    order: 1 !important;
+    display: block !important;
+    padding-left: 0.75rem !important; /* Align Contents heading with section elements */
+  }
+
+  .panel-heading {
+    color: #004d4d;
+    font-weight: 700;
+  }
+
+  /* Move Recently Updated and Trending Tags below TOC */
+  .access {
+    order: 2 !important;
+    margin-top: 0rem;
+  }
+}
+
 
 /* ====================================
    SHADOW EFFECT
