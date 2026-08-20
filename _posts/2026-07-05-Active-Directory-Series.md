@@ -1,6 +1,6 @@
 ---
 title: "Enterprise Active Directory Architecture: A 4-Phase Implementation Guide"
-date: 2026-08-20
+date: 2026-07-05
 categories: [Homelab, Active Directory]
 tags: [windows-server, ad-ds, gpo, vmware]
 ---
