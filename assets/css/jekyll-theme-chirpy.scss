@@ -7,9 +7,8 @@
    FORCE CUSTOM PALETTE OVERRIDES
    ========================================================================== */
 
-html,
-html[data-mode='light']
-html:not([data-mode]) {
+:root,
+[data-mode='light'] {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5 !important;
   --mask-bg: #dbe4ed !important;
