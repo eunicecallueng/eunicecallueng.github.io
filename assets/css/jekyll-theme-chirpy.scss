@@ -7,7 +7,8 @@
    CUSTOM LIGHT PALETTE OVERRIDES (Gagana LANG kapag naka-Light Mode)
    ========================================================================== */
 
-html[data-mode='light'] {
+:root,
+[data-mode='light'] {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5;
   --mask-bg: #dbe4ed;
@@ -48,7 +49,7 @@ html[data-mode='light'] {
   --search-tag-bg: #e9eff5;
 }
 
-html[data-mode='light'] a:hover {
+[data-mode='light'] a:hover {
   color: var(--link-hover-color);
 }
 
