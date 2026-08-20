@@ -7,7 +7,7 @@ description: >-
   Before diving into my bigger network labs, I decided to set up VMware Workstation Pro first to give everything a solid base. Here’s my step-by-step experience to getting my very first VM running smoothly!
 permalink: /posts/vmware-workstation-installation/
 image:
-  path: /assets/img/vmware-workstation-pro.jpg
+  path: /assets/img/vmware-workstation.pro.jpg
   alt: Preview
 ---
 
