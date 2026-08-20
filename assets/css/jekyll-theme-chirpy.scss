@@ -52,11 +52,9 @@ html[data-mode='light'] a:hover {
   color: var(--link-hover-color);
 }
 
-/* Link Hover State (Light Mode Only) */
-html[data-mode='light'] a:hover,
-html:not([data-mode]) a:hover {
-  color: var(--link-hover-color) !important;
-}
+/* ====================================
+   SHADOW EFFECT
+   ====================================*/
 
 /* Card Soft Drop Shadow */
 #post-list .card,
@@ -66,10 +64,9 @@ html:not([data-mode]) a:hover {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Optional: Lift effect kapag in-hover ang card 
+/* Optional: Lift effect kapag in-hover ang card */
 #post-list .card:hover,
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.18), 0 10px 12px -6px rgba(0, 0, 0, 0.1) !important;
 }
-*/
