@@ -7,7 +7,8 @@
    CUSTOM LIGHT PALETTE OVERRIDES
    ========================================================================== */
 
-html[data-mode='light'] {
+:root,
+[data-mode='light'] {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5 !important;
   --mask-bg: #dbe4ed !important;
