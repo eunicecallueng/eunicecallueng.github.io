@@ -8,8 +8,7 @@
    ========================================================================== */
 
 html,
-html[data-mode='light'],
-html[data-mode='dark'],
+html[data-mode='light']
 html:not([data-mode]) {
   /* 60% Canvas & Base */
   --main-bg: #e9eff5 !important;
