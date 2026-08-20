@@ -53,3 +53,9 @@
 a:hover {
   color: var(--link-hover-color) !important;
 }
+
+@media (min-width: 1650px) {
+  #main-wrapper {
+    max-width: 1250px;
+  }
+}
