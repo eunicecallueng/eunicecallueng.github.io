@@ -1,7 +1,11 @@
 ---
 ---
 
-@use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+@use 'main';
 
 /* ==========================================================================
    CUSTOM PALETTE OVERRIDES
