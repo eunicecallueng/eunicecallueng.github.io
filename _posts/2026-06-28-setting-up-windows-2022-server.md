@@ -71,7 +71,6 @@ Now that our VM container is ready, it's time to fire it up and install the OS:
 7. **Set Administrator Account** — Upon first startup, create a strong local **Administrator Password**.
 
 And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smoothly in VMware.
-
 ---
 
 
