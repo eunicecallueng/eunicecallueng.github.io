@@ -6,6 +6,8 @@ tags: [vmware, windows-server, active-directory, homelab, networking]
 description: >- 
    This is a step-by-step documentation of how I successfully installed Windows Server 2022 inside VMware Workstation Pro and promote it to a Domain Controller.
 permalink: /posts/setting-up-windows-2022-server/
+image:
+   path: /assets/img/windows-2022-server-in-vmware.jpg
 ---
   
 
