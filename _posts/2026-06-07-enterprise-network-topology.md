@@ -7,6 +7,8 @@ description: Hands-on enterprise-grade 3-Tier network topology simulation in Cis
 redirect_to: https://eunicecallueng.github.io/Enterprise-Network-Topology
 pin: true
 permalink: /posts/enterprise-network-topology
+image:
+    path: /assets/img/enterprise-network-topology.jpg
 ---
 
 
