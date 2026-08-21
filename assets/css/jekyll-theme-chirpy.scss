@@ -57,6 +57,7 @@
 
   /* Force Table of Contents to the top & preserve sticky behavior */
   #toc-wrapper {
+    top: 1rem;
     order: 1;
     display: block;
     padding-left: 0.75rem;
