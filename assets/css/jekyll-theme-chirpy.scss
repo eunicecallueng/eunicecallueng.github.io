@@ -54,6 +54,9 @@
   display: flex;
   flex-direction: column;
   position: sticky !important;
+  top: 1rem; /* Distansya mula sa tuktok ng screen kapag nag-scroll ka */
+  max-height: calc(100vh - 2rem); /* Sinisigurong hindi lumampas sa height ng monitor */
+  overflow-y: auto; /* Nagdaragdag ng scrollbar sa loob ng panel kung mahaba ang content */
 
   /* Force Table of Contents to the top & preserve sticky behavior */
   #toc-wrapper {
