@@ -1,9 +1,8 @@
 ---
 title: "Enterprise Active Directory Architecture: A 4-Phase Implementation Guide"
 date: 2026-07-05
-description:  Ever decided to spin up a Windows Server just to see what happens, and suddenly find yourself deep-diving into Active Directory architecture? Yeah, that was me.
-
- Setting up my first AD environment taught me that theory is great, but actual hands-on troubleshooting is where the real learning happens.   I built this 4-phase guide to share the exact path I took to configure my homelab domain, manage users, share storage, and lock down GPOs. Grab a coffee and check out how it all comes together.
+description: Ever decided to spin up a Windows Server just to see what happens, and suddenly find yourself deep-diving into Active Directory architecture? Yeah, that was me.
+<br><br> description: Setting up my first AD environment taught me that theory is great, but actual hands-on troubleshooting is where the real learning happens.   I built this 4-phase guide to share the exact path I took to configure my homelab domain, manage users, share storage, and lock down GPOs. Grab a coffee and check out how it all comes together.
 categories: [Homelab, Active Directory]
 tags: [windows-server, ad-ds, gpo, vmware]
 permalink: /posts/active-directory-series/
