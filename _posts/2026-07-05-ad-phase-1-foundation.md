@@ -55,20 +55,20 @@ permalink: /posts/ad-phase-1-foundation/
 3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
 4. Click **Install** and wait for completion.
 
-## Phase B: Promoting to Domain Controller
+## Once installed, I triggered the yellow notification flag to promote the server to a domain controller
 1. Click the **Yellow Notification Flag** in Server Manager.
 2. Select **Promote this server to a domain controller**.
 
    ![Promote to DC](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Promote-to-Domain-Controller.png)
    
 3. Choose **Add a new forest** and enter your domain name:
-   * **Root Domain Name:** `nycehomelab.local`
+   ##   **Root Domain Name:** `nycehomelab.local`
 4. Set a strong **DSRM (Directory Services Restore Mode) Password**.
 5. Leave remaining options at default and click **Install**. The server will automatically reboot.
 
 ---
 
-# **Step 3: Testing & Verification
+# **Step 3: Testing & Verification**
 
 1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
 2. Open **Server Manager** > **Tools**.
