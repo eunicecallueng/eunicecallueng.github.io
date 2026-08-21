@@ -71,61 +71,7 @@ Now that our VM container is ready, it's time to fire it up and install the OS:
 7. **Set Administrator Account** — Upon first startup, create a strong local **Administrator Password**.
 
 And that's it! 🎉 We now have a fresh Windows Server 2022 instance running smoothly in VMware.
----
 
+   ![Windows 2022 Instance](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/windows-2022-instance.jpg)
 
-# Step 4: Preparing the Server (Pre-Requisites)
-
-> [!NOTE]
-> <div style="background-color: #7DB700; color: #000000; padding: 10px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before</em> promoting the server to a Domain Controller.</div>
-
-1. **Change Hostname:**
-   * Open **Server Manager** > **Local Server**.
-   * Click the default Computer Name (e.g., `WIN-XXXXXXX`).
-   * Rename the computer to your preference, I renamed it to **`NYCE-DC01`** and restart the virtual machine.
-
-   ![Rename the server](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Rename-the-Server.jpg)
-
-2. **Configure Static IP Address:**
-   * Press `Win + R`, type `ncpa.cpl`, and press **Enter**.
-   * Right-click your network adapter > **Properties** > **Internet Protocol Version 4 (TCP/IPv4)**.
-   * Manually assign a static IP address (e.g., IP: `192.168.120.100`, Subnet: `255.255.255.0`, Gateway: `192.168.120.1`, Preferred DNS: `127.0.0.1`).
-
-   ![Configure-Static-IP](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Configure-Static-IP.jpg)
-
-
----
-
-# Step 5: Installing & Promoting AD DS
-
-## Phase A: Adding the AD DS Role
-1. In **Server Manager**, click **Manage** > **Add Roles and Features**.
-
-   ![Add Features](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Add-Features.jpg)
-   
-2. Progress through the wizard until reaching **Server Roles**.
-3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
-4. Click **Install** and wait for completion.
-
-## Phase B: Promoting to Domain Controller
-1. Click the **Yellow Notification Flag** in Server Manager.
-2. Select **Promote this server to a domain controller**.
-
-   ![Promote to DC](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Promote-to-Domain-Controller.png)
-   
-3. Choose **Add a new forest** and enter your domain name:
-   * **Root Domain Name:** `nycehomelab.local`
-4. Set a strong **DSRM (Directory Services Restore Mode) Password**.
-5. Leave remaining options at default and click **Install**. The server will automatically reboot.
-
----
-
-# Step 6: Testing & Verification
-
-1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
-2. Open **Server Manager** > **Tools**.
-3. Verify the following tools are present and functional:
-   - [x] Active Directory Users and Computers
-   - [x] DNS Manager
-   - [x] Group Policy Management
 
