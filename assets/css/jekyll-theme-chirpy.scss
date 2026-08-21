@@ -53,6 +53,7 @@
 #panel-wrapper {
   display: flex;
   flex-direction: column;
+  position: relative !important;
 
   /* Force Table of Contents to the top & preserve sticky behavior */
   #toc-wrapper {
@@ -60,6 +61,7 @@
     display: block;
     padding-left: 0.75rem;
     position: sticky !important;
+    z-index: 10;
   }
 
   .panel-heading {
