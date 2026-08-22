@@ -76,9 +76,19 @@ permalink: /posts/ad-phase-1-foundation/
 
    * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
-<video controls width="100%">
-<source src="/assets/media/vid/dns-configuration.mp4" type="video/mp4">
-</video>
+   <video controls width="100%">
+   <source src="/assets/media/vid/dns-configuration.mp4" type="video/mp4">
+   </video>
+
+---
+
+# **Step 4: 4. Domain Join & Client Network Configuration**
+
+## To wrap up Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing right is everything:
+
+   * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
+
+   * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
 
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
