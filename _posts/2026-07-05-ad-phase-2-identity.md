@@ -40,9 +40,10 @@ permalink: /posts/ad-phase-2-identity/
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/RhNyKZU3UoI?si=l2UnsT5igak09O7d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-> <div style="background-color: #99cc33; color: #000000; padding: 20px 12px; border-radius: 6px; font-weight: 600;"
-💡 **Best Practice Tip: Principle of Least Privilege (PoLP)**  
-    When securing resources, it's best to configure broad access (like setting ***Everyone: Full Control***) strictly at the **Share Permissions** level. You then restrict the actual granular access using **NTFS Security ACLs** tied to your AD Security Groups. This prevents conflicting permissions and keeps access clean!.</div>
+<div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+  <strong style="font-size: 1.1em;">💡 Best Practice Tip: Principle of Least Privilege (PoLP)</strong>
+  <p style="margin-top: 10px; margin-bottom: 0;">When securing resources, it's best to configure broad access (like setting <em><strong>Everyone: Full Control</strong></em>) strictly at the <strong>Share Permissions</strong> level. You then restrict the actual granular access using <strong>NTFS Security ACLs</strong> tied to your AD Security Groups. This prevents conflicting permissions and keeps access clean!</p>
+</div>
 
 ---
 **What's Next?**  
