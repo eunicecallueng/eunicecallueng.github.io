@@ -1,10 +1,6 @@
 ---
 title: "Phase 1: Foundation & Domain Join"
 date: 2026-07-05
-description: >-
-   When I first decided to dive into Active Directory, I quickly learned that theory is great, but getting your hands dirty in a homelab is where the real learning happens.<br\>
-   
-   In this first phase, we lay down the core infrastructure needed before anything else can work.
 categories: [Homelab, Active Directory]
 tags: [windows-server, vmware, domain-controller]
 hidden: true
@@ -12,6 +8,8 @@ sitemap: false
 permalink: /posts/ad-phase-1-foundation/
 ---
 
+##    When I first decided to dive into Active Directory, I quickly learned that theory is great, but getting your hands dirty in a homelab is where the real learning happens. 
+## In this first phase, we lay down the core infrastructure needed before anything else can work.
 ## Here is a breakdown of what I did and the crucial pre-requisites required to get a domain controller up and running smoothly:
 
 # **Step 1: Server Provisioning & Pre-Requisites**
