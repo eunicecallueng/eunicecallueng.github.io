@@ -8,7 +8,9 @@ sitemap: false
 permalink: /posts/ad-phase-2-identity/
 ---
 
-## Now that the foundational Active Directory forest and client domain join are up and running, the next step is establishing structured identity management. In a real-world enterprise environment, you don't just dump every user and computer into a single default container; you organize them logically to streamline administrative control and security policies.
+### Now that the foundational Active Directory forest and client domain join are up and running, the next step is establishing structured identity management. 
+
+### In a real-world enterprise environment, you don't just dump every user and computer into a single default container; you organize them logically to streamline administrative control and security policies.
 
 # **Step 1: Designing the Organizational Unit (OU) Structure**
 ## To mirror standard directory design best practices, I structured my domain (nycehomelab.local) with a dedicated organizational layout:
@@ -43,7 +45,5 @@ permalink: /posts/ad-phase-2-identity/
 
 
 ---
-**What's Next?**  
-*Up Next: In **Phase 3: Storage & File Sharing**, we will put these newly created Security Groups to work! I'll walk through configuring centralized file servers and enforcing strict role-based access controls across our shared network drives.*
-
-[← Back to AD Series Overview](/posts/active-directory-series/)
+## **What's Next?**  
+## *Up Next: In **Phase 3: Storage & File Sharing**, we will put these newly created Security Groups to work! I'll walk through configuring centralized file servers and enforcing strict role-based access controls across our shared network drives.*
