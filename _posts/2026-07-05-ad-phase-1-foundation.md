@@ -30,6 +30,8 @@ I started by updating the default computer name in Server Manager (Local Server)
 
       ![Rename the server](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Rename-the-Server.jpg)
 
+---
+
 Active Directory relies heavily on stable, predictable network addressing so I assigned a **`static IP`** address and pointed the Preferred DNS back to **`localhost (127.0.0.1)`** since this server will double as our DNS resolver.
    
    **Configure Static IP Address:**
@@ -51,7 +53,9 @@ Inside the Server Manager, I went through Add Roles and Features, checked Active
 2. Progress through the wizard until reaching **Server Roles**.
 3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
 4. Click **Install** and wait for completion.
+
 ---
+
 Once installed, I triggered the yellow notification flag to promote the server to a domain controller
 1. Click the **Yellow Notification Flag** in Server Manager.
 2. Select **Promote this server to a domain controller**.
