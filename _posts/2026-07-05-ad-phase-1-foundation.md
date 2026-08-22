@@ -66,16 +66,17 @@ permalink: /posts/ad-phase-1-foundation/
 
 # **Step 3: DNS Configuration & Name Resolution**
 
-## Since DNS is the backbone of Active Directory, verifying that the DNS service was running and integrated correctly with the new forest was a vital step to ensure machines across the network could properly resolve domain names and service locations. To verify everything is healthy:
+## Since DNS is the backbone of Active Directory, I made sure to verify that the DNS service was running and integrated cleanly with the new forest so my network machines could find service locations:
 
 1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
 
-   * **Check DNS Manager:** Open DNS Manager (via **Server Manager > Tools > DNS**), expand Forward Lookup Zones, and open your domain zone (e.g., nycehomelab.local) to ensure critical Active Directory service folders like _msdcs, _sites, _tcp, and _udp are present.
+   * **Check DNS Manager:** I opened DNS Manager (via ``Server Manager > Tools > DNS``), expanded Forward Lookup Zones, and opened nycehomelab.local to verify critical AD service folders like ``_msdcs``, ``_sites``, ``_tcp``, and ``_udp`` were right where they needed to be.
 
-   * Test Name Resolution: Fire up Command Prompt and run nslookup for your domain name to ensure it correctly resolves to your Domain Controller's IP address.
+   * **Test Name Resolution:** I fired up Command Prompt and ran an ``nslookup`` for my domain (``nycehomelab.local``) to make sure it resolved straight to my DC's IP address..
 
-   * Verify Service Status: Check services.msc to confirm that the DNS Server service is running and set to Automatic.
+   * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
+      ![DNS Configuration](/assets/media/gif/dns-configuration.gif)
 
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
