@@ -90,6 +90,8 @@ permalink: /posts/ad-phase-1-foundation/
 
    * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
 
+   <iframe width="560" height="315" src="https://youtu.be/wu-0Izl8QDU" title="Client VM DNS Configuration" frameborder="0" allowfullscreen></iframe>
+
 
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
