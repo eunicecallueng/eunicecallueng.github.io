@@ -19,7 +19,7 @@ permalink: /posts/ad-phase-1-foundation/
 > [!IMPORTANT]
 > <div style="background-color: #99cc33; color: #000000; padding: 20px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before promoting the server to a Domain Controller.</em></div>
 
-## I started by updating the default computer name in Server Manager (Local Server) to something recognizable: `NYCE-DC01`
+## I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
 
    **Change Hostname:**
    * Open **Server Manager** > **Local Server**.
