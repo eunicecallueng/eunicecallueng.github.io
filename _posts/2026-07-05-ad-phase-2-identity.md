@@ -15,9 +15,9 @@ In a real-world enterprise environment, you don't just dump every user and compu
 ## **Step 1: Designing the Organizational Unit (OU) Structure**
 To mirror standard directory design best practices, I structured my domain (nycehomelab.local) with a dedicated organizational layout:
 
-* Departmental OUs: Created logical containers (such as IT, HR, and Operations) to separate user accounts based on operational roles.
+* **Departmental OUs:** Created logical containers (such as IT, HR, and Operations) to separate user accounts based on operational roles.
 
-* Computer & Server OUs: Grouped machine accounts separately to allow targeted Group Policy deployment without affecting user configurations.
+* **Computer & Server OUs:** Grouped machine accounts separately to allow targeted Group Policy deployment without affecting user configurations.
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/Dme0wktUKRY?si=DYlE5zvDcKxG4UQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

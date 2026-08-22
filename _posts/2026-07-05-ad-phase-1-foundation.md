@@ -59,7 +59,8 @@ Once installed, I triggered the yellow notification flag to promote the server t
    ![Promote to DC](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Promote-to-Domain-Controller.png)
    
 3. Choose **Add a new forest** and enter your domain name:
-   ##   **Root Domain Name:** `nycehomelab.local`
+
+         Root Domain Name: nycehomelab.local
 4. Set a strong **DSRM (Directory Services Restore Mode) Password**.
 5. Leave remaining options at default and click **Install**. The server will automatically reboot.
 
@@ -69,13 +70,13 @@ Once installed, I triggered the yellow notification flag to promote the server t
 
 Since DNS is the backbone of Active Directory, I made sure to verify that the DNS service was running and integrated cleanly with the new forest so my network machines could find service locations:
 
-1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
+Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
 
    * **Check DNS Manager:** I opened DNS Manager (via ``Server Manager > Tools > DNS``), expanded Forward Lookup Zones, and opened nycehomelab.local to verify critical AD service folders like ``_msdcs``, ``_sites``, ``_tcp``, and ``_udp`` were right where they needed to be.
 
    * **Test Name Resolution:** I fired up Command Prompt and ran an ``nslookup`` for my domain (``nycehomelab.local``) to make sure it resolved straight to my DC's IP address..
 
-   * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
+   * **Verify Service Status:** I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
    <video controls width="100%">
    <source src="/assets/media/vid/server-dns-configuration.mp4" type="video/mp4">
@@ -89,7 +90,7 @@ To wrap up Phase 1, I brought my client machine (my Windows 11 VM) into the newl
 
    * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
 
-      <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
    * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
 
