@@ -12,13 +12,9 @@ sitemap: false
 permalink: /posts/ad-phase-1-foundation/
 ---
 
-[← Back to AD Series Overview](/posts/active-directory-series/)
-
----
-
 ## Here is a breakdown of what I did and the crucial pre-requisites required to get a domain controller up and running smoothly:
 
-# **Step 1: Preparing the Server (Pre-Requisites)**
+# **Step 1: Server Provisioning & Pre-Requisites**
 
 > [!IMPORTANT]
 > <div style="background-color: #99cc33; color: #000000; padding: 20px 12px; border-radius: 6px; font-weight: 500;">Best practice requires assigning a proper hostname and a static IP address <em>before promoting the server to a Domain Controller.</em></div>
@@ -44,7 +40,7 @@ permalink: /posts/ad-phase-1-foundation/
 
 ---
 
-# **Step 2: Installing & Promoting AD DS**
+# **Step 2: Active Directory Domain Services (AD DS) Installation**
 
 ## Inside the Server Manager, I went through Add Roles and Features, checked Active Directory Domain Services, and let the wizard install the necessary binaries and management tools
 1. In **Server Manager**, click **Manage** > **Add Roles and Features**.
@@ -68,13 +64,18 @@ permalink: /posts/ad-phase-1-foundation/
 
 ---
 
-# **Step 3: Testing & Verification**
+# **Step 3: DNS Configuration & Name Resolution**
+
+## Since DNS is the backbone of Active Directory, verifying that the DNS service was running and integrated correctly with the new forest was a vital step to ensure machines across the network could properly resolve domain names and service locations. To verify everything is healthy:
 
 1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
-2. Open **Server Manager** > **Tools**.
-3. Verify the following tools are present and functional:
-   - [x] Active Directory Users and Computers
-   - [x] DNS Manager
-   - [x] Group Policy Management
+
+   * **Check DNS Manager:** Open DNS Manager (via **Server Manager > Tools > DNS**), expand Forward Lookup Zones, and open your domain zone (e.g., nycehomelab.local) to ensure critical Active Directory service folders like _msdcs, _sites, _tcp, and _udp are present.
+
+   * Test Name Resolution: Fire up Command Prompt and run nslookup for your domain name to ensure it correctly resolves to your Domain Controller's IP address.
+
+   * Verify Service Status: Check services.msc to confirm that the DNS Server service is running and set to Automatic.
 
 
+
+[← Back to AD Series Overview](/posts/active-directory-series/)
