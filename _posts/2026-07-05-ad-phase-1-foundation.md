@@ -76,7 +76,7 @@ permalink: /posts/ad-phase-1-foundation/
 
    * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
-      ![DNS Configuration](/assets/media/gif/dns-configuration.gif)
+      ![DNS Configuration](/assets/media/vid/dns-configuration.mp4)
 
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
