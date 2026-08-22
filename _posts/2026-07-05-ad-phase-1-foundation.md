@@ -90,5 +90,6 @@ permalink: /posts/ad-phase-1-foundation/
 
    * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
 
+
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
