@@ -1,6 +1,6 @@
 ---
 title: "Phase 2: Core Identity & Access Control (ADUC)"
-date: 2026-07-05
+date: 2026-07-09
 categories: [Homelab, Active Directory]
 tags: [aduc, rbac, user-management]
 hidden: true
@@ -8,12 +8,12 @@ sitemap: false
 permalink: /posts/ad-phase-2-identity/
 ---
 
-### Now that the foundational Active Directory forest and client domain join are up and running, the next step is establishing structured identity management. 
+Now that the foundational Active Directory forest and client domain join are up and running, the next step is establishing structured identity management. 
 
-### In a real-world enterprise environment, you don't just dump every user and computer into a single default container; you organize them logically to streamline administrative control and security policies.
+In a real-world enterprise environment, you don't just dump every user and computer into a single default container; you organize them logically to streamline administrative control and security policies.
 
-# **Step 1: Designing the Organizational Unit (OU) Structure**
-## To mirror standard directory design best practices, I structured my domain (nycehomelab.local) with a dedicated organizational layout:
+## **Step 1: Designing the Organizational Unit (OU) Structure**
+To mirror standard directory design best practices, I structured my domain (nycehomelab.local) with a dedicated organizational layout:
 
 * Departmental OUs: Created logical containers (such as IT, HR, and Operations) to separate user accounts based on operational roles.
 
@@ -21,9 +21,9 @@ permalink: /posts/ad-phase-2-identity/
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/Dme0wktUKRY?si=DYlE5zvDcKxG4UQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# **Step 2: Domain Join & Client Network Configuration**
+## **Step 2: Domain Join & Client Network Configuration**
 
-## Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
+Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
 
    * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
 

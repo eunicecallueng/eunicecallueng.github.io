@@ -1,6 +1,6 @@
 ---
 title: "Phase 1: Foundation & Domain Join"
-date: 2026-07-05
+date: 2026-07-07
 categories: [Homelab, Active Directory]
 tags: [windows-server, vmware, domain-controller]
 hidden: true
