@@ -33,8 +33,8 @@ Building on the foundation from Phase 1, I brought my client machine (my Windows
 
       <iframe width="100%" height="450" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# **Step 3: User & Group Management via ADUC**
-## With the container structure ready, I moved on to provisioning identities using Active Directory Users and Computers (ADUC):
+## **Step 3: User & Group Management via ADUC**
+With the container structure ready, I moved on to provisioning identities using Active Directory Users and Computers (ADUC):
 
 * Standard & Privileged Users: Provisioned day-to-day testing accounts (like john.doe) alongside administrative service accounts.
 

@@ -8,18 +8,20 @@ sitemap: false
 permalink: /posts/ad-phase-1-foundation/
 ---
 
-### When I first decided to dive into Active Directory, I quickly learned that theory is great, but getting your hands dirty in a homelab is where the real learning happens. 
-### In this first phase, we lay down the core infrastructure needed before anything else can work.
-### Here is a breakdown of what I did and the crucial pre-requisites required to get a domain controller up and running smoothly:
+When I first decided to dive into Active Directory, I quickly learned that theory is great, but getting your hands dirty in a homelab is where the real learning happens. 
 
-# **Step 1: Server Provisioning & Pre-Requisites**
+In this first phase, we lay down the core infrastructure needed before anything else can work.
+
+Here is a breakdown of what I did and the crucial pre-requisites required to get a domain controller up and running smoothly:
+
+## **Step 1: Server Provisioning & Pre-Requisites**
 
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
   <strong style="font-size: 1.1em;">💡 Best Practice Tip:</strong>
   <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</strong></p>
 </div>
 
-## I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
+I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
 
    **Change Hostname:**
    * Open **Server Manager** > **Local Server**.
@@ -28,7 +30,7 @@ permalink: /posts/ad-phase-1-foundation/
 
       ![Rename the server](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Rename-the-Server.jpg)
 
-## Active Directory relies heavily on stable, predictable network addressing so I assigned a **`static IP`** address and pointed the Preferred DNS back to **`localhost (127.0.0.1)`** since this server will double as our DNS resolver.
+Active Directory relies heavily on stable, predictable network addressing so I assigned a **`static IP`** address and pointed the Preferred DNS back to **`localhost (127.0.0.1)`** since this server will double as our DNS resolver.
    
    **Configure Static IP Address:**
    * Press `Win + R`, type `ncpa.cpl`, and press **Enter**.
@@ -39,9 +41,9 @@ permalink: /posts/ad-phase-1-foundation/
 
 ---
 
-# **Step 2: Active Directory Domain Services (AD DS) Installation**
+## **Step 2: Active Directory Domain Services (AD DS) Installation**
 
-## Inside the Server Manager, I went through Add Roles and Features, checked Active Directory Domain Services, and let the wizard install the necessary binaries and management tools
+Inside the Server Manager, I went through Add Roles and Features, checked Active Directory Domain Services, and let the wizard install the necessary binaries and management tools
 1. In **Server Manager**, click **Manage** > **Add Roles and Features**.
 
    ![Add Features](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Add-Features.jpg)
@@ -49,8 +51,8 @@ permalink: /posts/ad-phase-1-foundation/
 2. Progress through the wizard until reaching **Server Roles**.
 3. Check **Active Directory Domain Services** (click **Add Features** on the pop-up).
 4. Click **Install** and wait for completion.
-
-## Once installed, I triggered the yellow notification flag to promote the server to a domain controller
+---
+Once installed, I triggered the yellow notification flag to promote the server to a domain controller
 1. Click the **Yellow Notification Flag** in Server Manager.
 2. Select **Promote this server to a domain controller**.
 
@@ -63,9 +65,9 @@ permalink: /posts/ad-phase-1-foundation/
 
 ---
 
-# **Step 3: DNS Configuration & Name Resolution**
+## **Step 3: DNS Configuration & Name Resolution**
 
-## Since DNS is the backbone of Active Directory, I made sure to verify that the DNS service was running and integrated cleanly with the new forest so my network machines could find service locations:
+Since DNS is the backbone of Active Directory, I made sure to verify that the DNS service was running and integrated cleanly with the new forest so my network machines could find service locations:
 
 1. Log into the server using domain administrator credentials: `NYCEHOMELAB\Administrator`.
 
@@ -81,9 +83,9 @@ permalink: /posts/ad-phase-1-foundation/
 
 ---
 
-# **Step 4: 4. Domain Join & Client Network Configuration**
+## **Step 4: Domain Join & Client Network Configuration**
 
-## To wrap up Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing right is everything:
+To wrap up Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing right is everything:
 
    * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
 
