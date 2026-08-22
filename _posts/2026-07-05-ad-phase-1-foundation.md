@@ -74,9 +74,11 @@ permalink: /posts/ad-phase-1-foundation/
 
    * **Test Name Resolution:** I fired up Command Prompt and ran an ``nslookup`` for my domain (``nycehomelab.local``) to make sure it resolved straight to my DC's IP address..
 
-   * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*
+   * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
-      ![DNS Configuration](/assets/media/vid/dns-configuration.mp4)
+<video controls width="100%">
+<source src="/assets/media/vid/dns-configuration.mp4" type="video/mp4">
+</video>
 
 ---
 [← Back to AD Series Overview](/posts/active-directory-series/)
