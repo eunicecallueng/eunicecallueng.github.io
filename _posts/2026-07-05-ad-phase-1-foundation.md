@@ -77,7 +77,7 @@ permalink: /posts/ad-phase-1-foundation/
    * Verify Service Status: I quickly checked ``services.msc`` to confirm that the DNS Server service was *running* and set to *Automatic*.
 
    <video controls width="100%">
-   <source src="/assets/media/vid/dns-configuration.mp4" type="video/mp4">
+   <source src="/assets/media/vid/server-dns-configuration.mp4" type="video/mp4">
    </video>
 
 ---
