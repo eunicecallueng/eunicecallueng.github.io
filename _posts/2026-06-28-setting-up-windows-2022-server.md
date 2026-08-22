@@ -7,7 +7,7 @@ description: >-
    This is a step-by-step documentation of how I successfully installed Windows Server 2022 inside VMware Workstation Pro and promote it to a Domain Controller.
 permalink: /posts/setting-up-windows-2022-server/
 image:
-   path: /assets/media/thumbnail/windows-2022-server-in-vmware.jpg
+   path: /assets/media/thumbnails/windows-2022-server-in-vmware.jpg
 ---
   
 
