@@ -16,12 +16,9 @@ permalink: /posts/ad-phase-1-foundation/
 
 # **Step 1: Server Provisioning & Pre-Requisites**
 
-
-
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
   <strong style="font-size: 1.1em;">💡 Best Practice Tip:</strong>
-  <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</p>
-</div>
+  <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</p></div>
 
 ## I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
 
@@ -40,7 +37,6 @@ permalink: /posts/ad-phase-1-foundation/
    * Manually assign a static IP address (e.g., IP: `192.168.120.100`, Subnet: `255.255.255.0`, Gateway: `192.168.120.1`, Preferred DNS: `127.0.0.1`).
 
       ![Configure-Static-IP](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Configure-Static-IP.jpg)
-
 
 ---
 
