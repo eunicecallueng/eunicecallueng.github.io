@@ -77,5 +77,5 @@ permalink: /posts/ad-phase-1-foundation/
    * Verify Service Status: Check services.msc to confirm that the DNS Server service is running and set to Automatic.
 
 
-
+---
 [← Back to AD Series Overview](/posts/active-directory-series/)
