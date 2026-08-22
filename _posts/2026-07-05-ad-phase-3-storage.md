@@ -13,7 +13,9 @@ permalink: /posts/ad-phase-3-storage/
   <p style="margin-top: 10px; margin-bottom: 0;">When securing resources, it's best to configure broad access (like setting <em><strong>Everyone: Full Control</strong></em>) strictly at the <strong>Share Permissions</strong> level. You then restrict the actual granular access using <strong>NTFS Security ACLs</strong> tied to your AD Security Groups. This prevents conflicting permissions and keeps access clean!</p>
 </div>
 
-Now that our users and security groups are neatly organized in Active Directory (Phase 2), it's time to give them something to access securely. In this phase, I configured a centralized File Server role and applied Role-Based Access Control (RBAC) to ensure users only have access to what they need for their jobs.
+Now that our users and security groups are neatly organized in Active Directory (Phase 2), it's time to give them something to access securely. 
+
+In this phase, I configured a centralized File Server role and applied Role-Based Access Control (RBAC) to ensure users only have access to what they need for their jobs.
 
 ### **Step 1: Provisioning the Shared Folders**
 
