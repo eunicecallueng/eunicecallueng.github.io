@@ -16,7 +16,8 @@ permalink: /posts/ad-phase-1-foundation/
 
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
   <strong style="font-size: 1.1em;">💡 Best Practice Tip:</strong>
-  <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</p></div>
+  <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</strong></p>
+</div>
 
 ## I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
 
