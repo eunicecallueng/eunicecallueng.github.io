@@ -19,7 +19,19 @@ permalink: /posts/ad-phase-2-identity/
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/Dme0wktUKRY?si=DYlE5zvDcKxG4UQK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# **Step 2. User & Group Management via ADUC**
+# **Step 2:Domain Join & Client Network Configuration**
+
+## Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
+
+   * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
+
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+   * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
+
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+# **Step 3. User & Group Management via ADUC**
 ## With the container structure ready, I moved on to provisioning identities using Active Directory Users and Computers (ADUC):
 
 * Standard & Privileged Users: Provisioned day-to-day testing accounts (like john.doe) alongside administrative service accounts.
