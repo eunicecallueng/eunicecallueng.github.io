@@ -30,7 +30,7 @@ To make the folder accessible over the network, I first configured the broad Sha
 
 ***(Note: While giving "Everyone" access sounds risky, network share permissions simply act as a front door. The actual strict security is locked down in the next step using NTFS permissions).***
 
-  <iframe width="100%" height="450" src="https://www.youtube.com/embed/k7cGiM58sBI?si=60vvQSmfUlALjYCs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe width="100%" height="450" src="https://www.youtube.com/embed/k7cGiM58sBI?si=60vvQSmfUlALjYCs" title="Configuring Share Permissions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -42,11 +42,11 @@ This is where the Principle of Least Privilege (PoLP) comes into play. I navigat
 * **Removed General Access:** I removed default broad groups like `Users` to prevent unauthorized access.
 * **Assigned Group Permissions:** I added the specific AD Security Group (e.g., `SG-IT-Department`) and granted them **Modify** access. Now, only members of this designated group can read, write, or delete files in this folder.
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/5wskpyCVVRk?si=6kMWFT-tkh_RIjZq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/5wskpyCVVRk?si=6kMWFT-tkh_RIjZq" title="Hardening Access with NTFS Security Permissions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
-### **Step 4: Verifying Client Access**
+## **Step 4: Verifying Client Access**
 
 To prove the permissions work in a real-world scenario, I jumped back into my Windows 11 client machine:
 
@@ -54,7 +54,7 @@ To prove the permissions work in a real-world scenario, I jumped back into my Wi
 * Accessed the network share path (`\\192.168.120.100\HR_Share` or `\\NYCE-DC01\HR_Share`) via the Run dialog (`Win + R`).
 * Verified that I could create and modify files if the user was in the correct group. I also tested an out-of-group account to ensure it successfully threw an "Access Denied" prompt, proving the security works.
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/KrYaMs_vk7Q?si=zFLJuornzWd7O5D8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/KrYaMs_vk7Q?si=zFLJuornzWd7O5D8" title="Verifying Client Access" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
   <strong style="font-size: 1.1em;">💡 Homelab Takeaway:</strong>
