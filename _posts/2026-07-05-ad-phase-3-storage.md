@@ -28,7 +28,12 @@ To make the folder accessible over the network, I first configured the broad Sha
 * Checked **Share this folder**.
 * Under **Permissions**, I set **Everyone** to **Full Control** (or Change). 
 
-***(Note: While giving "Everyone" access sounds risky, network share permissions simply act as a front door. The actual strict security is locked down in the next step using NTFS permissions).***
+***().***
+
+<div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+  <strong style="font-size: 1.1em;">💡 Important Note:</strong>
+  <p style="margin-top: 10px; margin-bottom: 0;">While giving <em><strong>"Everyone"</em></strong> access sounds risky, network share permissions simply act as a front door. <em><strong>The actual strict security is locked down in the next step using NTFS permissions</em></strong></p>
+</div>
 
   <iframe width="100%" height="450" src="https://www.youtube.com/embed/k7cGiM58sBI?si=60vvQSmfUlALjYCs" title="Configuring Share Permissions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -65,13 +70,3 @@ To prove the permissions work in a real-world scenario, I jumped back into my Wi
 
 **What's Next?**  
 *Up Next: In **Phase 4: Group Policy & Advanced Security (GPO)**, we will automate configurations, map these shared network drives automatically for our users upon login, and enforce security baselines across the domain workstations.*
-
-
-<div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-  <strong style="font-size: 1.1em;">💡 Best Practice Tip: Principle of Least Privilege (PoLP)</strong>
-  <p style="margin-top: 10px; margin-bottom: 0;">When securing resources, it's best to configure broad access (like setting <em><strong>Everyone: Full Control</strong></em>) strictly at the <strong>Share Permissions</strong> level. You then restrict the actual granular access using <strong>NTFS Security ACLs</strong> tied to your AD Security Groups. This prevents conflicting permissions and keeps access clean!</p>
-</div>
-
-
-
-[← Back to AD Series Overview](/posts/active-directory-series/)
