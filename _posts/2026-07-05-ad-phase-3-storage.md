@@ -28,11 +28,9 @@ To make the folder accessible over the network, I first configured the broad Sha
 * Checked **Share this folder**.
 * Under **Permissions**, I set **Everyone** to **Full Control** (or Change). 
 
-***().***
-
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
   <strong style="font-size: 1.1em;">💡 Important Note:</strong>
-  <p style="margin-top: 10px; margin-bottom: 0;">While giving <em><strong>"Everyone"</em></strong> access sounds risky, network share permissions simply act as a front door. <em><strong>The actual strict security is locked down in the next step using NTFS permissions</em></strong></p>
+  <p style="margin-top: 10px; margin-bottom: 0;">While giving <em><strong>"Everyone"</em></strong> access sounds risky, network share permissions simply act as a front door. <em><strong>The actual strict security is locked down in the next step using NTFS permissions</p>
 </div>
 
   <iframe width="100%" height="450" src="https://www.youtube.com/embed/k7cGiM58sBI?si=60vvQSmfUlALjYCs" title="Configuring Share Permissions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
