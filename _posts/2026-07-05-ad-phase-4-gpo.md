@@ -23,7 +23,7 @@ Before rolling out policies, it is a best practice to configure a Central Store.
 ## **Step 2: Establishing Baseline Domain Security**
 Once the Central Store was in place, I configured core domain security policies within the Group Policy Management Console (GPMC). I focused on defining baseline authentication settings, password rules, and account lockout policies across the entire domain.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jw0WRVFzemM?si=enbWX6A0mj2UgyYP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/jw0WRVFzemM?si=enbWX6A0mj2UgyYP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
