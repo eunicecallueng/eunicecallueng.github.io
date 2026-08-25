@@ -36,9 +36,9 @@ Building on the foundation from Phase 1, I brought my client machine (my Windows
 ## **Step 3: User & Group Management via ADUC**
 With the container structure ready, I moved on to provisioning identities using Active Directory Users and Computers (ADUC):
 
-* Standard & Privileged Users: Provisioned day-to-day testing accounts (like john.doe) alongside administrative service accounts.
+* **Standard & Privileged Users:** Provisioned day-to-day testing accounts (like john.doe) alongside administrative service accounts.
 
-* Security Groups: Established security groups to handle role-based access control rather than assigning permissions to individual users.
+* **Security Groups:** Established security groups to handle role-based access control rather than assigning permissions to individual users.
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/RhNyKZU3UoI?si=l2UnsT5igak09O7d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
