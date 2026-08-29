@@ -30,24 +30,27 @@ To mirror standard directory design best practices, I structured my domain (**`n
 
 Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
 
-   * **Configuring Client DNS:** I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
+* **Configuring Client DNS:**
+    * I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
 
-      <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-   * **Joining and Logging In:** After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
+* **Joining and Logging In:** 
+    * After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
 
-      <iframe width="100%" height="450" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
-## **Step 3: User & Group Management via ADUC**
-With the container structure ready, I moved on to provisioning identities using Active Directory Users and Computers (ADUC):
+## **Step 3: Role-Based Access Control (RBAC) & Delegation**
+To implement the principle of least privilege, permissions were assigned using security groups rather than individual account rights, and specific admin duties were delegated down.:
 
-* **Standard & Privileged Users:** Provisioned day-to-day testing accounts (like john.doe) alongside administrative service accounts.
+* **Security Group Management:** 
+    * I created security groups for departmental access and admin roles using the AGDLP strategy to keep everything clean and scalable. Since AGDLP is such a fun and important concept in AD, I broke down how I set it up on a separate AGDLP Deep-Dive Page!
 
-* **Security Groups:** Established security groups to handle role-based access control rather than assigning permissions to individual users.
+* **Delegating Control:** 
+    * I used the Delegation of Control Wizard in ADUC to give our Helpdesk team permission to reset passwords for specific OUs. It was awesome seeing this in action because it meant giving them the exact rights they needed without handing over full Domain Admin privileges.
 
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RhNyKZU3UoI?si=l2UnsT5igak09O7d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 

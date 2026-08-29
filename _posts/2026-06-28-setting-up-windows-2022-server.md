@@ -12,7 +12,7 @@ image:
   
 
 
-# Step 1: Prerequisites & Free Tools I Used
+## Step 1: Prerequisites & Free Tools I Used
 
 Before starting with Active Directory, you'll need to have your hypervisor ready and download the Windows Server ISO:
 
@@ -23,7 +23,7 @@ Before starting with Active Directory, you'll need to have your hypervisor ready
 
 ---
 
-# Step 2: Setting Up the Virtual Machine Container
+## Step 2: Setting Up the Virtual Machine Container
 
 Here is how I configured the VM settings in VMware before booting up the OS:
 
@@ -37,6 +37,13 @@ Here is how I configured the VM settings in VMware before booting up the OS:
 4. **Select Guest OS** — I picked **Microsoft Windows**, and set the version to **Windows Server 2022**, then hit **Next**.
 5. **Set VM Name & Location** — Name your VM whatever you like and click **Next**.
 6. **Allocate Disk Space** — I set the maximum disk size to **30 GB** (which is plenty for a basic lab environment) and clicked **Next**.
+
+   * For almost all modern homelab setups, **Store virtual disk as a single file** is the better option.  
+      * Why Single File is Best?
+         * Better Performance: Avoids file system fragmentation on your host drive. Reading/writing to a single contiguous block is cleaner, especially for IO-heavy VMs like Active Directory, SQL, or Kubernetes nodes.  
+         * Easier File Management: Keeps your project directory clean. You won't have dozens of .vmdk chunks (e.g., s001.vmdk, s002.vmdk) cluttering your VM folder.Modern Storage Handles It: The main historical reason for splitting files (FAT32 file system's 4GB file limit) is obsolete. NTFS, APFS, and ext4 handle multi-terabyte files without issues.
+
+
 7. **Attach the ISO File** — Before finishing, we need to make sure the VM actually boots from our downloaded Windows Server ISO:
    * Click **Customize Hardware...**
    
@@ -52,7 +59,7 @@ Here is how I configured the VM settings in VMware before booting up the OS:
 
 ---
 
-# Step 3: Installing & Setting Up Windows Server 2022
+## Step 3: Installing & Setting Up Windows Server 2022
 
 Now that our VM container is ready, it's time to fire it up and install the OS:
 
