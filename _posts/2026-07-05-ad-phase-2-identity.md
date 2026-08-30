@@ -64,29 +64,35 @@ Right after setting up the file server, my next big focus was building out the O
 ---
 
 ## **Step 3: Implementing the AGDLP Security Model**
-Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, the next critical step was establishing a proper authorization model.
-
-Instead of assigning access rights directly to individual user accounts—which quickly turns into an administrative nightmare—I implemented the enterprise-standard **AGDLP** (**A**ccount $\rightarrow$ **G**lobal $\rightarrow$ **D**omain Local $\rightarrow$ **P**ermission) framework.
+Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, I established the enterprise-standard **AGDLP** (**A**ccount $\rightarrow$ **G**lobal $\rightarrow$ **D**omain Local $\rightarrow$ **P**ermission) framework.
 
 * **Why I Chose the AGDLP Strategy**
-    * In a real-world enterprise network, assigning permissions directly to end users leads to permission bloat, orphaned access rights, and massive headaches during audits. AGDLP keeps access management clean, scalable, and easy to troubleshoot:
-        * **Role-Based Access Control (RBAC):** Users are assigned to Global Groups based on their job roles (e.g., HR, Finance, IT). If an employee moves to a new department, I simply update their group membership—no need to touch folder permissions on the server.
-        * **Granular Privilege Management:** Domain Local Groups define the actual permissions on resources (like read/write access to a specific network share). This clear separation ensures that access rights are explicit and easy to trace.
+    * **Role-Based Access Control (RBAC):** Users belong to Global Groups by job role—department transfers only require updating group memberships, not server permissions.
+    * **Granular Privilege Management:** Domain Local Groups define exact resource access, keeping permissions explicit and easy to audit.
         * **Effortless Auditing & Onboarding:** When a new team member joins, they automatically inherit all necessary access simply by being added to their role’s global group.
+
+    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+    <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
+    <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never Grant Direct User Rights:</strong> Always assign users to Global Groups, Global Groups to Domain Local Groups, and Domain Local Groups to folder permissions—never mix these layers.</p>
+    </div>
+
 * **How the AGDLP Chain Works in My Lab**
     * **Account (A):** Individual user accounts (e.g., john.doe).
     * **Global Group (G):** Accounts are nested into Global Groups based on job function (e.g., GG-HD-Tech).
     * **Domain Local Group (DL):** Global Groups are nested into Domain Local Groups created for specific resource access (e.g., SH-HR-RW).
     * **Permissions (P):** Explicit NTFS and SMB permissions are assigned directly to the Domain Local Group on the file system folder.
 
+---
+---
 
-* **Predictable Naming Template:** I adopted a clean **[Type]-[Scope]-[Resource]-[Access]-[Env]** naming template structure (e.g., SEC-HR-Share-RW-PRD). Keeping the tokens in the exact same order makes searching and auditing in Active Directory a breeze:
-    * **Type:** what kind of group (`GG`, `DL`, `LIC`, `ADM`, `APP`, `SH`, `GPO`, `SYNC`)
-    * **Scope:** broad boundary or business unit (`GLOBAL`, `EMEA`, `APAC`, `FIN`, `HR`, `IT`, `Sales`)
-    * **Resource:** the thing being controlled (`Share`, `App`, `Site`, `DB`, `OU`, `System`)
-    * **Access:** permission level (`RO`, `RW`, `OWNER`, `ADMIN`, `CONTRIBUTOR`)
-    * **Env/Region:** prod/nonprod or datacenter code (`PRD`, `DEV`, `UAT`)
-    * **Qualifier:** optional clarifier (`External`, `Vendor`, `Temporary`)
+* **Naming Convention for Group Management:** 
+    * I adopted a clean **[Type]-[Scope]-[Resource]-[Access]-[Env]** naming template structure (e.g., SEC-HR-Share-RW-PRD). Keeping the tokens in the exact same order makes searching and auditing in Active Directory a breeze:
+        * **Type:** what kind of group (`GG`, `DL`, `LIC`, `ADM`, `APP`, `SH`, `GPO`, `SYNC`)
+        * **Scope:** broad boundary or business unit (`GLOBAL`, `EMEA`, `APAC`, `FIN`, `HR`, `IT`, `Sales`)
+        * **Resource:** the thing being controlled (`Share`, `App`, `Site`, `DB`, `OU`, `System`)
+        * **Access:** permission level (`RO`, `RW`, `OWNER`, `ADMIN`, `CONTRIBUTOR`)
+        * **Env/Region:** prod/nonprod or datacenter code (`PRD`, `DEV`, `UAT`)
+        * **Qualifier:** optional clarifier (`External`, `Vendor`, `Temporary`)
 
 * **Prefixes and what they mean:**
     *  `GG` - Security group used for access control.
@@ -111,14 +117,27 @@ Instead of assigning access rights directly to individual user accounts—which 
 ---
 
 ## **Step 4: Applying Share & NTFS Permissions via AGDLP**
-Once I had my AGDLP group structure ready, it was time to put it to work on the actual file server (**`NYCE-FS01`**). Setting up folder permissions is where the real beauty of the AGDLP model finally clicked for me!
+With my AGDLP groups ready, it was time to put them to work on **`NYCE-FS01`**. This is where the real value of the AGDLP model clicked for me!
 
-* Why This Setup Made My Lab So Much Easier to Manage
-    * **No More Permission Confusion:** I learned that it’s best practice to keep share-level permissions open (granting `Full Control` to `Authenticated Users`) and let NTFS permissions handle all the actual security rules. This stopped me from accidentally locking myself out with conflicting rules between SMB share settings and folder permissions.
-    * **Tighter Security by Default:** Disabling inherited permissions on departmental folders was a huge win. It immediately blocked default domain access, making sure sensitive folders stay completely isolated to the right teams.
-    * **Super Easy Scalability:** Because I attached permissions to dedicated resource groups (like `SH-HD-Team_Data-RO`) instead of user accounts, I’ll never have to log into the file server just to give a new employee folder access. I can manage everything directly through group memberships in Active Directory!
-    * **Instant, Reliable Protection:** When I tested the configuration on a client machine, the read-only restrictions kicked in instantly. Users without write permissions were immediately blocked from creating or modifying files, which gave me confidence that the data was fully secured against unauthorized changes or malware.
+* **Clean Permission Hierarchy:** Kept share-level permissions open (`Full Control` to `Authenticated Users`) and let NTFS handle actual security—preventing rule conflicts.
+* **Tighter Security by Default:** Disabled folder inheritance on departmental shares to instantly block unauthorized domain-wide access.
+* **Effortless Scalability:** Bound permissions to resource groups (`SH-HD-Team_Data-RO`) instead of users, so access updates happen entirely within Active Directory.
+* **Instant, Reliable Protection:** Verified client-side access right away—read-only users were immediately blocked from creating or modifying files.
 
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ABnBZa-3_eU?si=Oh3VFTRJGKbWB928" title="Applying Share & NTFS Permissions via AGDLP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## **Step 5: Standardizing User Onboarding with Account Templates**
+Setting up user accounts manually one by one is time-consuming and prone to human error. To streamline onboarding in my lab, I configured User Account Templates to automate departmental defaults!
+
+* **Why Use User Templates?**
+    * **Faster Onboarding:** Creating new accounts takes seconds—just right-click the template and choose Copy to pre-fill standard attributes.
+    * **Consistent Security Baseline:** Ensures uniform logon hours, group memberships, and department details across all team members automatically.
+    * **Automated Home Directory Creation:** Using %username% in the template’s mapped drive path automatically generates personalized, secured network folders upon account creation.
+
+<div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+<strong style="font-size: 1.1em;">💡 Pro Tip: </strong>
+<p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts disabled so no one can log in as the template itself, and use a prefix like <em>_Template or tpl_</em> so they sit neatly at the top of your OUs.</p>
+</div>
 
 ## **Step 2: Streamlining User Provisioning**
 Created standardized user templates (_Template) per department to make onboarding seamless, alongside active test user accounts (like john.d for HR) assigned to their respective GG- groups
