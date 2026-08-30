@@ -111,7 +111,13 @@ Instead of assigning access rights directly to individual user accounts—which 
 ---
 
 ## **Step 4: Applying Share & NTFS Permissions via AGDLP**
+Once I had my AGDLP group structure ready, it was time to put it to work on the actual file server (**`NYCE-FS01`**). Setting up folder permissions is where the real beauty of the AGDLP model finally clicked for me!
 
+* Why This Setup Made My Lab So Much Easier to Manage
+    * **No More Permission Confusion:** I learned that it’s best practice to keep share-level permissions open (granting `Full Control` to `Authenticated Users`) and let NTFS permissions handle all the actual security rules. This stopped me from accidentally locking myself out with conflicting rules between SMB share settings and folder permissions.
+    * **Tighter Security by Default:** Disabling inherited permissions on departmental folders was a huge win. It immediately blocked default domain access, making sure sensitive folders stay completely isolated to the right teams.
+    * **Super Easy Scalability:** Because I attached permissions to dedicated resource groups (like `SH-HD-Team_Data-RO`) instead of user accounts, I’ll never have to log into the file server just to give a new employee folder access. I can manage everything directly through group memberships in Active Directory!
+    * **Instant, Reliable Protection:** When I tested the configuration on a client machine, the read-only restrictions kicked in instantly. Users without write permissions were immediately blocked from creating or modifying files, which gave me confidence that the data was fully secured against unauthorized changes or malware.
 
 
 ## **Step 2: Streamlining User Provisioning**
