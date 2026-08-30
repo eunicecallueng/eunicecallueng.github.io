@@ -34,6 +34,18 @@ My very first step was preparing the file server architecture. One big lesson I'
     * **Simplified Security & Quotas:** Setting up NTFS permissions, Disk Quotas, and File Screening rules on a standalone data volume keeps things clean and prevents accidental tweaks to system files (C:\Windows).
     * **Storage Performance & Maintenance:** A dedicated disk volume gives me dedicated disk I/O throughput for SMB traffic. Plus, it makes backing up, expanding, or restoring storage way smoother if something goes wrong.
 
+    
+* **Here's How I Added a Virtual Hard Drive in VMware:**
+    1. Shut down the File Server.
+    2. Right-click the `NYCE-FS01` VM and select **Settings**.
+    3. Under the **Hardware** tab, click **Add**
+    4. Choose **Hard Disk** $\rightarrow$ **Next**
+    5. Select **SCSI** (Recommended) $\rightarrow$ **Next**.
+    6. Select **Create a new virtual disk** $\rightarrow$ **Next**.
+    7. Set the **disk size** (e.g., 15 GB) and select **Store virtual disk as a single file**.
+    8. Confirm the file path, click **Finish**, and select **OK** to apply VM settings.
+    9. Follow the steps from the video below:
+
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
