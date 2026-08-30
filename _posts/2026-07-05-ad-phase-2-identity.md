@@ -44,15 +44,15 @@ My very first step was preparing the file server architecture. One big lesson I'
     6. Select **Create a new virtual disk** $\rightarrow$ **Next**.
     7. Set the **disk size** (e.g., 15 GB) and select **Store virtual disk as a single file**.
     8. Confirm the file path, click **Finish**, and select **OK** to apply VM settings.
-    9. Follow the steps from the video below:
+    9. **You can follow the rest of the step-by-step walkthrough in the video below:**
 
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="Isolating Shared Folders to a Dedicated Data Volume" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
 
 ## **Step 2: Organizational Unit (OU) Structure & User Provisioning**
-To mirror standard directory design best practices, I structured my domain (**`nycehomelab.local`**) with a dedicated organizational layout:
+Right after setting up the file server, my next big focus was building out the Organizational Units (OUs) and provisioning users. To mirror standard directory design best practices, I structured my domain (**`nycehomelab.local`**) with a dedicated organizational layout:
 
 * Created a clean, structured Organizational Unit (OU) layout separating regional sites, departments, workstations, and server objects (e.g., **OU=PH ➔ OU=Users, OU=Workstations, OU=Servers**). This makes applying targeted policies so much easier down the road!
 
@@ -61,9 +61,23 @@ To mirror standard directory design best practices, I structured my domain (**`n
 ---
 
 ## **Step 3: Implementing the AGDLP Security Model**
-Setting up access control was easily one of the most satisfying parts of Phase 2! I built standard Global Groups for each team (like GG-HR-Employees) and nested them directly into Domain Local Groups (like SH-HR-RW). To make sure this environment can scale smoothly without becoming a total nightmare to manage down the road, I established a strict naming framework right from the start:
+Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, the next critical step was establishing a proper authorization model.
 
-* A Predictable Naming Template: I adopted a clean **[Type]-[Scope]-[Resource]-[Access]-[Env]** naming template structure (e.g., SEC-HR-Share-RW-PRD). Keeping the tokens in the exact same order makes searching and auditing in Active Directory a breeze:
+Instead of assigning access rights directly to individual user accounts—which quickly turns into an administrative nightmare—I implemented the enterprise-standard **AGDLP** (**A**ccount $\rightarrow$ **G**lobal $\rightarrow$ **D**omain Local $\rightarrow$ **P**ermission) framework.
+
+* **Why I Chose the AGDLP Strategy**
+    * In a real-world enterprise network, assigning permissions directly to end users leads to permission bloat, orphaned access rights, and massive headaches during audits. AGDLP keeps access management clean, scalable, and easy to troubleshoot:
+        * **Role-Based Access Control (RBAC):** Users are assigned to Global Groups based on their job roles (e.g., HR, Finance, IT). If an employee moves to a new department, I simply update their group membership—no need to touch folder permissions on the server.
+        * **Granular Privilege Management:** Domain Local Groups define the actual permissions on resources (like read/write access to a specific network share). This clear separation ensures that access rights are explicit and easy to trace.
+        * **Effortless Auditing & Onboarding:** When a new team member joins, they automatically inherit all necessary access simply by being added to their role’s global group.
+* **How the AGDLP Chain Works in My Lab**
+    * **Account (A):** Individual user accounts (e.g., john.doe).
+    * **Global Group (G):** Accounts are nested into Global Groups based on job function (e.g., GG-HD-Tech).
+    * **Domain Local Group (DL):** Global Groups are nested into Domain Local Groups created for specific resource access (e.g., SH-HR-RW).
+    * **Permissions (P):** Explicit NTFS and SMB permissions are assigned directly to the Domain Local Group on the file system folder.
+
+
+* **Predictable Naming Template:** I adopted a clean **[Type]-[Scope]-[Resource]-[Access]-[Env]** naming template structure (e.g., SEC-HR-Share-RW-PRD). Keeping the tokens in the exact same order makes searching and auditing in Active Directory a breeze:
     * **Type:** what kind of group (`GG`, `DL`, `LIC`, `ADM`, `APP`, `SH`, `GPO`, `SYNC`)
     * **Scope:** broad boundary or business unit (`GLOBAL`, `EMEA`, `APAC`, `FIN`, `HR`, `IT`, `Sales`)
     * **Resource:** the thing being controlled (`Share`, `App`, `Site`, `DB`, `OU`, `System`)
@@ -71,7 +85,7 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
     * **Env/Region:** prod/nonprod or datacenter code (`PRD`, `DEV`, `UAT`)
     * **Qualifier:** optional clarifier (`External`, `Vendor`, `Temporary`)
 
-* Prefixes and what they mean:
+* **Prefixes and what they mean:**
     *  `GG` - Security group used for access control.
     * `DL`- Distribution (mail) group.
     * `LIC` - Licensing / entitlement group (M365 group-based licensing).
@@ -89,9 +103,13 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
 
 * Enforcing these standards early made nesting groups intuitive and kept the entire security model super clean, predictable, and ready for expansion!
 
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/cCt0lx_goTg?si=w4KAXxP-ldc1wB7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/cCt0lx_goTg?si=w4KAXxP-ldc1wB7s" title="Implementing the AGDLP Security Model" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
+
+## **Step 4: Applying Share & NTFS Permissions via AGDLP**
+
+
 
 ## **Step 2: Streamlining User Provisioning**
 Created standardized user templates (_Template) per department to make onboarding seamless, alongside active test user accounts (like john.d for HR) assigned to their respective GG- groups
