@@ -1,5 +1,5 @@
 ---
-title: "Phase 1: Foundation & Domain Join"
+title: "Phase 1: Server Provisioning, Storage & Client Onboarding"
 date: 2026-07-07
 categories: [Homelab, Active Directory]
 tags: [windows-server, vmware, domain-controller]
@@ -37,7 +37,7 @@ Active Directory relies heavily on stable, predictable network addressing so I a
    **Configure Static IP Address:**
    * Press `Win + R`, type `ncpa.cpl`, and press **Enter**.
    * Right-click your network adapter > **Properties** > **Internet Protocol Version 4 (TCP/IPv4)**.
-   * Manually assign a static IP address (e.g., IP: `192.168.120.100`, Subnet: `255.255.255.0`, Gateway: `192.168.120.1`, Preferred DNS: `127.0.0.1`).
+   * Manually assign a static IP address (e.g., IP: `192.168.1.100`, Subnet: `255.255.255.0`, Gateway: `192.168.1.1`, Preferred DNS: `127.0.0.1`).
 
       ![Configure-Static-IP](https://raw.githubusercontent.com/eunicecallueng/Virtualization-Labs/main/02.Microsoft-Active-Directory/Configuring-Active-Directory/Screenshots/Configure-Static-IP.jpg)
 
@@ -88,8 +88,8 @@ Log into the server using domain administrator credentials: `NYCEHOMELAB\Adminis
 
 ---
 
-## **Step 1: Preparing the File Server & Storage Infrastructure**
-My very first step was preparing the file server architecture. One big lesson I've learned in tech is that designing your server infrastructure properly from day one saves you from massive headaches later—especially when it comes to security, stability, and scalability.
+## **Step 4: Preparing the File Server & Storage Infrastructure**
+My next step was preparing the file server architecture. One big lesson I've learned in tech is that designing your server infrastructure properly from day one saves you from massive headaches later—especially when it comes to security, stability, and scalability.
 
 1. **Why I Separated the Domain Controller and File Server Roles**
 
@@ -116,7 +116,7 @@ My very first step was preparing the file server architecture. One big lesson I'
     
 * **Here's How I Added a Virtual Hard Drive in VMware:**
     1. Shut down the File Server.
-    2. Right-click the `NYCE-FS01` VM and select **Settings**.
+    2. Right-click the **`NYCE-FS01`** VM and select **Settings**.
     3. Under the **Hardware** tab, click **Add**
     4. Choose **Hard Disk** $\rightarrow$ **Next**
     5. Select **SCSI** (Recommended) $\rightarrow$ **Next**.
@@ -130,19 +130,16 @@ My very first step was preparing the file server architecture. One big lesson I'
 ---
 
 
-## **Step 2: Domain Join & Client Network Configuration**
-
-Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
+## **Step 5: Domain Join & Client Network Configuration**
+With the server infrastructure ready, it was time to bring my Windows 11 VM into the domain! Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
 
 * **Configuring Client DNS:**
-    * I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
-
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    * I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.1.100``). This ensures the client can properly query and resolve the Active Directory domain.
 
 * **Joining and Logging In:** 
-    * After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
+    * After confirming that the Client vm can ping the domain `nycehomelab.local` its time to join it to the domain
 
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="100%" height="450" src="https://www.youtube.com/embed/DgHRKRH8iEQ?si=qmfLB-s_I8h5ITYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 [← Back to AD Series Overview](/posts/active-directory-series/)
