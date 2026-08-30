@@ -87,4 +87,62 @@ Log into the server using domain administrator credentials: `NYCEHOMELAB\Adminis
    </video>
 
 ---
+
+## **Step 1: Preparing the File Server & Storage Infrastructure**
+My very first step was preparing the file server architecture. One big lesson I've learned in tech is that designing your server infrastructure properly from day one saves you from massive headaches later—especially when it comes to security, stability, and scalability.
+
+1. **Why I Separated the Domain Controller and File Server Roles**
+
+    Technically, a single Windows Server can host both Active Directory (AD DS) and File Services. But for my lab, I chose to separate them across dedicated virtual machines (VMs) because it mirrors actual enterprise best practices:
+    
+    * **Ransomware & Malware Containment:** File servers are usually the main target for user-driven malware. By keeping my File Server on a separate VM, an infection can't easily reach or encrypt my Active Directory database (`NTDS.dit`).
+    * **Privilege Escalation Prevention:** Domain Controllers don't have a local Administrators group. If you start handing out admin rights for file sharing on a DC, you inadvertently end up granting elevated Domain Admin privileges.
+    * **Reduced Attack Surface**: File servers need open SMB ports for workstations to connect. Separating this role protects my DC from unauthorized network scans and lateral movement.
+    * **Performance & Resource Allocation:** **`NYCE-DC01`** gets dedicated CPU and RAM for fast authentication and DNS queries, without getting bogged down by heavy disk I/O when users transfer large files.
+
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RR-WV6euKrA?si=ynbOlv1s5v0cz9Gb" title="File Server Creation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+2. **Isolating Shared Folders to a Dedicated Data Volume**
+
+    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+    <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
+    <p style="margin-top: 10px; margin-bottom: 0;">Never dump shared folders or user data onto the system volume (C: Drive). I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
+    </div>
+
+    * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.
+    * **Simplified Security & Quotas:** Setting up NTFS permissions, Disk Quotas, and File Screening rules on a standalone data volume keeps things clean and prevents accidental tweaks to system files (C:\Windows).
+    * **Storage Performance & Maintenance:** A dedicated disk volume gives me dedicated disk I/O throughput for SMB traffic. Plus, it makes backing up, expanding, or restoring storage way smoother if something goes wrong.
+
+    
+* **Here's How I Added a Virtual Hard Drive in VMware:**
+    1. Shut down the File Server.
+    2. Right-click the `NYCE-FS01` VM and select **Settings**.
+    3. Under the **Hardware** tab, click **Add**
+    4. Choose **Hard Disk** $\rightarrow$ **Next**
+    5. Select **SCSI** (Recommended) $\rightarrow$ **Next**.
+    6. Select **Create a new virtual disk** $\rightarrow$ **Next**.
+    7. Set the **disk size** (e.g., 15 GB) and select **Store virtual disk as a single file**.
+    8. Confirm the file path, click **Finish**, and select **OK** to apply VM settings.
+    9. **You can follow the rest of the step-by-step walkthrough in the video below:**
+
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="Isolating Shared Folders to a Dedicated Data Volume" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+
+## **Step 2: Domain Join & Client Network Configuration**
+
+Building on the foundation from Phase 1, I brought my client machine (my Windows 11 VM) into the newly minted environment. Before any machine can talk to a domain controller, getting the network and DNS pointing correctly is crucial:
+
+* **Configuring Client DNS:**
+    * I opened network properties on the Windows 11 client and pointed its Preferred DNS Server directly to my Domain Controller’s static IP address (``192.168.120.100``). This ensures the client can properly query and resolve the Active Directory domain.
+
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/wu-0Izl8QDU?si=7WFvcqeab0K3i2NF" title="Client VM DNS coniguration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+* **Joining and Logging In:** 
+    * After joining the machine to ``nycehomelab``.local, I tested the environment by logging into the client VM using a custom domain user account (``john.doe``) that I set up in Active Directory, verifying that centralized authentication was working seamlessly.
+
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/lsE92TkJu_Y?si=BG69DJW2sgD6Rymm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 [← Back to AD Series Overview](/posts/active-directory-series/)
