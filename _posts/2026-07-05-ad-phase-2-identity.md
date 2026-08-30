@@ -139,8 +139,9 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
 <p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts disabled so no one can log in as the template itself, and use a prefix like <em>_Template or tpl_</em> so they sit neatly at the top of your OUs.</p>
 </div>
 
-## **Step 2: Streamlining User Provisioning**
-Created standardized user templates (_Template) per department to make onboarding seamless, alongside active test user accounts (like john.d for HR) assigned to their respective GG- groups
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
 
 
 ## **Step 2: Domain Join & Client Network Configuration**
