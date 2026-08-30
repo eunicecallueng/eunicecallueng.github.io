@@ -102,14 +102,17 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
 
 ---
 
-## **Step 3: Role-Based Access Control (RBAC) & Delegation**
-To implement the principle of least privilege, permissions were assigned using security groups rather than individual account rights, and specific admin duties were delegated down.:
+## **Step 5: Delegating Administrative Control**
+Giving domain admin rights to everyone who resets passwords is a huge security risk. To follow the **Principle of Least Privilege**, I used Active Directory’s **Delegation of Control Wizard** to assign specific, scoped administrative tasks directly to our Helpdesk staff.
 
-* **Security Group Management:** 
-    * I created security groups for departmental access and admin roles using the AGDLP strategy to keep everything clean and scalable. Since AGDLP is such a fun and important concept in AD, I broke down how I set it up on a separate AGDLP Deep-Dive Page!
+* **Why Delegate Control?**
+    * **Enhanced Security:** Keeps Domain Admin credentials restricted while allowing Tier 1/2 Helpdesk to handle routine administrative requests.
 
-* **Delegating Control:** 
-    * I used the Delegation of Control Wizard in ADUC to give our Helpdesk team permission to reset passwords for specific OUs. It was awesome seeing this in action because it meant giving them the exact rights they needed without handing over full Domain Admin privileges.
+    * **Granular Access**: Limits permissions strictly to specific Organizational Units (OUs) instead of granting domain-wide access.
+
+    * **Operational Efficiency**: Empowers support staff to instantly resolve user account issues without escalating to senior system administrators.
+
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZpER8ElkKNM?si=EItydIh8vhCCwFIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
