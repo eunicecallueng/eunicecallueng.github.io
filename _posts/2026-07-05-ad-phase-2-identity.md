@@ -4,7 +4,7 @@ date: 2026-07-09
 categories: [Homelab, Active Directory]
 tags: [aduc, rbac, user-management, agdlp]
 hidden: true
-sitemap: false
+sitemap: true
 permalink: /posts/ad-phase-2-identity/
 ---
 
