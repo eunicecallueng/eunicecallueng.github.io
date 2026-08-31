@@ -126,7 +126,7 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
         | **3. Logon Hours Restriction** | Configured restricted logon hours on the DC. | Block logon outside the allowed schedule. | **Passed** *(Received "Account has time restrictions")* |
         | **4. Folder Redirection & Share Access** | Adjusted logon hours to the current time and logged in. | Auto-map network drive and create a test file. | **Passed** *(File created and synced to `NYCE-FS01`)* |
         
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 **What's Next?**  
