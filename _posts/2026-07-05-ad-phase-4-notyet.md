@@ -5,7 +5,7 @@ categories: [Homelab, Active Directory]
 tags: [gpo, security, active-directory]
 hidden: true
 sitemap: false
-permalink: /posts/ad-phase-4-gpo/
+permalink: /posts/ad-phase-4-notyet/
 ---
 
 Welcome to the final phase of my Active Directory homelab project! After setting up the foundation, organizing users into logical OUs, and securing file shares, I turned my attention to enterprise-level automation and security baselines. 
