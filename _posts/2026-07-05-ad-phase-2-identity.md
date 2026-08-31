@@ -118,6 +118,7 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 * **Testing Account Templates**
     * To make sure my account templates, logon restrictions, and folder redirection rules were working as intended, I put `maricel.soriano`'s account through a complete end-to-end verification flow from the Windows 11 client VM.
     Here’s a breakdown of the tests I ran and how they played out:
+        
         | Test Case | Scenario / Configuration | Expected Result | Actual Result |
         | :--- | :--- | :--- | :--- |
         | **1. Disabled Account Test** | Set account status to **Disabled** in Active Directory. | Block domain logon attempt. | **Passed** *(Received "Your account has been disabled")* |
