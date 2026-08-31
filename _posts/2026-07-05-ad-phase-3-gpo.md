@@ -5,7 +5,7 @@ categories: [Homelab, Active Directory]
 tags: [gpo, gpmc, laps, security-hardening, active-directory]
 hidden: true
 sitemap: false
-permalink: /posts/ad-phase-3-storage/
+permalink: /posts/ad-phase-3-gpo/
 ---
 
 With Active Directory set up and my user hierarchy organized, it was time to lock things down. Phase 3 is all about Group Policy Objects (GPOs)—specifically, taking my homelab from default settings to proper security standards.
