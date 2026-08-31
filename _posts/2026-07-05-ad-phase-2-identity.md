@@ -95,17 +95,12 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
     * **Consistent Security Baseline:** Ensures uniform logon hours, group memberships, and department details across all team members automatically.
     * **Automated Home Directory Creation:** Using %username% in the template’s mapped drive path automatically generates personalized, secured network folders upon account creation.
 
-<div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-<strong style="font-size: 1.1em;">💡 Pro Tip: </strong>
-<p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts <strong>disabled</strong> so no one can log in as the template itself, and use a prefix like <em><strong>_Template or tpl_</strong></em> so they sit neatly at the top of your OUs.</p>
-</div>
+    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+    <strong style="font-size: 1.1em;">💡 Pro Tip: </strong>
+    p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts <strong>disabled</strong> so no one can log in as the template itself, and use a prefix like <em><strong>_Template or tpl_</strong></em> so they sit neatly at the top of your OUs.</p>
+    </div>
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-* Testing and Validating Account Templates
-
-
-
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
