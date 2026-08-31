@@ -101,6 +101,19 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
     </div>
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+---
+* **Testing Account Templates**
+    * To make sure my account templates, logon restrictions, and folder redirection rules were working as intended, I put `maricel.soriano`'s account through a complete end-to-end verification flow from the Windows 11 client VM.
+    Here’s a breakdown of the tests I ran and how they played out:
+        
+        | Test Case | Scenario / Configuration | Expected Result | Actual Result |
+        | :--- | :--- | :--- | :--- |
+        | **1. Disabled Account Test** | Set account status to **Disabled** in Active Directory. | Block domain logon attempt. | **Passed** *(Received "Your account has been disabled")* |
+        | **2. Mandatory Password Change** | Re-enabled account + checked **"Must change password at next logon"**. | Prompt user to set a new password on login. | **Passed** *(Successfully updated password)* |
+        | **3. Logon Hours Restriction** | Configured restricted logon hours on the DC. | Block logon outside the allowed schedule. | **Passed** *(Received "Account has time restrictions")* |
+        | **4. Folder Redirection & Share Access** | Adjusted logon hours to the current time and logged in. | Auto-map network drive and create a test file. | **Passed** *(File created and synced to `NYCE-FS01`)* |
+        
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -114,19 +127,7 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZpER8ElkKNM?si=EItydIh8vhCCwFIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## **End-to-End User Verification & Testing**
-* **Testing Account Templates**
-    * To make sure my account templates, logon restrictions, and folder redirection rules were working as intended, I put `maricel.soriano`'s account through a complete end-to-end verification flow from the Windows 11 client VM.
-    Here’s a breakdown of the tests I ran and how they played out:
-        
-        | Test Case | Scenario / Configuration | Expected Result | Actual Result |
-        | :--- | :--- | :--- | :--- |
-        | **1. Disabled Account Test** | Set account status to **Disabled** in Active Directory. | Block domain logon attempt. | **Passed** *(Received "Your account has been disabled")* |
-        | **2. Mandatory Password Change** | Re-enabled account + checked **"Must change password at next logon"**. | Prompt user to set a new password on login. | **Passed** *(Successfully updated password)* |
-        | **3. Logon Hours Restriction** | Configured restricted logon hours on the DC. | Block logon outside the allowed schedule. | **Passed** *(Received "Account has time restrictions")* |
-        | **4. Folder Redirection & Share Access** | Adjusted logon hours to the current time and logged in. | Auto-map network drive and create a test file. | **Passed** *(File created and synced to `NYCE-FS01`)* |
-        
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+---
 
 * **Testing & Validating Delegation of Control**
     * To test and validate if our Delegation of Control settings are actually working, we first need to install RSAT (Remote Server Administration Tools) on our client VM. 
