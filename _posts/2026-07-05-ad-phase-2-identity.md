@@ -27,10 +27,8 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
 
 * **Why I Chose the AGDLP Strategy**
     * **Role-Based Access Control (RBAC):** Users belong to Global Groups by job role—department transfers only require updating group memberships, not server permissions.
-
     * **Granular Privilege Management:** Domain Local Groups define exact resource access, keeping permissions explicit and easy to audit.
-    
-        * **Effortless Auditing & Onboarding:** When a new team member joins, they automatically inherit all necessary access simply by being added to their role’s global group.
+    * **Effortless Auditing & Onboarding:** When a new team member joins, they automatically inherit all necessary access simply by being added to their role’s global group.
 
     <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
     <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
@@ -79,7 +77,7 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
 
 ## **Step 3: Applying Share & NTFS Permissions via AGDLP**
 With my AGDLP groups ready, it was time to put them to work on **`NYCE-FS01`**. This is where the real value of the AGDLP model clicked for me!
-
+    
 * **Clean Permission Hierarchy:** Kept share-level permissions open (`Full Control` to `Authenticated Users`) and let NTFS handle actual security—preventing rule conflicts.
 * **Tighter Security by Default:** Disabled folder inheritance on departmental shares to instantly block unauthorized domain-wide access.
 * **Effortless Scalability:** Bound permissions to resource groups (`SH-HD-Team_Data-RO`) instead of users, so access updates happen entirely within Active Directory.
@@ -87,14 +85,14 @@ With my AGDLP groups ready, it was time to put them to work on **`NYCE-FS01`**. 
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/ABnBZa-3_eU?si=Oh3VFTRJGKbWB928" title="Applying Share & NTFS Permissions via AGDLP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## **Step 4: Standardizing User Onboarding with Account Templates**
+---
+
+## **Step 4: Account Templates for Standardized User Onboarding**
 Setting up user accounts manually one by one is time-consuming and prone to human error. To streamline onboarding in my lab, I configured User Account Templates to automate departmental defaults!
 
 * **Why Use User Templates?**
     * **Faster Onboarding:** Creating new accounts takes seconds—just right-click the template and choose Copy to pre-fill standard attributes.
-
     * **Consistent Security Baseline:** Ensures uniform logon hours, group memberships, and department details across all team members automatically.
-
     * **Automated Home Directory Creation:** Using %username% in the template’s mapped drive path automatically generates personalized, secured network folders upon account creation.
 
 <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
@@ -103,6 +101,9 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
 </div>
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+* Testing and Validating Account Templates
+
 
 
 
@@ -113,15 +114,24 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 
 * **Why Delegate Control?**
     * **Enhanced Security:** Keeps Domain Admin credentials restricted while allowing Tier 1/2 Helpdesk to handle routine administrative requests.
-
     * **Granular Access**: Limits permissions strictly to specific Organizational Units (OUs) instead of granting domain-wide access.
-
     * **Operational Efficiency**: Empowers support staff to instantly resolve user account issues without escalating to senior system administrators.
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZpER8ElkKNM?si=EItydIh8vhCCwFIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## **End-to-End User Verification & Testing**
+* **Testing Account Templates**
+    * To make sure my account templates, logon restrictions, and folder redirection rules were working as intended, I put `maricel.soriano`'s account through a complete end-to-end verification flow from the Windows 11 client VM.
+    Here’s a breakdown of the tests I ran and how they played out:
 
-
+        | Test Case | Scenario / Configuration | Expected Result | Actual Result |
+        | :--- | :--- | :--- | :--- |
+        | **1. Disabled Account Test** | Set account status to **Disabled** in Active Directory. | Block domain logon attempt. | **Passed** *(Received "Your account has been disabled")* |
+        | **2. Mandatory Password Change** | Re-enabled account + checked **"Must change password at next logon"**. | Prompt user to set a new password on login. | **Passed** *(Successfully updated password)* |
+        | **3. Logon Hours Restriction** | Configured restricted logon hours on the DC. | Block logon outside the allowed schedule. | **Passed** *(Received "Account has time restrictions")* |
+        | **4. Folder Redirection & Share Access** | Adjusted logon hours to the current time and logged in. | Auto-map network drive and create a test file. | **Passed** *(File created and synced to `NYCE-FS01`)* |
+        
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 **What's Next?**  
