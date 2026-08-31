@@ -125,11 +125,11 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
     * **Granular Access**: Limits permissions strictly to specific Organizational Units (OUs) instead of granting domain-wide access.
     * **Operational Efficiency**: Empowers support staff to instantly resolve user account issues without escalating to senior system administrators.
 
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ZpER8ElkKNM?si=EItydIh8vhCCwFIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/-OiREKXbp6U?si=qmYPqG86dRw26jGa" title="Delegating Administrative Control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
-* **Testing & Validating Delegation of Control**
+* **RSAT Installation**
     * To test and validate if our Delegation of Control settings are actually working, we first need to install RSAT (Remote Server Administration Tools) on our client VM. 
         * Setting Up RSAT on the Client VM
             * You can normally install RSAT via **Windows Settings > Optional features**. However, to keep things lightweight, I initially tried installing only the specific Active Directory RSAT capability via PowerShell. 
@@ -140,6 +140,15 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
             ```
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/Wkw2CWJ2muw?si=tI3XfzVH_C0-XaFv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+--- 
+
+* **Testing & Validating Delegation of Control**
+    * With RSAT ready, I tested our delegated Helpdesk account (NYCEHOMELAB\john.doe) to verify that least privilege enforcement was working as intended:
+
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/8Om3uOM5TA0?si=5nmipNJvWtUtcxkv" title="Delegated Control Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ---
+
 **What's Next?**  
 *Up Next: In **Phase 3: Storage & File Sharing**, we will put these newly created Security Groups to work! I'll walk through configuring centralized file servers and enforcing strict role-based access controls across our shared network drives.*
