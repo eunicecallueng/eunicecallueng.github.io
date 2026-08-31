@@ -1,11 +1,11 @@
 ---
-title: "Phase 3: Storage & File Sharing"
+title: "Phase 3: Group Policy Governance & System Hardening"
 date: 2026-07-11
 categories: [Homelab, Active Directory]
-tags: [file-server, ntfs, share-permissions, rbac]
+tags: [gpo, gpmc, laps, security-hardening, active-directory]
 hidden: true
 sitemap: false
-permalink: /posts/ad-phase-3-storage/
+permalink: /posts/ad-phase-3-gpo/
 ---
 
 Now that our users and security groups are neatly organized in Active Directory (Phase 2), it's time to provide them with secure access to resources. 

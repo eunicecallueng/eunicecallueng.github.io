@@ -2,7 +2,7 @@
 title: "Phase 2: Core Identity & Access Control (ADUC)"
 date: 2026-07-09
 categories: [Homelab, Active Directory]
-tags: [aduc, rbac, user-management, agdlp]
+tags: [aduc, rbac, user-management, agdlp, least-privilege]
 hidden: true
 sitemap: true
 permalink: /posts/ad-phase-2-identity/
@@ -23,7 +23,7 @@ Right after setting up the file server, my next big focus was building out the O
 ---
 
 ## **Step 2: Implementing the AGDLP Security Model**
-Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, I established the enterprise-standard **AGDLP** **A**ccount $\rightarrow$ **G**lobal $\rightarrow$ **D**omain Local $\rightarrow$ **P**ermission framework.
+Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, I established the enterprise-standard **AGDLP** (**A**ccount > **G**lobal > **D**omain Local > **P**ermission) framework.
 
 * **Why I Chose the AGDLP Strategy**
     * **Role-Based Access Control (RBAC):** Users belong to Global Groups by job role—department transfers only require updating group memberships, not server permissions.
