@@ -29,13 +29,13 @@ Any updates made to `.admx` files in `SYSVOL` will automatically apply domain-wi
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
 * Getting the Structure Right</span>
-   * **<span style="color: #4A90E2;">Computer Configuration (`C-`) vs. User Configuration (`U-`)**</span>
+   * <span style="color: #4A90E2;"><strong>Computer Configuration vs. User Configuration</strong></span>
       * **Computer Configuration:** Applies directly to the ***machine itself***, regardless of who signs in. It processes at system startup (e.g., security hardening, firewall rules, local account controls).
 
       * **User Configuration:** Applies to the ***user account***, following that person no matter which domain machine they log into (e.g., desktop wallpaper, drive mappings, browser settings).
 
-   * **Policies vs. Preferences**
-      * **Policies (Enforced Rules):** Think of this as a strict workplace rule, like ***wearing a mandatory security badge***. It is non-negotiable, locked down, and employees cannot change or turn it off. 
+   * <span style="color: #4A90E2;"><strong>Policies vs. Preferences</strong></span>
+      * Policies (Enforced Rules):** Think of this as a strict workplace rule, like ***wearing a mandatory security badge***. It is non-negotiable, locked down, and employees cannot change or turn it off. 
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
