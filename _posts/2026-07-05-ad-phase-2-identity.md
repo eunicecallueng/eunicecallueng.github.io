@@ -128,6 +128,17 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
         
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/dWK9rlK-6mw?si=iAeTo7QHtUEyCMfy" title="User Template Validation and Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+* **Testing & Validating Delegation of Control**
+    * To test and validate if our Delegation of Control settings are actually working, we first need to install RSAT (Remote Server Administration Tools) on our client VM. 
+        * Setting Up RSAT on the Client VM
+            * You can normally install RSAT via **Windows Settings > Optional features**. However, to keep things lightweight, I initially tried installing only the specific Active Directory RSAT capability via PowerShell. 
+            * I ran into a bit of an issue where individual feature targeting wasn't processing properly in my environment. To work around this, I executed a broader query to fetch and install the full Active Directory RSAT package:
+
+            ```powershell
+            Get-WindowsCapability -Name RSAT.ActiveDirectory* -Online | Add-WindowsCapability -Online
+            ```
+
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/Wkw2CWJ2muw?si=tI3XfzVH_C0-XaFv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ---
 **What's Next?**  
 *Up Next: In **Phase 3: Storage & File Sharing**, we will put these newly created Security Groups to work! I'll walk through configuring centralized file servers and enforcing strict role-based access controls across our shared network drives.*
