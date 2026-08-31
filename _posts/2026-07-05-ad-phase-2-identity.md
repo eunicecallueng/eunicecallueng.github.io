@@ -152,3 +152,5 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 
 **What's Next?**  
 *Up Next: In **Phase 3: Storage & File Sharing**, we will put these newly created Security Groups to work! I'll walk through configuring centralized file servers and enforcing strict role-based access controls across our shared network drives.*
+
+[← Back to AD Series Overview](/posts/active-directory-series/)
