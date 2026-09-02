@@ -29,7 +29,7 @@ To keep everything consistent across the domain, I set up a **Central Store** on
 ## **Step 2: Deploying Workstation Baseline Security Policies**
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
-* **Getting the Structure Right**
+#### **A.   Getting the Structure Right**
    * <span style="color: #4A90E2;"><strong>Computer Configuration vs. User Configuration</strong></span>
       * **Computer Configuration:** Applies directly to the ***machine itself***, regardless of who signs in. It processes at system startup (e.g., security hardening, firewall rules, local account controls).
 
@@ -40,36 +40,32 @@ Once the Central Store was up and running, it was time to establish a baseline s
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
-<div class="callout callout-danger">
-  <strong>WARNING:</strong>
-  
-  <p style="margin-top: 10px; line-height: 1.6;">
-    <strong>Do not modify the Default Domain Policy.</strong> This GPO is linked directly to the root of the domain, meaning every single user and computer processes it.
-  </p>
-
-  <p style="line-height: 1.6;">
+   <div class="callout callout-danger"><strong>WARNING:</strong>
+   <p style="margin-top: 10px; line-height: 1.6;">
+   <strong>Do not modify the Default Domain Policy.</strong> This GPO is linked directly to the root of the domain, meaning every single user and computer processes it.
+   </p>
+   <p style="line-height: 1.6;">
     Because of that, it should only be used for four specific areas: <strong><em>account policy settings, password policy, account lockout policy, and Kerberos policy</em></strong>.
-  </p>
-
-  <p style="margin-bottom: 0; line-height: 1.6;">
+   </p>
+   <p style="margin-bottom: 0; line-height: 1.6;">
     Any other setting—like software installs, desktop configurations, or firewall rules—should go into a separate, focused GPO. Keeping GPOs small and modular makes management so much easier.
-  </p>
-</div>
+   </p>
+   </div>
 
 With that in mind, here are the only **baseline authentication rules** I configured inside the Default Domain Policy:
 
-| Policy Setting | Configuration | Purpose / Enterprise Context |
-| :--- |  :--- | :--- |
-| **Account Lockout Threshold** | **5 invalid attempts** | Aligns with CIS Benchmarks to prevent brute-force attacks while mitigating Denial of Service (DoS) risk. |
-| **Account Lockout Duration** | **15 minutes** | Implements an automatic cooldown period without requiring manual IT Helpdesk intervention. |
-| **Reset Lockout Counter After** | **10 minutes** | Sets the observation window before resetting the failed attempts counter back to zero. |
-| **Minimum Password Length** | **12 characters** | Replaces legacy 8-character limits to defend against modern GPU-based password hashing tools. |
-| **Password Complexity** | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
-| **Enforce Password History** | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
+   | Policy Setting | Configuration | Purpose / Enterprise Context |
+   | :--- |  :--- | :--- |
+   | **Account Lockout Threshold** | **5 invalid attempts** | Aligns with CIS Benchmarks to prevent brute-force attacks while mitigating Denial of Service (DoS) risk. |
+   | **Account Lockout Duration** | **30 minutes** | Implements an automatic cooldown period without requiring manual IT Helpdesk intervention. |
+   | **Reset Lockout Counter After** | **30 minutes** | Sets the observation window before resetting the failed attempts counter back to zero. |
+   | **Minimum Password Length** | **12 characters** | Replaces legacy 8-character limits to defend against modern GPU-based password hashing tools. |
+   | **Password Complexity** | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
+   | **Enforce Password History** | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
 
 ---
 
-#### 2. Workstation Baseline Controls (Configured in `C_WS_Baseline_Security`)
+#### **B. Workstation Baseline Controls (Configured in `C_WS_Baseline_Security`)**
 
 For machine-specific hardening, I configured local policy rules inside `C_WS_Baseline_Security` to enforce physical and operational workstation security:
 
