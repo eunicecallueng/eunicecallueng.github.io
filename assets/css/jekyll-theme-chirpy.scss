@@ -74,10 +74,22 @@
   }
 }
 
-blockquote {
-  background-color: #d2ebff; /* Kulay ng background (Light Yellow/Gold) */
-  border-left: 5px solid #1890FF; /* Kulay ng linyang nasa kaliwa */
-  padding: 10px 15px;
-  margin: 15px 0;
-  color: #333333;
+/* Base Style */
+.callout {
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-left: 5px solid;
+  border-radius: 4px;
+}
+
+/* Para sa Note (Blue) */
+.callout-note {
+  background-color: #dde4ec; /* Soft Gray */
+  border-left: 5px solid #6e7781; /* Darker Gray Border */  
+}
+
+/* Para sa Important (Yellow/Amber) */
+.callout-important {
+  background-color: #E6FFED;
+  border-color: #52C41A;
 }
