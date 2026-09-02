@@ -101,11 +101,10 @@ My next step was preparing the file server architecture. One big lesson I've lea
    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RR-WV6euKrA?si=ynbOlv1s5v0cz9Gb" title="File Server Creation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 2. **Isolating Shared Folders to a Dedicated Data Volume**
-
-    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-    <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
-    <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
-    </div>
+   <div class="callout callout-important">
+   <strong> Rule of Thumb 👍: </strong>
+   <p style="margin-top: 0px; margin-bottom: 10;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
+   </div>
 
     * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.
     * **Simplified Security & Quotas:** Setting up NTFS permissions, Disk Quotas, and File Screening rules on a standalone data volume keeps things clean and prevents accidental tweaks to system files (C:\Windows).
