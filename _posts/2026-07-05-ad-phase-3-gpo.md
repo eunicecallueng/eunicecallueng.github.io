@@ -17,11 +17,10 @@ When managing GPOs across a domain, relying on local template files (`.admx`) st
 
 To keep everything consistent across the domain, I set up a **Central Store** on my Domain Controller (**`NYCE-DC01`**). This forces Group Policy to pull its template definitions from a single, shared folder in `SYSVOL` instead of local storage.
 
-<div class="callout callout-note">
-<strong>Note:</strong> If you want to manage features specific to newer Windows builds (like Windows 11 23H2/24H2), download the latest <strong>Administrative Templates (.admx)</strong> installer directly from Microsoft and extract them into this folder.
+<div class="callout callout-note"><strong>NOTE:</strong><p style="margin-top: 10px; margin-bottom: 0;">If you want to manage features specific to newer Windows builds (like Windows 11 23H2/24H2), download the latest <strong>Administrative Templates (.admx)</strong> installer directly from Microsoft and extract them into this folder.
 </div>
 
-Any updates made to `.admx` files in `SYSVOL` will automatically apply domain-wide for anyone editing GPOs!
+**Any updates made to `.admx` files in `SYSVOL` will automatically apply domain-wide for anyone editing GPOs!**
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/BtuXd0MRybI?si=ZgJ2DW5wyfyw0-Gm" title="ADMX Central Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -37,11 +36,11 @@ Once the Central Store was up and running, it was time to establish a baseline s
       * **User Configuration:** Applies to the ***user account***, following that person no matter which domain machine they log into (e.g., desktop wallpaper, drive mappings, browser settings).
 
    * <span style="color: #4A90E2;"><strong>Policies vs. Preferences</strong></span>
-      * Policies (Enforced Rules):** Think of this as a strict workplace rule, like ***wearing a mandatory security badge***. It is non-negotiable, locked down, and employees cannot change or turn it off. 
+      * **Policies (Enforced Rules):** Think of this as a strict workplace rule, like ***wearing a mandatory security badge***. It is non-negotiable, locked down, and employees cannot change or turn it off. 
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
-* **Do not modify the Default Domain Policy**
+<div class="callout callout-danger"><strong>WARNING:</strong><p style="margin-top: 10px; margin-bottom: 0;">Do not modify the Default Domain Policy</div>
 
 Because Active Directory only enforces domain account password and lockout logic from the domain root, these settings were applied directly within the **Default Domain Policy**:
 
