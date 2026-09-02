@@ -104,7 +104,7 @@ My next step was preparing the file server architecture. One big lesson I've lea
 
     <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
     <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
-    <p style="margin-top: 10px; margin-bottom: 0;">Never dump shared folders or user data onto the system volume (C: Drive). I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
+    <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
     </div>
 
     * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.

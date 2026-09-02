@@ -12,7 +12,7 @@ With Active Directory set up and my user hierarchy organized, it was time to loc
 
 In this phase, I focused on centralizing policy management, enforcing baseline security controls, and sticking to modular GPO conventions (`C-` for computer policies and `U-` for user policies) so the environment stays clean, scalable, and easy to manage. Here is how I set it up step-by-step!
 
-## **Step 1: Centralizing Policy Management (ADMX Central Store)**
+## <span style="color: #4A90E2;"><strong>Step 1: Centralizing Policy Management (ADMX Central Store)</strong></span>
 When managing GPOs across a domain, relying on local template files (`.admx`) stored on individual PCs can quickly get messy. If another admin (or even myself on a different machine) edits a GPO using an older Windows version, settings can easily get overwritten or missed altogether.
 
 To keep everything consistent across the domain, I set up a **Central Store** on my Domain Controller (**`NYCE-DC01`**). This forces Group Policy to pull its template definitions from a single, shared folder in `SYSVOL` instead of local storage.
