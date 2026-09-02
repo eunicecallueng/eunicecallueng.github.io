@@ -18,7 +18,7 @@ When managing GPOs across a domain, relying on local template files (`.admx`) st
 To keep everything consistent across the domain, I set up a **Central Store** on my Domain Controller (**`NYCE-DC01`**). This forces Group Policy to pull its template definitions from a single, shared folder in `SYSVOL` instead of local storage.
 
 <div class="callout callout-important">
-<strong>Important:</strong> If you want to manage features specific to newer Windows builds (like Windows 11 23H2/24H2), download the latest **Administrative Templates (.admx)** installer directly from Microsoft and extract them into this folder.
+<strong>Important:</strong> If you want to manage features specific to newer Windows builds (like Windows 11 23H2/24H2), download the latest <strong>Administrative Templates (.admx)</strong> installer directly from Microsoft and extract them into this folder.
 </div>
 
 Any updates made to `.admx` files in `SYSVOL` will automatically apply domain-wide for anyone editing GPOs!
