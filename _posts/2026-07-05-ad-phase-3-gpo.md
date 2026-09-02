@@ -28,7 +28,7 @@ Any updates made to `.admx` files in `SYSVOL` will automatically apply domain-wi
 ## **Step 2: Deploying Workstation Baseline Security Policies**
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
-* Getting the Structure Right</span>
+* **Getting the Structure Right**
    * <span style="color: #4A90E2;"><strong>Computer Configuration vs. User Configuration</strong></span>
       * **Computer Configuration:** Applies directly to the ***machine itself***, regardless of who signs in. It processes at system startup (e.g., security hardening, firewall rules, local account controls).
 
@@ -39,9 +39,7 @@ Once the Central Store was up and running, it was time to establish a baseline s
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
----
-
-#### 1. Domain-Wide Controls (Configured in Default Domain Policy)
+* **Do not modify the Default Domain Policy**
 
 Because Active Directory only enforces domain account password and lockout logic from the domain root, these settings were applied directly within the **Default Domain Policy**:
 
