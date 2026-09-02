@@ -69,14 +69,14 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
 For machine-specific hardening, I configured local policy rules inside `C_WS_Baseline_Security` to enforce physical and operational workstation security:
 
-| Policy Setting | Path | Configuration | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Interactive Logon Banner Title** | `Computer Config > Policies > Windows Settings > Security Settings > Local Policies > Security Options` | **"UNAUTHORIZED ACCESS PROHIBITED"** | Heading displayed prior to the Windows logon prompt. |
-| **Interactive Logon Banner Text** | `Local Policies > Security Options` | **"This system is restricted to authorized NYCE Home Lab users..."** | Mandatory legal notice required for audit compliance. |
-| **Hide Last Signed-In User** | `Local Policies > Security Options` | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
-| **Disable Built-in Guest Account** | `Local Policies > Security Options` | **Disabled** | Closes an unauthenticated local entry point across all domain workstations. |
-| **Screen Saver Lock Timeout** | `User Config > Policies > Administrative Templates > Control Panel > Personalization` | **600 seconds (10 mins)** | Automatically locks unattended workstations to safeguard active user sessions. |
-| **Logon/Logoff Event Auditing** | `Security Settings > Advanced Audit Policy > Audit Policies > Logon/Logoff` | **Audit Success & Failure** | Generates Event ID 4624/4625 logs critical for SOC/SIEM monitoring and detection. |
+| Policy Setting | Configuration | Purpose |
+| :--- | :--- | :--- |
+| **Interactive Logon Banner Title** | **"UNAUTHORIZED ACCESS PROHIBITED"** | Heading displayed prior to the Windows logon prompt. |
+| **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users..."** | Mandatory legal notice required for audit compliance. |
+| **Hide Last Signed-In User** | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
+| **Disable Built-in Guest Account** | **Disabled** | Closes an unauthenticated local entry point across all domain workstations. |
+| **Screen Saver Lock Timeout** | **600 seconds (10 mins)** | Automatically locks unattended workstations to safeguard active user sessions. |
+| **Logon/Logoff Event Auditing** | **Audit Success & Failure** | Generates Event ID 4624/4625 logs critical for SOC/SIEM monitoring and detection. |
 
 ---
 
