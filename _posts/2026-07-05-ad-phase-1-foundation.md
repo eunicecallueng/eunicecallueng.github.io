@@ -17,8 +17,8 @@ Here is a breakdown of what I did and the crucial pre-requisites required to get
 ## **Step 1: Server Provisioning & Pre-Requisites**
 
 <div class="callout callout-important">
-   <strong>💡 Best Practice Tip:</strong>
-  <p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</strong></p>
+<strong>💡 Best Practice Tip:</strong>
+<p style="margin-top: 10px; margin-bottom: 0;">Best practice requires assigning a proper hostname and a static IP address <strong>before promoting the server to a Domain Controller.</strong></p>
 </div>
 
 I started by updating the default computer name in Server Manager (Local Server) to something recognizable: **`NYCE-DC01`**
@@ -102,8 +102,8 @@ My next step was preparing the file server architecture. One big lesson I've lea
 
 2. **Isolating Shared Folders to a Dedicated Data Volume**
    <div class="callout callout-important">
-   <strong> Rule of Thumb 👍: </strong>
-   <p style="margin-top: 0px; margin-bottom: 10;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
+   <strong>💡 Rule of Thumb:</strong>
+   <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
    </div>
 
     * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.
