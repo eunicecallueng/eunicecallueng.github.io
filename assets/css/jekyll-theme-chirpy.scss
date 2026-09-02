@@ -67,7 +67,6 @@
     font-weight: 700;
   }
 
-  /* Move Recently Updated and Trending Tags below TOC */
   .access {
     order: 2;
     margin-top: 0;
@@ -83,18 +82,12 @@
   color: #333333;
 }
 
-/* Para sa Note (Blue) */
 .callout-note {
   background-color: #cbcfd2;
-  border-left: #585f67;
 }
-
-/* Para sa Important (Yellow/Amber) */
 .callout-important {
   background-color: #14d67f;
-  border-color: #52C41A;
 }
-
 p code, li code {
-  color: #e67e22 !important; /* Palitan ang hex code sa gusto mong kulay */
+  color: #e67e22 !important;
 }
