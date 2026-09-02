@@ -72,7 +72,7 @@ For machine-specific hardening, I configured local policy rules inside `C_WS_Bas
 | Policy Setting | Configuration | Purpose |
 | :--- | :--- | :--- |
 | **Interactive Logon Banner Title** | **"UNAUTHORIZED ACCESS PROHIBITED"** | Heading displayed prior to the Windows logon prompt. |
-| **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users..."** | Mandatory legal notice required for audit compliance. |
+| **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users"** | Mandatory legal notice required for audit compliance. |
 | **Hide Last Signed-In User** | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
 | **Disable Built-in Guest Account** | **Disabled** | Closes an unauthenticated local entry point across all domain workstations. |
 | **Screen Saver Lock Timeout** | **600 seconds (10 mins)** | Automatically locks unattended workstations to safeguard active user sessions. |
