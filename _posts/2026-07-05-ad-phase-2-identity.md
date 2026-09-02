@@ -100,7 +100,7 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ---
-* **Testing Account Templates**
+* <span style="color: #4A90E2;"><strong>Testing Account Templates</strong></span>
     * To make sure my account templates, logon restrictions, and folder redirection rules were working as intended, I put `maricel.soriano`'s account through a complete end-to-end verification flow from the Windows 11 client VM.
     Here’s a breakdown of the tests I ran and how they played out:
         
@@ -118,7 +118,7 @@ Setting up user accounts manually one by one is time-consuming and prone to huma
 ## **Step 5: Delegating Administrative Control**
 Giving domain admin rights to everyone who resets passwords is a huge security risk. To follow the **Principle of Least Privilege**, I used Active Directory’s **Delegation of Control Wizard** to assign specific, scoped administrative tasks directly to our Helpdesk staff.
 
-* **Why Delegate Control?**
+* <span style="color: #4A90E2;"><strong>Why Delegate Control?</strong></span>
     * **Enhanced Security:** Keeps Domain Admin credentials restricted while allowing Tier 1/2 Helpdesk to handle routine administrative requests.
     * **Granular Access**: Limits permissions strictly to specific Organizational Units (OUs) instead of granting domain-wide access.
     * **Operational Efficiency**: Empowers support staff to instantly resolve user account issues without escalating to senior system administrators.
@@ -127,7 +127,7 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 
 ---
 
-* **RSAT Installation**
+* <span style="color: #4A90E2;"><strong>RSAT Installation</strong></span>
     * To test and validate if our Delegation of Control settings are actually working, we first need to install RSAT (Remote Server Administration Tools) on our client VM. 
         * Setting Up RSAT on the Client VM
             * You can normally install RSAT via **Windows Settings > Optional features**. However, to keep things lightweight, I initially tried installing only the specific Active Directory RSAT capability via PowerShell. 
@@ -141,7 +141,7 @@ Giving domain admin rights to everyone who resets passwords is a huge security r
 
 --- 
 
-* **Testing & Validating Delegation of Control**
+* <span style="color: #4A90E2;"><strong>Testing & Validating Delegation of Control</strong></span>
     * With RSAT ready, I tested our delegated Helpdesk account (NYCEHOMELAB\john.doe) to verify that least privilege enforcement was working as intended:
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/8Om3uOM5TA0?si=5nmipNJvWtUtcxkv" title="Delegated Control Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
