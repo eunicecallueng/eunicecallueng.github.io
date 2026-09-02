@@ -33,7 +33,7 @@ Select a phase below to view the full step-by-step documentation, including vide
   <a href="/posts/ad-phase-3-gpo/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
       <h3 style="margin-top:0; color: #f9e2af;">Phase 3</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">Storage & File Sharing</p>
+      <p style="font-size: 0.9em; color: #cdd6f4;">Group Policy & Advanced Security (GPO)</p>
     </div>
   </a>
 
@@ -41,7 +41,7 @@ Select a phase below to view the full step-by-step documentation, including vide
   <a href="/posts/ad-phase-4-notyet/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
       <h3 style="margin-top:0; color: #f38ba8;">Phase 4</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">Group Policy & Advanced Security (GPO)</p>
+      <p style="font-size: 0.9em; color: #cdd6f4;"></p>
     </div>
   </a>
 
