@@ -25,17 +25,15 @@ Right after setting up the file server, my next big focus was building out the O
 ## **Step 2: Implementing the AGDLP Security Model**
 Setting up access control was easily one of the most satisfying parts of Phase 2! After organizing my OUs and provisioning users, I established the enterprise-standard **AGDLP** (**A**ccount > **G**lobal > **D**omain Local > **P**ermission) framework.
 
-* **Why I Chose the AGDLP Strategy**
+* <span style="color: #4A90E2;"><strong>Why I Chose the AGDLP Strategy</strong></span>
     * **Role-Based Access Control (RBAC):** Users belong to Global Groups by job role—department transfers only require updating group memberships, not server permissions.
     * **Granular Privilege Management:** Domain Local Groups define exact resource access, keeping permissions explicit and easy to audit.
     * **Effortless Auditing & Onboarding:** When a new team member joins, they automatically inherit all necessary access simply by being added to their role’s global group.
 
-    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-    <strong style="font-size: 1.1em;">💡 Rule of Thumb: </strong>
-    <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never Grant Direct User Rights:</strong> Always assign users to Global Groups, Global Groups to Domain Local Groups, and Domain Local Groups to folder permissions—never mix these layers.</p>
+    <div class="callout callout-important"><strong>💡 Rule of Thumb:</strong><p style="margin-top: 10px; margin-bottom: 0;"><strong>Never Grant Direct User Rights:</strong> Always assign users to Global Groups, Global Groups to Domain Local Groups, and Domain Local Groups to folder permissions—never mix these layers.</p>
     </div>
 
-* **How the AGDLP Chain Works in My Lab**
+* <span style="color: #4A90E2;"><strong>How the AGDLP Chain Works in My Lab</strong></span>
     * **Account (A):** Individual user accounts (e.g., john.doe).
     * **Global Group (G):** Accounts are nested into Global Groups based on job function (e.g., GG-HD-Tech).
     * **Domain Local Group (DL):** Global Groups are nested into Domain Local Groups created for specific resource access (e.g., SH-HR-RW).
@@ -44,7 +42,9 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
 ---
 ---
 
-* **Naming Convention for Group Management:** 
+* <span style="color: #4A90E2;"><strong>Naming Convention for Group Management:</strong></span>
+    * **Account (A):** Individual user accounts (e.g., john.doe).
+    * **Global Group (G):** Accounts are nested into Global Groups based on 
     * I adopted a clean **[Type]-[Scope]-[Resource]-[Access]-[Env]** naming template structure (e.g., SEC-HR-Share-RW-PRD). Keeping the tokens in the exact same order makes searching and auditing in Active Directory a breeze:
         * **Type:** what kind of group (`GG`, `DL`, `LIC`, `ADM`, `APP`, `SH`, `GPO`, `SYNC`)
         * **Scope:** broad boundary or business unit (`GLOBAL`, `EMEA`, `APAC`, `FIN`, `HR`, `IT`, `Sales`)
@@ -53,7 +53,7 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
         * **Env/Region:** prod/nonprod or datacenter code (`PRD`, `DEV`, `UAT`)
         * **Qualifier:** optional clarifier (`External`, `Vendor`, `Temporary`)
 
-* **Prefixes and what they mean:**
+* <span style="color: #4A90E2;"><strong>Prefixes and what they mean:</strong></span>
     *  `GG` - Security group used for access control.
     * `DL`- Distribution (mail) group.
     * `LIC` - Licensing / entitlement group (M365 group-based licensing).
@@ -63,7 +63,7 @@ Setting up access control was easily one of the most satisfying parts of Phase 2
     * `SH` - File share access groups (if you want a resource-specific type).
     * `SYNC` - Provisioning, sync, or staging groups.
 
-* **Strict Access Level Tokens:** To avoid the usual confusion between terms like "Modify", "Write", or "Full", I locked down permission labels to a clear, standardized set:
+* <span style="color: #4A90E2;"><strong>Strict Access Level Tokens:</strong></span> To avoid the usual confusion between terms like "Modify", "Write", or "Full", I locked down permission labels to a clear, standardized set:
     * `RO` - (Read-Only)
     * `RW` - (Read/Write)
     * `OWNER` - manage the resource (often includes RW + ownership tasks)
@@ -90,14 +90,12 @@ With my AGDLP groups ready, it was time to put them to work on **`NYCE-FS01`**. 
 ## **Step 4: Account Templates for Standardized User Onboarding**
 Setting up user accounts manually one by one is time-consuming and prone to human error. To streamline onboarding in my lab, I configured User Account Templates to automate departmental defaults!
 
-* **Why Use User Templates?**
+* <span style="color: #4A90E2;"><strong>Why Use User Templates?</strong></span>
     * **Faster Onboarding:** Creating new accounts takes seconds—just right-click the template and choose Copy to pre-fill standard attributes.
     * **Consistent Security Baseline:** Ensures uniform logon hours, group memberships, and department details across all team members automatically.
     * **Automated Home Directory Creation:** Using %username% in the template’s mapped drive path automatically generates personalized, secured network folders upon account creation.
 
-    <div style="background-color: #99cc33; color: #000000; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-    <strong style="font-size: 1.1em;">💡 Pro Tip: </strong>
-    p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts <strong>disabled</strong> so no one can log in as the template itself, and use a prefix like <em><strong>_Template or tpl_</strong></em> so they sit neatly at the top of your OUs.</p>
+    <div class="callout callout-important"><strong>💡 Pro Tip:</strong><p style="margin-top: 10px; margin-bottom: 0;">Always keep template accounts <strong>disabled</strong> so no one can log in as the template itself, and use a prefix like <em><strong>_Template or tpl_</strong></em> so they sit neatly at the top of your OUs.</p>
     </div>
 
     <iframe width="100%" height="450" src="https://www.youtube.com/embed/XV69mPq2nw4?si=JZd_fM-L-neQ7fuK" title="Standardizing User Onboarding with Account Templates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
