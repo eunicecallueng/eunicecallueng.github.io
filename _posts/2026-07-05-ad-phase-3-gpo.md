@@ -40,23 +40,24 @@ Once the Central Store was up and running, it was time to establish a baseline s
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
-<div class="callout callout-danger"><strong>WARNING:</strong><p style="margin-top: 10px; margin-bottom: 0;"><strong>Do not modify the Default Domain Policy.</strong>
-
+<div class="callout callout-danger">
+<strong>WARNING:</strong>
+<p style="margin-top: 10px; margin-bottom: 0;">
+<strong>Do not modify the Default Domain Policy.</strong>
 This GPO is linked directly to the root of the domain, meaning every single user and computer processes it. Because of that, it should only be used for four specific areas:<strong><em>account policy settings, password policy, account lockout policy, and Kerberos policy</em></strong>. 
-
 Any other setting—like software installs, desktop configurations, or firewall rules—should go into a separate, focused GPO. When you stuff too many settings into the Default Domain Policy, troubleshooting becomes a nightmare, and it can slow down login performance since every single device and account in the domain is forced to process it. Keeping GPOs small and modular makes management so much easier.</p>
 </div>
 
-Because Active Directory only enforces domain account password and lockout logic from the domain root, these settings were applied directly within the **Default Domain Policy**:
+With that in mind, here are the only **baseline authentication rules** I configured inside the Default Domain Policy:
 
-| Policy Setting | Path | Configuration | Purpose / Enterprise Context |
-| :--- | :--- | :--- | :--- |
-| **Account Lockout Threshold** | `Computer Config > Policies > Windows Settings > Security Settings > Account Policies > Account Lockout Policy` | **5 invalid attempts** | Aligns with CIS Benchmarks to prevent brute-force attacks while mitigating Denial of Service (DoS) risk. |
-| **Account Lockout Duration** | `Account Lockout Policy` | **15 minutes** | Implements an automatic cooldown period without requiring manual IT Helpdesk intervention. |
-| **Reset Lockout Counter After** | `Account Lockout Policy` | **10 minutes** | Sets the observation window before resetting the failed attempts counter back to zero. |
-| **Minimum Password Length** | `Account Policies > Password Policy` | **12 characters** | Replaces legacy 8-character limits to defend against modern GPU-based password hashing tools. |
-| **Password Complexity** | `Password Policy` | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
-| **Enforce Password History** | `Password Policy` | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
+| Policy Setting | Configuration | Purpose / Enterprise Context |
+| :--- |  :--- | :--- |
+| **Account Lockout Threshold** | **5 invalid attempts** | Aligns with CIS Benchmarks to prevent brute-force attacks while mitigating Denial of Service (DoS) risk. |
+| **Account Lockout Duration** | **15 minutes** | Implements an automatic cooldown period without requiring manual IT Helpdesk intervention. |
+| **Reset Lockout Counter After** | **10 minutes** | Sets the observation window before resetting the failed attempts counter back to zero. |
+| **Minimum Password Length** | **12 characters** | Replaces legacy 8-character limits to defend against modern GPU-based password hashing tools. |
+| **Password Complexity** | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
+| **Enforce Password History** | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
 
 ---
 
