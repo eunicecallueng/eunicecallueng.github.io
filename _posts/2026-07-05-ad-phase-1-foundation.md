@@ -91,24 +91,25 @@ Log into the server using domain administrator credentials: `NYCEHOMELAB\Adminis
 ## **Step 4: Preparing the File Server & Storage Infrastructure**
 My next step was preparing the file server architecture. One big lesson I've learned in tech is that designing your server infrastructure properly from day one saves you from massive headaches later—especially when it comes to security, stability, and scalability.
 
-1. **Why I Separated the Domain Controller and File Server Roles**
+<span style="color: #4A90E2;"><strong>1. Why I Separated the Domain Controller and File Server Roles</strong></span>
    * Technically, a single Windows Server can host both Active Directory (AD DS) and File Services. But for my lab, I chose to separate them across dedicated virtual machines (VMs) because it mirrors actual enterprise best practices:
       * **Ransomware & Malware Containment:** File servers are usually the main target for user-driven malware. By keeping my File Server on a separate VM, an infection can't easily reach or encrypt my Active Directory database (`NTDS.dit`).
       * **Privilege Escalation Prevention:** Domain Controllers don't have a local Administrators group. If you start handing out admin rights for file sharing on a DC, you inadvertently end up granting elevated Domain Admin privileges.
       * **Reduced Attack Surface**: File servers need open SMB ports for workstations to connect. Separating this role protects my DC from unauthorized network scans and lateral movement.
       * **Performance & Resource Allocation:** **`NYCE-DC01`** gets dedicated CPU and RAM for fast authentication and DNS queries, without getting bogged down by heavy disk I/O when users transfer large files.
 
-   <iframe width="100%" height="450" src="https://www.youtube.com/embed/RR-WV6euKrA?si=ynbOlv1s5v0cz9Gb" title="File Server Creation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/RR-WV6euKrA?si=ynbOlv1s5v0cz9Gb" title="File Server Creation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-2. **Isolating Shared Folders to a Dedicated Data Volume**
-   <div class="callout callout-important">
+<span style="color: #4A90E2;"><strong>2. Isolating Shared Folders to a Dedicated Data Volume</strong></span>
+   
+<div class="callout callout-important">
    <strong>💡 Rule of Thumb:</strong>
    <p style="margin-top: 10px; margin-bottom: 0;"><strong>Never dump shared folders or user data onto the system volume (C: Drive)</strong>. I allocated a dedicated data volume (E: drive) for all my network shares instead:</p>
-   </div>
+</div>
 
-    * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.
-    * **Simplified Security & Quotas:** Setting up NTFS permissions, Disk Quotas, and File Screening rules on a standalone data volume keeps things clean and prevents accidental tweaks to system files (C:\Windows).
-    * **Storage Performance & Maintenance:** A dedicated disk volume gives me dedicated disk I/O throughput for SMB traffic. Plus, it makes backing up, expanding, or restoring storage way smoother if something goes wrong.
+   * **Operating System Protection:** If users ever fill up the shared storage space, the system volume stays completely untouched, preventing OS crashes and core service failures.
+   * **Simplified Security & Quotas:** Setting up NTFS permissions, Disk Quotas, and File Screening rules on a standalone data volume keeps things clean and prevents accidental tweaks to system files (C:\Windows).
+   * **Storage Performance & Maintenance:** A dedicated disk volume gives me dedicated disk I/O throughput for SMB traffic. Plus, it makes backing up, expanding, or restoring storage way smoother if something goes wrong.
 
     
 * **Here's How I Added a Virtual Hard Drive in VMware:**
@@ -122,7 +123,7 @@ My next step was preparing the file server architecture. One big lesson I've lea
     8. Confirm the file path, click **Finish**, and select **OK** to apply VM settings.
     9. **You can follow the rest of the step-by-step walkthrough in the video below:**
 
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="Isolating Shared Folders to a Dedicated Data Volume" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/K4j5J5vrSzE?si=QEHCdvwjfxDoAjvf" title="Isolating Shared Folders to a Dedicated Data Volume" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 

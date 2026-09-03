@@ -65,9 +65,9 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
 ---
 
-#### **B. Workstation Baseline Controls (Configured in `C_WS_Baseline_Security`)**
+#### **B. Workstation Baseline Controls (Configured in `C-WS-Baseline-Security`)**
 
-For machine-specific hardening, I configured local policy rules inside `C_WS_Baseline_Security` to enforce physical and operational workstation security:
+For machine-specific hardening, I configured local policy rules inside `C-WS-Baseline-Security` to enforce physical and operational workstation security:
 
 | Policy Setting | Configuration | Purpose |
 | :--- | :--- | :--- |
