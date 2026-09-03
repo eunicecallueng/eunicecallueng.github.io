@@ -137,7 +137,7 @@ With the server infrastructure ready, it was time to bring my Windows 11 VM into
 * **Joining and Logging In:** 
     * After confirming that the client VM can ping **`nycehomelab.local`**, it's time to join it to the domain
 
-      <iframe width="100%" height="450" src="https://www.youtube.com/embed/DgHRKRH8iEQ?si=qmfLB-s_I8h5ITYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/DgHRKRH8iEQ?si=qmfLB-s_I8h5ITYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 [← Back to AD Series Overview](/posts/active-directory-series/)
