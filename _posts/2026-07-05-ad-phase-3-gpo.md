@@ -96,18 +96,19 @@ To enforce user-side security without relying on Computer Loopback Processing, u
 | **Prohibit Access to Control Panel / Settings** | Enabled | Prevents non-admin staff from altering network adapters or OS configurations. |
 | **Prevent Access to Registry Editing Tools** | Enabled | Restricts users from running `regedit` to bypass security controls or run unauthorized scripts. |
 
-#### Optimization & OU Linking
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/asw5q0YSslM?si=oMXXX9og-LX-uZRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-1. **Disable Unused Node:** Since `C-Workstation-Baseline` primarily focuses on machine-level configurations, I right-clicked the GPO in GPMC, navigated to **GPO Status**, and set **User Configuration Settings Disabled** (excluding the global screen lock setting if enforced per computer).  
-   > *Why?* Disabling unused nodes speeds up group policy processing time during client startups.
+#### **E. GPO Node Optimization (Disabling Unused Settings)**
 
-2. **Linking to Target OU:**  
-   - In GPMC, right-click the **Workstations** OU $\rightarrow$ Select **Link an Existing GPO...** $\rightarrow$ Choose `C-Workstation-Baseline`.
+When a GPO contains only machine or user rules, the unused section should be explicitly disabled via **GPMC > Details > GPO Status**:
+
+* **User Configuration Settings Disabled:** Forces Windows to completely skip searching for user-based rules when processing a machine GPO (like `C_WS_Baseline_Security`).
+* **Computer Configuration Settings Disabled:** Forces Windows to bypass hardware/OS rule processing when evaluating a user GPO (like `U_WS_Baseline_Security`).
+
+<div class="callout callout-important"><strong>Why This Matters:</strong><p style="margin-top: 10px; margin-bottom: 0;">Disabling unused nodes speeds up client startup and logon times, reduces Domain Controller processing overhead, and keeps policy troubleshooting clean and modular.
+</div>
 
 ---
 
-#### Key Takeaway
-
-> **Architecture Principle:** Never clutter the **Default Domain Policy** with drive mappings, wallpapers, or application policies. Keep it clean for core identity baselines, and scope device hardening to dedicated `C_` and `U_` GPOs linked to their respective Organizational Units.
 **What's Next?**  
 *Up Next: In **Phase 4: Group Policy & Advanced Security (GPO)**, we will automate configurations, map these shared network drives automatically for our users upon login, and enforce security baselines across the domain workstations.*
