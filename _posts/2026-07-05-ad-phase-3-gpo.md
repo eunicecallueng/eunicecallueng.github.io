@@ -40,6 +40,7 @@ Once the Central Store was up and running, it was time to establish a baseline s
 
       * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. ***This is the initial setup***. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you're free to do so.
 
+#### **B. Default Domain Policy (Domain Root Baseline)**
    <div class="callout callout-danger"><strong>WARNING:</strong>
    <p style="margin-top: 10px; line-height: 1.6;">
    <strong>Do not modify the Default Domain Policy.</strong> This GPO is linked directly to the root of the domain, meaning every single user and computer processes it.
@@ -63,11 +64,13 @@ With that in mind, here are the only **baseline authentication rules** I configu
    | **Password Complexity** | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
    | **Enforce Password History** | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
 
+   <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ---
 
-#### **B. Workstation Baseline Controls (Configured in `C-WS-Baseline-Security`)**
+#### **Workstation Security Policy**
 
-For machine-specific hardening, I configured local policy rules inside `C-WS-Baseline-Security` to enforce physical and operational workstation security:
+For machine-specific hardening, I configured local policy rules inside **`C-WS-Baseline-Security`** to enforce physical and operational workstation security:
 
 | Policy Setting | Configuration | Purpose |
 | :--- | :--- | :--- |
