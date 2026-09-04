@@ -78,8 +78,9 @@ For machine-specific hardening, I configured local policy rules inside **`C-Work
 | **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users"** | Mandatory legal notice required for audit compliance. |
 | **Hide Last Signed-In User** | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
 | **Disable Built-in Guest Account** | **Disabled** | Closes an unauthenticated local entry point across all domain workstations. |
-
 | **Logon/Logoff Event Auditing** | **Audit Success & Failure** | Generates Event ID 4624/4625 logs critical for SOC/SIEM monitoring and detection. |
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/3bS7rMYCaIo?si=nDC063n_s-Caeaow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
