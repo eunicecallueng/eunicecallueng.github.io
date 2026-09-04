@@ -105,7 +105,7 @@ When a GPO contains only machine or user rules, the unused section should be exp
 * **User Configuration Settings Disabled:** Forces Windows to completely skip searching for user-based rules when processing a machine GPO (like `C_WS_Baseline_Security`).
 * **Computer Configuration Settings Disabled:** Forces Windows to bypass hardware/OS rule processing when evaluating a user GPO (like `U_WS_Baseline_Security`).
 
-<div class="callout callout-important"><strong>Why This Matters:</strong><p style="margin-top: 10px; margin-bottom: 0;">Disabling unused nodes <strong>speeds up client startup and logon times</strong>, reduces Domain Controller processing overhead, and keeps policy troubleshooting clean and modular.
+<div class="callout callout-important"><strong>Why This Matters:</strong><p style="margin-top: 10px; margin-bottom: 0;">Disabling unused nodes <strong>speeds up client startup and logon times</strong>, reduces Domain Controller processing overhead, and keeps policy troubleshooting clean and modular.</p>
 </div>
 
 ---
