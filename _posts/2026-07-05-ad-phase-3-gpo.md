@@ -53,7 +53,7 @@ Once the Central Store was up and running, it was time to establish a baseline s
    </p>
    </div>
 
-With that in mind, here are the only **baseline authentication rules** I configured inside the Default Domain Policy:
+With that in mind, here are the only **baseline authentication rules** I configured inside the **`Default Domain Policy:`**
 
    | Policy Setting | Configuration | Purpose / Enterprise Context |
    | :--- |  :--- | :--- |
@@ -68,12 +68,12 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
 ---
 
-#### **Workstation Security Policy**
+#### **C. Workstation Security Policy**
 
-For machine-specific hardening, I configured local policy rules inside **`C-WS-Baseline-Security`** to enforce physical and operational workstation security:
+For machine-specific hardening, I configured local policy rules inside **`C-Workstation-Baseline`** to enforce physical and operational workstation security:
 
 | Policy Setting | Configuration | Purpose |
-| :--- | :--- | :--- |
+| :---- | :---- | :---- |
 | **Interactive Logon Banner Title** | **"UNAUTHORIZED ACCESS PROHIBITED"** | Heading displayed prior to the Windows logon prompt. |
 | **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users"** | Mandatory legal notice required for audit compliance. |
 | **Hide Last Signed-In User** | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
@@ -83,13 +83,25 @@ For machine-specific hardening, I configured local policy rules inside **`C-WS-B
 
 ---
 
+#### **D. User Security & Environment Policy**
+
+To enforce user-side security without relying on Computer Loopback Processing, user-specific controls were placed in a dedicated **`U-Workstation-Baseline`** policy:
+
+| Policy Setting | Configuration | Enterprise Rationale |
+| :---- | :--- | :---- |
+| **Enable Screen Saver** | Enabled | Mandatory baseline requirement for unattended session lock. |
+| **Password Protect Screen Saver** | Enabled | Forces credential re-authentication upon returning to the desk. |
+| **Screen Saver Timeout** | 600 seconds (10 mins) | Mitigates physical unauthorized access on unattended endpoints. |
+| **Prohibit Access to Control Panel / Settings** | Enabled | Prevents non-admin staff from altering network adapters or OS configurations. |
+| **Prevent Access to Registry Editing Tools** | Enabled | Restricts users from running `regedit` to bypass security controls or run unauthorized scripts. |
+
 #### Optimization & OU Linking
 
-1. **Disable Unused Node:** Since `C_WS_Baseline_Security` primarily focuses on machine-level configurations, I right-clicked the GPO in GPMC, navigated to **GPO Status**, and set **User Configuration Settings Disabled** (excluding the global screen lock setting if enforced per computer).  
+1. **Disable Unused Node:** Since `C-Workstation-Baseline` primarily focuses on machine-level configurations, I right-clicked the GPO in GPMC, navigated to **GPO Status**, and set **User Configuration Settings Disabled** (excluding the global screen lock setting if enforced per computer).  
    > *Why?* Disabling unused nodes speeds up group policy processing time during client startups.
 
 2. **Linking to Target OU:**  
-   - In GPMC, right-click the **Workstations** OU $\rightarrow$ Select **Link an Existing GPO...** $\rightarrow$ Choose `C_WS_Baseline_Security`.
+   - In GPMC, right-click the **Workstations** OU $\rightarrow$ Select **Link an Existing GPO...** $\rightarrow$ Choose `C-Workstation-Baseline`.
 
 ---
 
