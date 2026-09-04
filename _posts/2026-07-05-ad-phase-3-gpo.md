@@ -24,8 +24,6 @@ To keep everything consistent across the domain, I set up a **Central Store** on
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/BtuXd0MRybI?si=ZgJ2DW5wyfyw0-Gm" title="ADMX Central Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
----
-
 ## **Step 2: Deploying Workstation Baseline Security Policies**
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
@@ -66,8 +64,6 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
    <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
----
-
 #### **C. Workstation Security Policy**
 
 For machine-specific hardening, I configured local policy rules inside **`C-Workstation-Baseline`** to enforce physical and operational workstation security:
@@ -82,7 +78,6 @@ For machine-specific hardening, I configured local policy rules inside **`C-Work
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/3bS7rMYCaIo?si=nDC063n_s-Caeaow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
----
 
 #### **D. User Security & Environment Policy**
 
@@ -102,8 +97,8 @@ To enforce user-side security without relying on Computer Loopback Processing, u
 
 When a GPO contains only machine or user rules, the unused section should be explicitly disabled via **GPMC > Details > GPO Status**:
 
-* **User Configuration Settings Disabled:** Forces Windows to completely skip searching for user-based rules when processing a machine GPO (like `C_WS_Baseline_Security`).
-* **Computer Configuration Settings Disabled:** Forces Windows to bypass hardware/OS rule processing when evaluating a user GPO (like `U_WS_Baseline_Security`).
+* **User Configuration Settings Disabled:** Forces Windows to completely skip searching for user-based rules when processing a machine GPO (like `C-Workstation-Baseline`).
+* **Computer Configuration Settings Disabled:** Forces Windows to bypass hardware/OS rule processing when evaluating a user GPO (like `U-Workstation-Baseline`).
 
 <div class="callout callout-important"><strong>Why This Matters:</strong><p style="margin-top: 10px; margin-bottom: 0;">Disabling unused nodes <strong>speeds up client startup and logon times</strong>, reduces Domain Controller processing overhead, and keeps policy troubleshooting clean and modular.</p>
 </div>
