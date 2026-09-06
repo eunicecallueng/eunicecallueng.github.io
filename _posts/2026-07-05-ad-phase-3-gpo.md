@@ -72,7 +72,7 @@ Instead of creating one monolithic "Workstation Policy," I split my configuratio
 
 Here are the specific, modular GPOs I created for my endpoints:
 
-### A. Computer Hardening & System Policies
+### <span style="color: #4A90E2;">A. Computer Hardening & System Policies</span>
 
 | GPO Name | Purpose / Enterprise Context | Core Configuration  |
 | :--- | :--- | :--- |
@@ -96,7 +96,7 @@ Here are the specific, modular GPOs I created for my endpoints:
 
 ---
 
-### B. User Workspace & Environment Policies
+### <span style="color: #4A90E2;">B. User Workspace & Environment Policies</span>
 
 | GPO Name | Purpose / Enterprise Context | Core Configuration | 
 | :--- | :--- | :--- |
