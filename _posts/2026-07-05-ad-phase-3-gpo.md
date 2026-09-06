@@ -41,7 +41,7 @@ Once the Central Store was up and running, it was time to establish a baseline s
 * **Policies (Enforced Rules):** Think of this as a strict workplace rule, like wearing a mandatory security badge. It is non-negotiable, locked down, and employees cannot change or turn it off.
 * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. This is the initial setup. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you’re free to do so.
 
-# **Step 3: Refining Core Authentication (Default Domain Policy)**
+## **Step 3: Refining Core Authentication (Default Domain Policy)**
    <div class="callout callout-danger"><strong>WARNING:</strong>
    <p style="margin-top: 10px; line-height: 1.6;">
    <strong>Do not modify the Default Domain Policy.</strong> This GPO is linked directly to the root of the domain, meaning every single user and computer processes it.
