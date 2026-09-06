@@ -72,35 +72,12 @@ Instead of creating one monolithic "Workstation Policy," I split my configuratio
 
 Here are the specific, modular GPOs I created for my endpoints:
 
-### 1. Computer Hardening & System Policies
+### A. Computer Hardening & System Policies
 
-* **`COMP-WIN10-SEC-Workstation_Hardening`**
-  * *Interactive Logon Title:* `"UNAUTHORIZED ACCESS PROHIBITED"`
-  * *Interactive Logon Text:* `"This system is restricted to authorized NYCE Home Lab users."`
-  * *Hide Last Signed-In User:* **Enabled** (Prevents shoulder surfing in shared workspaces).
-  * *Disable Built-in Guest Account:* **Enabled** (Closes an unauthenticated local entry point).
-
-* **`COMP-ALL-SEC-Audit_Logging_Baseline`**
-  * *Logon/Logoff Event Auditing:* **Audit Success & Failure** (Generates Event IDs 4624/4625 for SIEM monitoring).
-
-* **`COMP-ALL-SEC-Windows_Firewall_Rules`**
-  * *Inbound/Outbound Rules:* Enforces default-block inbound traffic while explicitly allowing ICMP Ping and WinRM for remote server management.
-
----
-
-### 2. User Workspace & Environment Policies
-
-* **`USER-ALL-SEC-Workstation_Restrictions`**
-  * *Prohibit Access to Control Panel & Settings:* **Enabled** (Prevents standard staff from messing with network adapters).
-  * *Prevent Access to Registry Editing Tools (`regedit`):* **Enabled** (Blocks unauthorized registry tweaks and script executions).
-
-* **`USER-ALL-CFG-Screen_Lock_Timeout`**
-  * *Enable Screen Saver:* **Enabled**
-  * *Password Protect Screen Saver:* **Enabled**
-  * *Screen Saver Timeout:* **600 seconds (10 mins)** (Automatically locks unattended workstations).
-
-* **`USER-HR-CFG-Automated_Drive_Mappings`**
-  * *Item-Level Targeting:* Automatically maps `\\NYCE-DC01\HRUsers$` as the `S:\` drive upon login, strictly for users in the HR Organizational Unit.
+* **`COMP-Interactive_Logon_Banner`**
+   * *Configuration:* Local Policies ➔ Security Options ➔ Interactive logon: Message title... ("WARNING")
+   and Interactive logon: Message text... ("This system is restricted to authorized NYCE Home Lab users.").
+   * *Purpose:* Enforces a mandatory legal notification banner prior to the Windows logon prompt for audit compliance.
 
 * **`COMP-Audit_Logging`**  
   * *Configuration:* Advanced Audit Policy ➔ Logon/Logoff ➔ Audit Success & Failure.  
@@ -153,7 +130,19 @@ Here are the specific, modular GPOs I created for my endpoints:
 
 ---
 
-### 2. User Workspace & Environment Policies (`USER-*`)
+### B. User Workspace & Environment Policies
+
+* **`USER-ALL-SEC-Workstation_Restrictions`**
+  * *Prohibit Access to Control Panel & Settings:* **Enabled** (Prevents standard staff from messing with network adapters).
+  * *Prevent Access to Registry Editing Tools (`regedit`):* **Enabled** (Blocks unauthorized registry tweaks and script executions).
+
+* **`USER-ALL-CFG-Screen_Lock_Timeout`**
+  * *Enable Screen Saver:* **Enabled**
+  * *Password Protect Screen Saver:* **Enabled**
+  * *Screen Saver Timeout:* **600 seconds (10 mins)** (Automatically locks unattended workstations).
+
+* **`USER-HR-CFG-Automated_Drive_Mappings`**
+  * *Item-Level Targeting:* Automatically maps `\\NYCE-DC01\HRUsers$` as the `S:\` drive upon login, strictly for users in the HR Organizational Unit.
 
 * **`USER-Screen_Lock_Timeout`**  
   * *Configuration:* Control Panel ➔ Personalization ➔ Screen saver timeout (600s / 10 mins) & Password protect ➔ **Enabled**.  
@@ -180,7 +169,7 @@ Here are the specific, modular GPOs I created for my endpoints:
 
 ---
 
-#### **E. GPO Node Optimization (Disabling Unused Settings)**
+## **Step 5. GPO Node Optimization (Disabling Unused Settings)**
 
 When a GPO contains only machine or user rules, the unused section should be explicitly disabled via **GPMC > Details > GPO Status**:
 
