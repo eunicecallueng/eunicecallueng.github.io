@@ -18,7 +18,7 @@ To keep my homelab clean, scalable, and built like a real production network, I 
 
 Here is how I set it all up step-by-step!
 
-## **Step 1: Centralizing Policy Management (ADMX Central Store)**
+# **Step 1: Centralizing Policy Management (ADMX Central Store)**
 When managing GPOs across a domain, relying on local template files (`.admx`) stored on individual PCs can quickly get messy. If another admin (or even myself on a different machine) edits a GPO using an older Windows version, settings can easily get overwritten or missed altogether.
 
 To keep everything consistent across the domain, I set up a **Central Store** on my Domain Controller (**`NYCE-DC01`**). This forces Group Policy to pull its template definitions from a single, shared folder in **`SYSVOL`** instead of local storage.
@@ -30,7 +30,7 @@ To keep everything consistent across the domain, I set up a **Central Store** on
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/BtuXd0MRybI?si=ZgJ2DW5wyfyw0-Gm" title="ADMX Central Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## **Step 2: Understanding GPO Structure & Enforcement**
+# **Step 2: Understanding GPO Structure & Enforcement**
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
 ### <span style="color: #4A90E2;">A. Computer Configuration vs. User Configuration</span>
@@ -41,7 +41,7 @@ Once the Central Store was up and running, it was time to establish a baseline s
 * **Policies (Enforced Rules):** Think of this as a strict workplace rule, like wearing a mandatory security badge. It is non-negotiable, locked down, and employees cannot change or turn it off.
 * **Preferences (Flexible Defaults):** Think of this as the company handing a new employee a desk setup on Day 1. This is the initial setup. They set up your monitor height and give you a default penholder for convenience, but if you want to move the penholder to the left side of your desk, you’re free to do so.
 
-## Step 3: Refining Core Authentication (Default Domain Policy)
+# **Step 3: Refining Core Authentication (Default Domain Policy)**
    <div class="callout callout-danger"><strong>WARNING:</strong>
    <p style="margin-top: 10px; line-height: 1.6;">
    <strong>Do not modify the Default Domain Policy.</strong> This GPO is linked directly to the root of the domain, meaning every single user and computer processes it.
@@ -67,6 +67,44 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
    <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+# **Step 4: Building Modular GPOs (The Single-Purpose Approach)**
+Instead of creating one monolithic "Workstation Policy," I split my configurations into **dedicated, modular GPOs**. This modular setup makes it super easy to isolate issues—if drive mappings stop working, I only need to inspect or toggle the Drive Mapping GPO without touching firewall or security settings!
+
+Here are the specific, modular GPOs I created for my endpoints:
+
+### 1. Computer Hardening & System Policies
+
+* **`COMP-WIN10-SEC-Workstation_Hardening`**
+  * *Interactive Logon Title:* `"UNAUTHORIZED ACCESS PROHIBITED"`
+  * *Interactive Logon Text:* `"This system is restricted to authorized NYCE Home Lab users."`
+  * *Hide Last Signed-In User:* **Enabled** (Prevents shoulder surfing in shared workspaces).
+  * *Disable Built-in Guest Account:* **Enabled** (Closes an unauthenticated local entry point).
+
+* **`COMP-ALL-SEC-Audit_Logging_Baseline`**
+  * *Logon/Logoff Event Auditing:* **Audit Success & Failure** (Generates Event IDs 4624/4625 for SIEM monitoring).
+
+* **`COMP-ALL-SEC-Windows_Firewall_Rules`**
+  * *Inbound/Outbound Rules:* Enforces default-block inbound traffic while explicitly allowing ICMP Ping and WinRM for remote server management.
+
+---
+
+### 2. User Workspace & Environment Policies
+
+* **`USER-ALL-SEC-Workstation_Restrictions`**
+  * *Prohibit Access to Control Panel & Settings:* **Enabled** (Prevents standard staff from messing with network adapters).
+  * *Prevent Access to Registry Editing Tools (`regedit`):* **Enabled** (Blocks unauthorized registry tweaks and script executions).
+
+* **`USER-ALL-CFG-Screen_Lock_Timeout`**
+  * *Enable Screen Saver:* **Enabled**
+  * *Password Protect Screen Saver:* **Enabled**
+  * *Screen Saver Timeout:* **600 seconds (10 mins)** (Automatically locks unattended workstations).
+
+* **`USER-HR-CFG-Automated_Drive_Mappings`**
+  * *Item-Level Targeting:* Automatically maps `\\NYCE-DC01\HRUsers$` as the `S:\` drive upon login, strictly for users in the HR Organizational Unit.
+
+---
+
+
 #### **C. Workstation Security Policy**
 
 For machine-specific hardening, I configured local policy rules inside **`C-Workstation-Baseline`** to enforce physical and operational workstation security:
@@ -80,6 +118,17 @@ For machine-specific hardening, I configured local policy rules inside **`C-Work
 | **Logon/Logoff Event Auditing** | **Audit Success & Failure** | Generates Event ID 4624/4625 logs critical for SOC/SIEM monitoring and detection. |
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/3bS7rMYCaIo?si=nDC063n_s-Caeaow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+
+
+
+
+
+
+
+
 
 
 #### **D. User Security & Environment Policy**
