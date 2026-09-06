@@ -13,12 +13,12 @@ Now that my Active Directory foundation was solid and my user hierarchy was orga
 Phase 3 is all about **Group Policy Objects (GPOs)**. Early on, I realized how easy it is to fall into the trap of shoving dozens of unrelated settings into a single, massive GPO—making it a complete nightmare to manage or troubleshoot later. 
 
 To keep my homelab clean, scalable, and built like a real production network, I adopted a **Single-Purpose (Modular) GPO Architecture**. Instead of one giant policy, I broke everything down into focused, bite-sized GPOs with clear naming conventions:
-* **`C-`** for machine/hardware-level configurations (applies on system startup).
-* **`U-`** for account-level configurations (applies when a user logs in).
+* **`COMP-`** for machine/hardware-level configurations (applies on system startup).
+* **`USER-`** for account-level configurations (applies when a user logs in).
 
 Here is how I set it all up step-by-step!
 
-# **Step 1: Centralizing Policy Management (ADMX Central Store)**
+## **Step 1: Centralizing Policy Management (ADMX Central Store)**
 When managing GPOs across a domain, relying on local template files (`.admx`) stored on individual PCs can quickly get messy. If another admin (or even myself on a different machine) edits a GPO using an older Windows version, settings can easily get overwritten or missed altogether.
 
 To keep everything consistent across the domain, I set up a **Central Store** on my Domain Controller (**`NYCE-DC01`**). This forces Group Policy to pull its template definitions from a single, shared folder in **`SYSVOL`** instead of local storage.
@@ -30,7 +30,7 @@ To keep everything consistent across the domain, I set up a **Central Store** on
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/BtuXd0MRybI?si=ZgJ2DW5wyfyw0-Gm" title="ADMX Central Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# **Step 2: Understanding GPO Structure & Enforcement**
+## **Step 2: Understanding GPO Structure & Enforcement**
 Once the Central Store was up and running, it was time to establish a baseline security policy for my workstations. But before diving into the Group Policy editor, I had to get a clear handle on how GPO settings are structured and where they belong.
 
 ### <span style="color: #4A90E2;">A. Computer Configuration vs. User Configuration</span>
@@ -67,7 +67,7 @@ With that in mind, here are the only **baseline authentication rules** I configu
 
    <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# **Step 4: Building Modular GPOs (The Single-Purpose Approach)**
+## **Step 4: Building Modular GPOs (The Single-Purpose Approach)**
 Instead of creating one monolithic "Workstation Policy," I split my configurations into **dedicated, modular GPOs**. This modular setup makes it super easy to isolate issues—if drive mappings stop working, I only need to inspect or toggle the Drive Mapping GPO without touching firewall or security settings!
 
 Here are the specific, modular GPOs I created for my endpoints:
@@ -103,47 +103,6 @@ Here are the specific, modular GPOs I created for my endpoints:
   * *Item-Level Targeting:* Automatically maps `\\NYCE-DC01\HRUsers$` as the `S:\` drive upon login, strictly for users in the HR Organizational Unit.
 
 ---
-
-
-#### **C. Workstation Security Policy**
-
-For machine-specific hardening, I configured local policy rules inside **`C-Workstation-Baseline`** to enforce physical and operational workstation security:
-
-| Policy Setting | Configuration | Purpose |
-| :---- | :---- | :---- |
-| **Interactive Logon Banner Title** | **"UNAUTHORIZED ACCESS PROHIBITED"** | Heading displayed prior to the Windows logon prompt. |
-| **Interactive Logon Banner Text** | **"This system is restricted to authorized NYCE Home Lab users"** | Mandatory legal notice required for audit compliance. |
-| **Hide Last Signed-In User** | **Enabled** | Clears the previous user's account name from the login screen to prevent shoulder surfing. |
-| **Disable Built-in Guest Account** | **Disabled** | Closes an unauthenticated local entry point across all domain workstations. |
-| **Logon/Logoff Event Auditing** | **Audit Success & Failure** | Generates Event ID 4624/4625 logs critical for SOC/SIEM monitoring and detection. |
-
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/3bS7rMYCaIo?si=nDC063n_s-Caeaow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
----
-
-
-
-
-
-
-
-
-
-
-
-#### **D. User Security & Environment Policy**
-
-To enforce user-side security without relying on Computer Loopback Processing, user-specific controls were placed in a dedicated **`U-Workstation-Baseline`** policy:
-
-| Policy Setting | Configuration | Enterprise Rationale |
-| :---- | :--- | :---- |
-| **Enable Screen Saver** | Enabled | Mandatory baseline requirement for unattended session lock. |
-| **Password Protect Screen Saver** | Enabled | Forces credential re-authentication upon returning to the desk. |
-| **Screen Saver Timeout** | 600 seconds (10 mins) | Mitigates physical unauthorized access on unattended endpoints. |
-| **Prohibit Access to Control Panel / Settings** | Enabled | Prevents non-admin staff from altering network adapters or OS configurations. |
-| **Prevent Access to Registry Editing Tools** | Enabled | Restricts users from running `regedit` to bypass security controls or run unauthorized scripts. |
-
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/asw5q0YSslM?si=oMXXX9og-LX-uZRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 #### **E. GPO Node Optimization (Disabling Unused Settings)**
 
