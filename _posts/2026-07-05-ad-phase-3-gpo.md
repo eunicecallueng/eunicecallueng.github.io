@@ -80,6 +80,7 @@ Here are the specific, modular GPOs I created for my endpoints:
 | **`COMP-Audit_Logging`** | Generates Event IDs 4624/4625 for SIEM and SOC monitoring. | Advanced Audit Policy ➔ Logon/Logoff ➔ Audit Success & Failure |
 | **`COMP-Disable_Guest_Account`** | Closes unauthenticated local entry points across all endpoints. | Local Policies ➔ Security Options ➔ Accounts: Guest account status ➔ **Disabled** |
 | **`COMP-Block_Removable_Media`** | Blocks USB drives and external storage to prevent malware infection and data exfiltration. | Administrative Templates ➔ System ➔ Removable Storage Access ➔ All Removable Storage classes: Deny all access ➔ **Enabled** |
+| **`USER-Prohibit_User_Installs`** | Blocks standard accounts from installing `.msi` software packages. | Administrative Template ➔ Windows Components ➔ Windows Installer ➔ Prohibit User Installs ➔ **Enabled** | 
 | **`COMP-Prevent_LAN_Manager_Hash`** | Stops caching vulnerable LM hashes in RAM/LSASS. | Security Options ➔ Network security: Do not store LAN Manager hash value on next password change ➔ **Enabled** |
 | **`COMP-Restrict_Blank_Password_Console`** | Blocks network access to local accounts without passwords. | Security Options ➔ Accounts: Limit local account use of blank passwords to console logon only ➔ **Enabled** |
 | **`COMP-Disable_Forced_Restarts`** | Prevents unsaved work loss during patch deployments. | Windows Components ➔ Windows Update ➔ No auto-restart with logged on users for scheduled updates ➔ **Enabled** |
@@ -103,7 +104,6 @@ Here are the specific, modular GPOs I created for my endpoints:
 | **`USER-Screen_Lock_Timeout`** | Prevents physical unauthorized access to unattended endpoints. | Control Panel ➔ Personalization ➔ Screen saver timeout (600s / 10 mins) & Password protect ➔ **Enabled** | 
 | **`USER-Restrict_CMD_PowerShell`** | Blocks standard users from running command-line tools. | System ➔ Prevent access to the command prompt ➔ **Enabled** (Disables script execution) | 
 | **`USER-Restrict_Control_Panel`** | Prevents standard users from modifying adapter settings or system configurations. | Control Panel ➔ Prohibit access to Control Panel and PC settings ➔ **Enabled** | 
-| **`USER-Restrict_Software_Installation`** | Blocks standard accounts from installing `.msi` software packages. | Windows Components ➔ Windows Installer ➔ Turn off Windows Installer ➔ **Enabled** | 
 | **`USER-Restrict_Registry_Tools`** | Blocks users from manually altering system keys. | System ➔ Prevent access to registry editing tools (`regedit`) ➔ **Enabled** | 
 | **`USER-Automated_Drive_Mappings`** | Automatically maps network file shares based on user department. | Preferences ➔ Windows Settings ➔ Drive Maps ➔ Item-Level Targeting for HR OU (`S:\` Drive) | 
 | **`USER-Default_Printers_Deployment`** | Connects users to the correct network printers automatically upon login. | Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting | 
