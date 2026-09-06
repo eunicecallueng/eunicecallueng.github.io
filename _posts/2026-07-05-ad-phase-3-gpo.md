@@ -102,6 +102,82 @@ Here are the specific, modular GPOs I created for my endpoints:
 * **`USER-HR-CFG-Automated_Drive_Mappings`**
   * *Item-Level Targeting:* Automatically maps `\\NYCE-DC01\HRUsers$` as the `S:\` drive upon login, strictly for users in the HR Organizational Unit.
 
+* **`COMP-Audit_Logging`**  
+  * *Configuration:* Advanced Audit Policy ➔ Logon/Logoff ➔ Audit Success & Failure.  
+  * *Purpose:* Generates Event IDs 4624/4625 for SIEM and SOC monitoring.
+* **`COMP-Disable_Guest_Account`**  
+  * *Configuration:* Local Policies ➔ Security Options ➔ Accounts: Guest account status ➔ **Disabled**.  
+  * *Purpose:* Closes unauthenticated local entry points across all endpoints.
+* **`COMP-Prevent_LAN_Manager_Hash`**  
+  * *Configuration:* Security Options ➔ Network security: Do not store LAN Manager hash value on next password change ➔ **Enabled**.  
+  * *Purpose:* Stops caching vulnerable LM hashes in RAM/LSASS.
+* **`COMP-Restrict_Blank_Password_Console`**  
+  * *Configuration:* Security Options ➔ Accounts: Limit local account use of blank passwords to console logon only ➔ **Enabled**.  
+  * *Purpose:* Blocks network access to local accounts without passwords.
+* **`COMP-Disable_Forced_Restarts`**  
+  * *Configuration:* Windows Components ➔ Windows Update ➔ No auto-restart with logged on users for scheduled updates ➔ **Enabled**.  
+  * *Purpose:* Prevents unsaved work loss during patch deployments.
+* **`COMP-Audit_GPO_Changes`**  
+  * *Configuration:* Advanced Audit Policy ➔ DS Access ➔ Audit Directory Service Changes ➔ **Success & Failure**.  
+  * *Purpose:* Logs GPO setting modifications (Event ID 5136) for change tracking.
+* **`COMP-Block_Microsoft_Store`**  
+  * *Configuration:* Windows Components ➔ Store ➔ Turn off the Store application ➔ **Enabled**.  
+  * *Purpose:* Prevents employees from installing unapproved games or apps.
+* **`COMP-Disable_Anonymous_SID_Translation`**  
+  * *Configuration:* Security Options ➔ Network access: Allow anonymous SID/Name translation ➔ **Disabled**.  
+  * *Purpose:* Prevents attackers from enumerating domain account usernames via SIDs.
+* **`COMP-Restrict_Anonymous_Permissions`**  
+  * *Configuration:* Security Options ➔ Network access: Let Everyone permissions apply to anonymous users ➔ **Disabled**.  
+  * *Purpose:* Restricts anonymous network shares enumeration.
+* **`COMP-Audit_NTLM_Usage`**  
+  * *Configuration:* Security Options ➔ Network security: Restrict NTLM: Audit NTLM authentication in this domain ➔ **Enable all**.  
+  * *Purpose:* Tracks legacy NTLM authentication before phasing it out for Kerberos.
+* **`COMP-Disable_LLMNR`**  
+  * *Configuration:* Network ➔ DNS Client ➔ Turn off multicast name resolution ➔ **Enabled**.  
+  * *Purpose:* Mitigates LLMNR/NBT-NS credential poisoning attacks (e.g., Responder tools).
+* **`COMP-Control_Local_Admins_Group`**  
+  * *Configuration:* Preferences ➔ Local Users and Groups ➔ Local Group (Administrators) ➔ Update/Remove unauthorized users.  
+  * *Purpose:* Strips local administrator privileges from standard users.
+* **`COMP-Windows_Firewall_Rules`**  
+  * *Configuration:* Security Settings ➔ Windows Defender Firewall ➔ Enforce default-block inbound, allow ICMP Ping & WinRM.  
+  * *Purpose:* Secures network boundaries while allowing centralized monitoring.
+* **`COMP-Enable_UAC`**  
+  * *Configuration:* Security Options ➔ User Account Control: Run all administrators in Admin Approval Mode ➔ **Enabled**.  
+  * *Purpose:* Ensures privilege elevation prompts are enforced even for admins.
+* **`COMP-AppLocker_Execution_Rules`**  
+  * *Configuration:* Security Settings ➔ Application Control Policies ➔ AppLocker ➔ Restrict binaries to `%ProgramFiles%` and `%SystemRoot%`.  
+  * *Purpose:* Blocks execution of malicious `.exe`/`.ps1` scripts in user-writable paths (`%AppData%`, `%Temp%`).
+* **`COMP-Block_Removable_Media`**  
+  * *Configuration:* Administrative Templates ➔ System ➔ Removable Storage Access ➔ All Removable Storage classes: Deny all access ➔ **Enabled**.  
+  * *Purpose:* Blocks USB drives and external storage to prevent malware infection and data exfiltration.
+
+---
+
+### 2. User Workspace & Environment Policies (`USER-*`)
+
+* **`USER-Screen_Lock_Timeout`**  
+  * *Configuration:* Control Panel ➔ Personalization ➔ Screen saver timeout (600s / 10 mins) & Password protect ➔ **Enabled**.  
+  * *Purpose:* Prevents physical unauthorized access to unattended endpoints.
+* **`USER-Restrict_CMD_PowerShell`**  
+  * *Configuration:* System ➔ Prevent access to the command prompt ➔ **Enabled** (Disables script execution).  
+  * *Purpose:* Blocks standard users from running command-line tools.
+* **`USER-Restrict_Control_Panel`**  
+  * *Configuration:* Control Panel ➔ Prohibit access to Control Panel and PC settings ➔ **Enabled**.  
+  * *Purpose:* Prevents standard users from modifying adapter settings or system configurations.
+* **`USER-Restrict_Software_Installation`**  
+  * *Configuration:* Windows Components ➔ Windows Installer ➔ Turn off Windows Installer ➔ **Enabled**.  
+  * *Purpose:* Blocks standard accounts from installing `.msi` software packages.
+* **`USER-Restrict_Registry_Tools`**  
+  * *Configuration:* System ➔ Prevent access to registry editing tools (`regedit`) ➔ **Enabled**.  
+  * *Purpose:* Blocks users from manually altering system keys.
+* **`USER-Automated_Drive_Mappings`**  
+  * *Configuration:* Preferences ➔ Windows Settings ➔ Drive Maps ➔ Item-Level Targeting for HR OU (`S:\` Drive).  
+  * *Purpose:* Automatically maps network file shares based on user department.
+* **`USER-Default_Printers_Deployment`**  
+  * *Configuration:* Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting.  
+  * *Purpose:* Connects users to the correct network printers automatically upon login.
+
+
 ---
 
 #### **E. GPO Node Optimization (Disabling Unused Settings)**
