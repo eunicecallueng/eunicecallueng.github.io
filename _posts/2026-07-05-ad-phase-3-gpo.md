@@ -74,39 +74,39 @@ Here are the specific, modular GPOs I created for my endpoints:
 
 ### A. Computer Hardening & System Policies
 
-| GPO Name | Core Configuration | Purpose / Enterprise Context |
+| GPO Name | Purpose / Enterprise Context | Core Configuration  |
 | :--- | :--- | :--- |
-| **`COMP-Interactive_Logon_Banner`** | Local Policies ➔ Security Options ➔ Interactive logon: Message title & text configured | Enforces mandatory legal notifications prior to logon prompt for compliance. |
-| **`COMP-Audit_Logging`** | Advanced Audit Policy ➔ Logon/Logoff ➔ Audit Success & Failure | Generates Event IDs 4624/4625 for SIEM and SOC monitoring. |
-| **`COMP-Disable_Guest_Account`** | Local Policies ➔ Security Options ➔ Accounts: Guest account status ➔ **Disabled** | Closes unauthenticated local entry points across all endpoints. |
-| **`COMP-Block_Removable_Media`** | Administrative Templates ➔ System ➔ Removable Storage Access ➔ All Removable Storage classes: Deny all access ➔ **Enabled** | Blocks USB drives and external storage to prevent malware infection and data exfiltration. |
-| **`COMP-Prevent_LAN_Manager_Hash`** | Security Options ➔ Network security: Do not store LAN Manager hash value on next password change ➔ **Enabled** | Stops caching vulnerable LM hashes in RAM/LSASS. |
-| **`COMP-Restrict_Blank_Password_Console`** | Security Options ➔ Accounts: Limit local account use of blank passwords to console logon only ➔ **Enabled** | Blocks network access to local accounts without passwords. |
-| **`COMP-Disable_Forced_Restarts`** | Windows Components ➔ Windows Update ➔ No auto-restart with logged on users for scheduled updates ➔ **Enabled** | Prevents unsaved work loss during patch deployments. |
-| **`COMP-Audit_GPO_Changes`** | Advanced Audit Policy ➔ DS Access ➔ Audit Directory Service Changes ➔ **Success & Failure** | Logs GPO setting modifications (Event ID 5136) for change tracking. |
-| **`COMP-Block_Microsoft_Store`** | Windows Components ➔ Store ➔ Turn off the Store application ➔ **Enabled** | Prevents employees from installing unapproved games or apps. |
-| **`COMP-Disable_Anonymous_SID_Translation`** | Security Options ➔ Network access: Allow anonymous SID/Name translation ➔ **Disabled** | Prevents attackers from enumerating domain account usernames via SIDs. |
-| **`COMP-Restrict_Anonymous_Permissions`** | Security Options ➔ Network access: Let Everyone permissions apply to anonymous users ➔ **Disabled** | Restricts anonymous network shares enumeration. |
-| **`COMP-Audit_NTLM_Usage`** | Security Options ➔ Network security: Restrict NTLM: Audit NTLM authentication in this domain ➔ **Enable all** | Tracks legacy NTLM authentication before phasing it out for Kerberos. |
-| **`COMP-Disable_LLMNR`** | Network ➔ DNS Client ➔ Turn off multicast name resolution ➔ **Enabled** | Mitigates LLMNR/NBT-NS credential poisoning attacks (e.g., Responder tools). |
-| **`COMP-Control_Local_Admins_Group`** | Preferences ➔ Local Users and Groups ➔ Local Group (Administrators) ➔ Update/Remove unauthorized users | Strips local administrator privileges from standard users. |
-| **`COMP-Windows_Firewall_Rules`** | Security Settings ➔ Windows Defender Firewall ➔ Enforce default-block inbound, allow ICMP Ping & WinRM | Secures network boundaries while allowing centralized monitoring. |
-| **`COMP-Enable_UAC`** | Security Options ➔ User Account Control: Run all administrators in Admin Approval Mode ➔ **Enabled** | Ensures privilege elevation prompts are enforced even for admins. |
-| **`COMP-AppLocker_Execution_Rules`** | Security Settings ➔ Application Control Policies ➔ AppLocker ➔ Restrict binaries to `%ProgramFiles%` and `%SystemRoot%` | Blocks execution of malicious `.exe`/`.ps1` scripts in user-writable paths (`%AppData%`, `%Temp%`). |
+| **`COMP-Interactive_Logon_Banner`** | Enforces mandatory legal notifications prior to logon prompt for compliance. | Local Policies ➔ Security Options ➔ Interactive logon: Message title & text configured |
+| **`COMP-Audit_Logging`** | Generates Event IDs 4624/4625 for SIEM and SOC monitoring. | Advanced Audit Policy ➔ Logon/Logoff ➔ Audit Success & Failure |
+| **`COMP-Disable_Guest_Account`** | Closes unauthenticated local entry points across all endpoints. | Local Policies ➔ Security Options ➔ Accounts: Guest account status ➔ **Disabled** |
+| **`COMP-Block_Removable_Media`** | Blocks USB drives and external storage to prevent malware infection and data exfiltration. | Administrative Templates ➔ System ➔ Removable Storage Access ➔ All Removable Storage classes: Deny all access ➔ **Enabled** |
+| **`COMP-Prevent_LAN_Manager_Hash`** | Stops caching vulnerable LM hashes in RAM/LSASS. | Security Options ➔ Network security: Do not store LAN Manager hash value on next password change ➔ **Enabled** |
+| **`COMP-Restrict_Blank_Password_Console`** | Blocks network access to local accounts without passwords. | Security Options ➔ Accounts: Limit local account use of blank passwords to console logon only ➔ **Enabled** |
+| **`COMP-Disable_Forced_Restarts`** | Prevents unsaved work loss during patch deployments. | Windows Components ➔ Windows Update ➔ No auto-restart with logged on users for scheduled updates ➔ **Enabled** |
+| **`COMP-Audit_GPO_Changes`** | Logs GPO setting modifications (Event ID 5136) for change tracking. | Advanced Audit Policy ➔ DS Access ➔ Audit Directory Service Changes ➔ **Success & Failure** |
+| **`COMP-Block_Microsoft_Store`** | Prevents employees from installing unapproved games or apps. | Windows Components ➔ Store ➔ Turn off the Store application ➔ **Enabled** | 
+| **`COMP-Disable_Anonymous_SID_Translation`** | Prevents attackers from enumerating domain account usernames via SIDs. | Security Options ➔ Network access: Allow anonymous SID/Name translation ➔ **Disabled** |
+| **`COMP-Restrict_Anonymous_Permissions`** | Restricts anonymous network shares enumeration. | Security Options ➔ Network access: Let Everyone permissions apply to anonymous users ➔ **Disabled** |
+| **`COMP-Audit_NTLM_Usage`** | Tracks legacy NTLM authentication before phasing it out for Kerberos. | Security Options ➔ Network security: Restrict NTLM: Audit NTLM authentication in this domain ➔ **Enable all** |
+| **`COMP-Disable_LLMNR`** | Mitigates LLMNR/NBT-NS credential poisoning attacks (e.g., Responder tools). | Network ➔ DNS Client ➔ Turn off multicast name resolution ➔ **Enabled** | 
+| **`COMP-Control_Local_Admins_Group`** | Strips local administrator privileges from standard users. | Preferences ➔ Local Users and Groups ➔ Local Group (Administrators) ➔ Update/Remove unauthorized users | 
+| **`COMP-Windows_Firewall_Rules`** | Secures network boundaries while allowing centralized monitoring. | Security Settings ➔ Windows Defender Firewall ➔ Enforce default-block inbound, allow ICMP Ping & WinRM | 
+| **`COMP-Enable_UAC`** | Ensures privilege elevation prompts are enforced even for admins. | Security Options ➔ User Account Control: Run all administrators in Admin Approval Mode ➔ **Enabled** | 
+| **`COMP-AppLocker_Execution_Rules`** | Blocks execution of malicious `.exe`/`.ps1` scripts in user-writable paths (`%AppData%`, `%Temp%`). | Security Settings ➔ Application Control Policies ➔ AppLocker ➔ Restrict binaries to `%ProgramFiles%` and `%SystemRoot%` |
 
 ---
 
 ### B. User Workspace & Environment Policies
 
-| GPO Name | Core Configuration | Purpose / Enterprise Context |
+| GPO Name | Purpose / Enterprise Context | Core Configuration | 
 | :--- | :--- | :--- |
-| **`USER-Screen_Lock_Timeout`** | Control Panel ➔ Personalization ➔ Screen saver timeout (600s / 10 mins) & Password protect ➔ **Enabled** | Prevents physical unauthorized access to unattended endpoints. |
-| **`USER-Restrict_CMD_PowerShell`** | System ➔ Prevent access to the command prompt ➔ **Enabled** (Disables script execution) | Blocks standard users from running command-line tools. |
-| **`USER-Restrict_Control_Panel`** | Control Panel ➔ Prohibit access to Control Panel and PC settings ➔ **Enabled** | Prevents standard users from modifying adapter settings or system configurations. |
-| **`USER-Restrict_Software_Installation`** | Windows Components ➔ Windows Installer ➔ Turn off Windows Installer ➔ **Enabled** | Blocks standard accounts from installing `.msi` software packages. |
-| **`USER-Restrict_Registry_Tools`** | System ➔ Prevent access to registry editing tools (`regedit`) ➔ **Enabled** | Blocks users from manually altering system keys. |
-| **`USER-Automated_Drive_Mappings`** | Preferences ➔ Windows Settings ➔ Drive Maps ➔ Item-Level Targeting for HR OU (`S:\` Drive) | Automatically maps network file shares based on user department. |
-| **`USER-Default_Printers_Deployment`** | Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting | Connects users to the correct network printers automatically upon login. |
+| **`USER-Screen_Lock_Timeout`** | Prevents physical unauthorized access to unattended endpoints. | Control Panel ➔ Personalization ➔ Screen saver timeout (600s / 10 mins) & Password protect ➔ **Enabled** | 
+| **`USER-Restrict_CMD_PowerShell`** | Blocks standard users from running command-line tools. | System ➔ Prevent access to the command prompt ➔ **Enabled** (Disables script execution) | 
+| **`USER-Restrict_Control_Panel`** | Prevents standard users from modifying adapter settings or system configurations. | Control Panel ➔ Prohibit access to Control Panel and PC settings ➔ **Enabled** | 
+| **`USER-Restrict_Software_Installation`** | Blocks standard accounts from installing `.msi` software packages. | Windows Components ➔ Windows Installer ➔ Turn off Windows Installer ➔ **Enabled** | 
+| **`USER-Restrict_Registry_Tools`** | Blocks users from manually altering system keys. | System ➔ Prevent access to registry editing tools (`regedit`) ➔ **Enabled** | 
+| **`USER-Automated_Drive_Mappings`** | Automatically maps network file shares based on user department. | Preferences ➔ Windows Settings ➔ Drive Maps ➔ Item-Level Targeting for HR OU (`S:\` Drive) | 
+| **`USER-Default_Printers_Deployment`** | Connects users to the correct network printers automatically upon login. | Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting | 
 
 ---
 
