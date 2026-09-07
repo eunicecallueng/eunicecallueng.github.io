@@ -65,7 +65,7 @@ With that in mind, here are the only **baseline authentication rules** I configu
    | **Password Complexity** | **Enabled** | Enforces 3 of 4 character classes (uppercase, lowercase, numbers, special characters). |
    | **Enforce Password History** | **24 passwords** | Prevents users from immediately cycling back to previous passwords. |
 
-   <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   <iframe width="100%" height="450" src="https://www.youtube.com/embed/cL6YpH2hE4c?si=y5nCyX1JUzXVe6i1" title="Refining Core Authentication (Default Domain Policy)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## **Step 4: Building Modular GPOs (The Single-Purpose Approach)**
 Instead of creating one monolithic "Workstation Policy," I split my configurations into **dedicated, modular GPOs** using the **`[SCOPE]-[PURPOSE]`** naming convention. This modular setup makes it super easy to isolate issues—if drive mappings stop working, I only need to inspect or toggle the Drive Mapping GPO without touching firewall or security settings!
@@ -95,6 +95,9 @@ Here are the specific, modular GPOs I created for my endpoints:
 | **`COMP-Enable_UAC`** | Ensures privilege elevation prompts are enforced even for admins. | Security Options ➔ User Account Control: Run all administrators in Admin Approval Mode ➔ **Enabled** | 
 | **`COMP-AppLocker_Execution_Rules`** | Blocks execution of malicious `.exe`/`.ps1` scripts in user-writable paths (`%AppData%`, `%Temp%`). | Security Settings ➔ Application Control Policies ➔ AppLocker ➔ Restrict binaries to `%ProgramFiles%` and `%SystemRoot%` |
 
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/R0Q8WoLOuOc?si=e2YIEAqocEqOgObP" title="Computer Hardening & System Policies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 ---
 
 ### <span style="color: #4A90E2;">B. User Workspace & Environment Policies</span>
@@ -108,6 +111,7 @@ Here are the specific, modular GPOs I created for my endpoints:
 | **`USER-Automated_Drive_Mappings`** | Automatically maps network file shares based on user department. | Preferences ➔ Windows Settings ➔ Drive Maps ➔ Item-Level Targeting for HR OU (`S:\` Drive) | 
 | **`USER-Default_Printers_Deployment`** | Connects users to the correct network printers automatically upon login. | Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting | 
 
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/yRq__B3U33E?si=QeY91SezIcDeTklQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ---
 
 ## **Step 5. GPO Node Optimization (Disabling Unused Settings)**
