@@ -114,7 +114,7 @@ Here are the specific, modular GPOs I created for my endpoints:
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/yRq__B3U33E?si=QeY91SezIcDeTklQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ---
 
-## **Step 5. GPO Node Optimization (Disabling Unused Settings)**
+### <span style="color: #4A90E2;">C. GPO Node Optimization (Disabling Unused Settings)</span>
 
 When a GPO contains only machine or user rules, the unused section should be explicitly disabled via **GPMC > Details > GPO Status**:
 
