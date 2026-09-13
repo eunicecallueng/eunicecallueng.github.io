@@ -143,12 +143,14 @@ Normally, Windows takes its sweet time (***about 90 to 120 minutes***) to pull n
 To force my client PC to pick up new changes right away, I pop open the command prompt and run:
 
 <div class="callout callout-note">:: Quick refresh for basic setting changes<p style="margin-top: 10px; margin-bottom: 0;">
-gpupdate</p>
+
+gpupdate
 
 :: Forces a complete re-download of EVERY policy
 
-gpupdate /force
+gpupdate /force</p>
 </div>
+
 <div class="callout callout-important"><strong>Note:</strong><p style="margin-top: 10px; margin-bottom: 0;">If you're testing things like Software Installs (.msi) or Folder Redirection, Windows usually can't apply them while you're actively logged in. Don't panic if it doesn't show up immediately—gpupdate /force will usually ask you to log off or reboot to finish the job!</p>
 </div>
 
