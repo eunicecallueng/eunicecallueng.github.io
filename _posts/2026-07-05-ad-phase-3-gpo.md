@@ -136,19 +136,18 @@ I learned pretty quickly that you shouldn't just assume a policy worked just bec
 
 ---
 
-### <span style="color: #4A90E2;">A. Testing Policies on the Client <strong>(``gpupdate``)</strong></span>
+### <span style="color: #4A90E2;">A. Testing Policies on the Client (``gpupdate``)</span>
 
 Normally, Windows takes its sweet time (***about 90 to 120 minutes***) to pull new Group Policies in the background. But when you’re actively testing in a lab, nobody has time to wait around for that!
 
 To force my client PC to pick up new changes right away, I pop open the command prompt and run:
 
-```cmd
-:: Quick refresh for basic setting changes
-gpupdate
+<div class="callout callout-note">:: Quick refresh for basic setting changes<p style="margin-top: 10px; margin-bottom: 0;">
+gpupdate</p>
 
 :: Forces a complete re-download of EVERY policy
 gpupdate /force
-```
+</div>
 <div class="callout callout-important"><strong>Note:</strong><p style="margin-top: 10px; margin-bottom: 0;">If you're testing things like Software Installs (.msi) or Folder Redirection, Windows usually can't apply them while you're actively logged in. Don't panic if it doesn't show up immediately—gpupdate /force will usually ask you to log off or reboot to finish the job!</p>
 </div>
 
