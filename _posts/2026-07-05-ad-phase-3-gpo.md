@@ -143,11 +143,10 @@ Normally, Windows takes its sweet time (***about 90 to 120 minutes***) to pull n
 To force my client PC to pick up new changes right away, I pop open the command prompt and run:
 
 <div class="callout callout-note">:: Quick refresh for basic setting changes<p style="margin-top: 10px; margin-bottom: 0;">
-gpupdate</p>
+<strong>gpupdate</strong></p>
 </div>
 <div class="callout callout-note">:: Forces a complete re-download of EVERY policy<p style="margin-top: 0px; margin-bottom: 0;">
-
-gpupdate /force</p>
+<strong>gpupdate /force</strong></p>
 </div>
 
 <div class="callout callout-important"><strong>Note:</strong><p style="margin-top: 10px; margin-bottom: 0;">If you're testing things like Software Installs (.msi) or Folder Redirection, Windows usually can't apply them while you're actively logged in. Don't panic if it doesn't show up immediately—gpupdate /force will usually ask you to log off or reboot to finish the job!</p>
@@ -161,17 +160,17 @@ When a policy isn't working, my go-to tool is **`gpresult`**. It gives you a cle
 If I just want a fast summary right inside the terminal:
 
 <div class="callout callout-note">:: Shows all applied policies for the current user and PC<p style="margin-top: 0px; margin-bottom: 0;">
-gpresult /r</p>
+<strong>gpresult /r</strong></p>
 </div>
 <div class="callout callout-note">:: Focuses strictly on computer-level policies (run as Admin!)<p style="margin-top: 0px; margin-bottom: 0;">
-gpresult /scope computer /r</p>
+<strong>gpresult /scope computer /r</strong></p>
 </div>
 
 #### 2. The Full Graphical Diagnostic Report
 If I want to **dig deeper or save a snapshot of my setup**, I export an HTML report:
-```cmd
-gpresult /h C:\GPO_Report.html
-```
+<div class="callout callout-note">gpresult /h C:\GPO_Report.html<p style="margin-top: 0px; margin-bottom: 0;"></p>
+</div>
+
 When I open that HTML file in a browser, I specifically look out for:
    * **Applied GPOs:** The policies that loaded successfully.
    * **Denied GPOs:** The ones that were blocked (and super helpfully, it tells you why—like permission issues or WMI filtering).
