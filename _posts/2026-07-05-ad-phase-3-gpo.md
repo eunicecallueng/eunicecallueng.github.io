@@ -112,6 +112,8 @@ Here are the specific, modular GPOs I created for my endpoints:
 | **`USER-Default_Printers_Deployment`** | Connects users to the correct network printers automatically upon login. | Preferences ➔ Control Panel Settings ➔ Printers ➔ Shared Printer deployment with Item-Level Targeting | 
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/yRq__B3U33E?si=QeY91SezIcDeTklQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/lyBGzIYnI4E?si=FoXsskPgIy1Uh2k_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ---
 
 ### <span style="color: #4A90E2;">C. GPO Node Optimization (Disabling Unused Settings)</span>
