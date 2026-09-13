@@ -143,7 +143,6 @@ Normally, Windows takes its sweet time (***about 90 to 120 minutes***) to pull n
 To force my client PC to pick up new changes right away, I pop open the command prompt and run:
 
 <div class="callout callout-note">:: Quick refresh for basic setting changes<p style="margin-top: 10px; margin-bottom: 0;">
-
 gpupdate</p>
 </div>
 <div class="callout callout-note">:: Forces a complete re-download of EVERY policy<p style="margin-top: 0px; margin-bottom: 0;">
@@ -161,13 +160,12 @@ When a policy isn't working, my go-to tool is **`gpresult`**. It gives you a cle
 #### 1. Quick Command-Line Check
 If I just want a fast summary right inside the terminal:
 
-```cmd
-:: Shows all applied policies for the current user and PC
-gpresult /r
-
-:: Focuses strictly on computer-level policies (run as Admin!)
-gpresult /scope computer /r
-```
+<div class="callout callout-note">:: Shows all applied policies for the current user and PC<p style="margin-top: 0px; margin-bottom: 0;">
+gpresult /r</p>
+</div>
+<div class="callout callout-note">:: Focuses strictly on computer-level policies (run as Admin!)<p style="margin-top: 0px; margin-bottom: 0;">
+gpresult /scope computer /r</p>
+</div>
 
 #### 2. The Full Graphical Diagnostic Report
 If I want to **dig deeper or save a snapshot of my setup**, I export an HTML report:
