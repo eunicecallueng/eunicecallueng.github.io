@@ -136,7 +136,7 @@ I learned pretty quickly that you shouldn't just assume a policy worked just bec
 
 ---
 
-### <span style="color: #4A90E2;">A. Testing Policies on the Client (`gpupdate`)</span>
+### <span style="color: #4A90E2;">A. Testing Policies on the Client <strong>(``gpupdate``)</strong></span>
 
 Normally, Windows takes its sweet time (***about 90 to 120 minutes***) to pull new Group Policies in the background. But when you’re actively testing in a lab, nobody has time to wait around for that!
 
