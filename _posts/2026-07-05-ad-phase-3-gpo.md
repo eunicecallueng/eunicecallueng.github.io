@@ -146,7 +146,7 @@ To force my client PC to pick up new changes right away, I pop open the command 
 
 gpupdate
 
-:: Forces a complete re-download of EVERY policy
+<div class="callout callout-note">:: Forces a complete re-download of EVERY policy<p style="margin-top: 10px; margin-bottom: 0;">
 
 gpupdate /force</p>
 </div>
