@@ -168,29 +168,16 @@ If I just want a fast summary right inside the terminal:
 
 #### 2. The Full Graphical Diagnostic Report
 If I want to **dig deeper or save a snapshot of my setup**, I export an HTML report:
-<div class="callout callout-note">gpresult /h C:\GPO_Report.html<p style="margin-top: 0px; margin-bottom: 0;"></p>
+<div class="callout callout-note"><strong>gpresult /h C:\GPO_Report.html</strong><p style="margin-top: 0px; margin-bottom: 0;"></p>
 </div>
 
 When I open that HTML file in a browser, I specifically look out for:
    * **Applied GPOs:** The policies that loaded successfully.
    * **Denied GPOs:** The ones that were blocked (and super helpfully, it tells you why—like permission issues or WMI filtering).
 
-### <span style="color: #4A90E2;">C. Real Troubleshooting Scenarios I Ran Into</span>
+### <span style="color: #4A90E2;">C. Checking Event Logs When Things Go Wrong</span>
 
-Building this lab wasn't totally smooth sailing, but troubleshooting the hiccups was honestly where I learned the most! Here are a few real issues I ran into on my test client (`CLIENT01`):
-
-#### 1. The Mysterious "Denied GPO (Security Filtering)"
-* **The Issue:** I created a drive mapping GPO (`USER-Automated_Drive_Mappings`) for the HR team, but it refused to apply to my test user. `gpresult` marked it as *Denied*.
-* **What Went Wrong:** When I removed `Authenticated Users` to target only the `SG-HR-Users` group, the client computer itself lost permission to read the policy settings from SYSVOL!
-* **How I Fixed It:** In the GPO’s **Delegation** tab, I added `Domain Computers` with **Read** access. That let the PC read the policy while keeping the actual settings restricted strictly to the HR group.
-
-#### 2. Fixing Slow Logon Times
-* **The Issue:** Logging into the client machine started feeling a bit sluggish.
-* **What Went Wrong:** My computer-only policies (like USB blocking) were still trying to look for user settings, wasting extra processing time.
-* **How I Fixed It:** I went into GPMC, selected my computer GPOs, and set **User Configuration Settings Disabled**. This told Windows to completely skip checking user settings for those policies, making logons snappy again!
-
-#### 3. Checking Event Viewer for Clues
-When the command prompt doesn't give enough details, Windows Event Viewer has a dedicated log that tells you the exact story of what happened during policy processing:
+Building this lab wasn't totally smooth sailing, but troubleshooting the hiccups was honestly where I learned the most! When the command prompt doesn't give enough details, Windows Event Viewer has a dedicated log that tells you the exact story of what happened during policy processing:
 
 * **Where to Look:** `Applications and Services Logs -> Microsoft -> Windows -> GroupPolicy -> Operational`
 * **Key Event IDs to Remember:**
@@ -199,8 +186,8 @@ When the command prompt doesn't give enough details, Windows Event Viewer has a 
   * **Event 7016:** Network delay or couldn't reach the Domain Controller.
 
 ---
-**What's Next?**  
-*Up Next: In **Phase 4: Group Policy & Advanced Security (GPO)**, we will automate configurations, map these shared network drives automatically for our users upon login, and enforce security baselines across the domain workstations.*
+**Phase 3 Wrap-Up!**
+Wrapping up Phase 3 felt like a huge milestone. My lab went from a plain Active Directory tree to a properly secured domain.
 
 
 
