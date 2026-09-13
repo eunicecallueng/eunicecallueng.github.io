@@ -95,3 +95,21 @@ p code, li code {
   border-color: #dc3545;
   color: #721c24;
 }
+
+
+/* Force box styling sa Chirpy code blocks */
+div[class*="language-"],
+figure.highlight,
+.highlighter-rouge {
+  background-color: #1b1b1e !important; /* Dark background color */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  padding: 1rem !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+div[class*="language-"] pre,
+figure.highlight pre {
+  margin-bottom: 0 !important;
+}

@@ -146,6 +146,7 @@ To force my client PC to pick up new changes right away, I pop open the command 
 gpupdate</p>
 
 :: Forces a complete re-download of EVERY policy
+
 gpupdate /force
 </div>
 <div class="callout callout-important"><strong>Note:</strong><p style="margin-top: 10px; margin-bottom: 0;">If you're testing things like Software Installs (.msi) or Folder Redirection, Windows usually can't apply them while you're actively logged in. Don't panic if it doesn't show up immediately—gpupdate /force will usually ask you to log off or reboot to finish the job!</p>
