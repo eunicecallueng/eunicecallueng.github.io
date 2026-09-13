@@ -1,5 +1,5 @@
 ---
-title: "Phase 4: Group Policy & Advanced Security (GPO)"
+title: "Phase 4: Architecture Resilience"
 date: 2026-07-14
 categories: [Homelab, Active Directory]
 tags: [gpo, security, active-directory]
@@ -8,51 +8,68 @@ sitemap: false
 permalink: /posts/ad-phase-4-resilience/
 ---
 
-Welcome to the final phase of my Active Directory homelab project! After setting up the foundation, organizing users into logical OUs, and securing file shares, I turned my attention to enterprise-level automation and security baselines. 
+Having a single Domain Controller running in a lab is great for learning the basics, but in a real enterprise environment, relying on one DC is a huge gamble. If that single server goes down for maintenance, crashes, or suffers a hardware failure, your entire network loses authentication, DNS, and access to domain resources.
 
-In this phase, I focused on using Group Policy Objects (GPOs) and Active Directory's advanced security tools to lock down endpoints, automate user workflows, and secure identity accounts. Here is a walkthrough of how I built and tested these configurations in my lab.
-
-
-## **Step 1: Establishing the GPO Central Store**
-Before rolling out policies, it is a best practice to configure a Central Store. This ensures that all domain controllers pull from a single, up-to-date repository of Administrative Templates **(ADMX files)** when managing policies:
-    
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/OYzf86gSntM?si=UGB45ufjPKrGIraC" title=" Central Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Phase 4 is all about turning my Active Directory environment into a highly available, fault-tolerant enterprise network. I focused on removing single points of failure, protecting core database files, and ensuring the domain stays resilient against unexpected downtime.
 
 ---
 
-## **Step 2: Establishing Baseline Domain Security**
-Once the Central Store was in place, I configured core domain security policies within the Group Policy Management Console (GPMC). I focused on defining baseline authentication settings, password rules, and account lockout policies across the entire domain.
+## **Step 1: Secondary Domain Controller Deployment (High Availability)**
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/jw0WRVFzemM?si=enbWX6A0mj2UgyYP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
----
+### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
+Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
+* **Static IP Address:** `192.168.1.101/24`
+* **Preferred DNS:** `192.168.1.100` (Points directly to `NYCE-DC01` for initial domain discovery)
+* **Alternate DNS:** `127.0.0.1` (Self-referencing loopback address)
 
-## **Step 3: Automating Resources with Drive Mapping**
-Rather than manually mapping network drives on every user's PC, I used GPO Preferences to automate the entire process. Now, when users log in, their assigned department share (which I built in Phase 3) maps automatically to their workstation based on their group membership.
-(Insert your Drive_Mapping.mp4 and Shared Drive Mapping.mp4 embed codes here)
+### <span style="color: #4A90E2;">2. Promotion & Active Directory Replication</span>
+After installing the **Active Directory Domain Services (AD DS)** role on `NYCE-DC02`, I promoted it by joining it as an additional Domain Controller to the existing domain (`nycehomelab.local`). 
 
----
+Once the promotion completed and the server rebooted, both Domain Controllers immediately began replicating directory data, DNS zones, and SYSVOL shares across the network.
 
-## **Step 4: Hardening Workstations & Securing Endpoints**
-Locking down endpoint devices was one of the most hands-on parts of this lab. I created targeted GPOs to minimize the attack surface on domain workstations:
+### <span style="color: #4A90E2;">3. Verifying Replication & Health</span>
+To verify that domain objects and schema changes were properly syncing between `NYCE-DC01` and `NYCE-DC02`, I ran the following built-in command-line tools:
 
-* **Removable Storage Blocking:** Configured policies to block unauthorized USB drives, preventing data exfiltration and external malware threats.
-* **Credential Security:** Configured policies to restrict cached logon entries and protect credentials stored on local machines.
-* **User Environment Hardening:** Restricted access to system settings, administrative tools, and unauthorized command interfaces for standard users.
-* **Policy Enforcement & Testing:** Ran `gpupdate /force` across domain nodes and tested authentication rules on client VMs to make sure policies applied instantly without issues.
-(Insert your GPO Removable Storage Blocking.mp4, GPO_Credential_Security.mp4, GPO_User_Environment_Security.mp4, and Workstation Hardening.mp4 embed codes here)
-
----
-
-## **Step 5: Advanced Identity Security & Delegation**
-To finish the phase, I implemented Active Directory's native identity protection features:
-
-* **Fine-Grained Password Policies (FGPP):** Created stricter password requirements specifically for administrative users without impacting standard employees.
-* **Logon Restrictions:** Applied time-based restrictions to prevent certain accounts from authenticating outside standard operational hours.
-* **Delegation of Control:** Used the Delegation of Control Wizard to give the Helpdesk group permission to reset passwords without giving them full Domain Admin privileges.
-(Insert your Fine-Grained Password Policies (FGPP).mp4, Restricting User Logon Hours.mp4, and Delegate Control.mp4 embed codes here)
+<div class="callout callout-note">:: Checks the overall replication health across all Domain Controllers<p style="margin-top: 0px; margin-bottom: 0;">
+<strong>repadmin /replsummary</strong></p>
+</div>
+<div class="callout callout-note">:: Performs a detailed check on inbound replication neighbors<p style="margin-top: 0px; margin-bottom: 0;">
+<strong>repadmin /showrepl</strong></p>
+</div>
 
 ---
 
-## **Project Wrap-Up**
-Building this 4-phase Active Directory lab from scratch—from a raw Server 2022 installation to a fully secured, automated enterprise architecture—was an incredible hands-on journey. It gave me deep practical experience in system administration, identity management, and network security baselines!
+## **Step 2: Backup, SYSVOL & Active Directory Disaster Recovery**
+
+With two Domain Controllers providing high availability, the next critical step was disaster recovery. Redundancy protects against server failure, but it doesn't protect against corrupted database files, ransomware, or accidental mass object deletions.
+
+To safeguard the environment, I configured built-in backup tools and recovery features to protect the core Active Directory database (`NTDS.dit`) and SYSVOL share.
+
+---
+
+### <span style="color: #4A90E2;">1. Enabling the Active Directory Recycle Bin</span>
+By default, deleting an object in Active Directory (like a user account or OU) marks it as tombstoned, making instant restoration difficult. Enabling the Active Directory Recycle Bin allows deleted objects to be restored instantly with all their attributes (SID, group memberships, passwords) completely intact.
+
+I enabled the Recycle Bin domain-wide via Active Directory Administrative Center (ADAC) and verified it using PowerShell:
+
+```powershell
+:: Enable Active Directory Recycle Bin for the domain
+Enable-ADOptionalFeature -Identity 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target 'nycehomelab.local' -Confirm:$false
+```
+
+<div class="callout callout-important"><strong>Testing Object Recovery:</strong><p style="margin-top: 10px; margin-bottom: 0;">I created a test user, deleted it, and restored it within seconds using Restore-ADObject without needing to reboot the Domain Controller into Directory Services Restore Mode (DSRM)!</p>
+</div>
+
+I created a test user, deleted it, and restored it within seconds using Restore-ADObject without needing to reboot the Domain Controller into Directory Services Restore Mode (DSRM)!
+
+
+### <span style="color: #4A90E2;">2. System State Backups via Windows Server Backup</span>
+Active Directory data cannot be backed up like regular files because the database files are constantly open and in use by the OS. I installed the Windows Server Backup feature on `NYCE-DC01` to capture a full System State Backup.
+
+A System State backup includes:
+* Active Directory Database (`NTDS.dit`)
+* SYSVOL Folder Structure (Group Policies & Scripts)
+* Registry, Boot Files, & System Volume
+* DNS Server Data
