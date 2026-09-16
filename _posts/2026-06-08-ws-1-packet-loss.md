@@ -36,5 +36,5 @@ To isolate the affected traffic and observe the network's reaction to the loss, 
 
 ## Want to check out the capture?
 If you want to dive into the data yourself, just open the `.pcapng` file in Wireshark and use these display filters:
-* To spot the duplicate ACKs: `tcp.analysis.duplicate_ack`
-* To spot the retransmissions: `tcp.analysis.retransmission`
+* To spot the duplicate ACKs: **`tcp.analysis.duplicate_ack`**
+* To spot the retransmissions: **`tcp.analysis.retransmission`**
