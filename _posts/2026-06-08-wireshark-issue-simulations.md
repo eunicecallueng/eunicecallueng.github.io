@@ -6,6 +6,8 @@ tags: [wireshark, pcap, troubleshooting, networking, protocols]
 description: Turns out the best way to learn network troubleshooting is to break stuff on purpose! I set up Wireshark on my Windows 11 machine, deliberately messed up specific network configurations, and tracked the packet traffic in real time. It was an awesome hands-on experiment that helped me finally connect the dots between network errors and how to actually diagnose them.
 permalink: /posts/wireshark-issue-simulations
 pin : true
+image:
+   path: /assets/thumbnails/wireshark-issue-simulations.jpg
 ---
 
 <div style="background: #11111b; border: 1px solid #313244; border-radius: 8px; padding: 18px; font-family: monospace;">
