@@ -44,3 +44,5 @@ To isolate the DNS traffic and analyze the failure pattern, I applied this displ
 * **Retransmissions:** Because no DNS reply was received, the operating system and the background apps performed multiple **retransmissions**. You can see the same query ID being sent repeatedly at increasing intervals as the applications tried to recover from the lack of a response.
 
     ![DNS retransmission](./dns_retransmission.png)
+
+    ngek
