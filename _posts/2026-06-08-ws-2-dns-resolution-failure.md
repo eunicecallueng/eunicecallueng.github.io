@@ -19,7 +19,7 @@ In this scenario, I simulated a **DNS failure**, which is a common network issue
 
      ![Network and Internet](/assets/media/images/network_settings.png)
 
-   * Changed it from **Automatic (DHCP)** to **Manual**, toggled on **IPv4**, and set the Preferred DNS to a fake, non-existent IP address (`10.0.0.99`), then clicked **Save**.
+   * Changed it from **Automatic (DHCP)** to **Manual**, toggled on **IPv4**, and set the Preferred DNS to a fake, non-existent IP address (**`10.0.0.99`**), then clicked **Save**.
   
      ![Fake IP](/assets/media/images/fake_IP.png)
 
@@ -40,7 +40,7 @@ To isolate the DNS traffic and analyze the failure pattern, I applied this displ
 
     ![DNS response missing](/assets/media/images/dns_response_missing.png)
 
-* **Background Process Activity:** I noticed that various background applications (like **Skype** and other system services) were constantly attempting to reach their servers. Since my fake DNS server (`10.0.0.99`) was not responding, these apps spammed the network with DNS queries.
+* **Background Process Activity:** I noticed that various background applications (like **Skype** and other system services) were constantly attempting to reach their servers. Since my fake DNS server (**`10.0.0.99`**) was not responding, these apps spammed the network with DNS queries.
 * **Retransmissions:** Because no DNS reply was received, the operating system and the background apps performed multiple **retransmissions**. You can see the same query ID being sent repeatedly at increasing intervals as the applications tried to recover from the lack of a response.
 
     ![DNS retransmission](/assets/media/images/dns_retransmission.png)
