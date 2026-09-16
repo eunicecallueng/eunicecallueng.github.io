@@ -3,11 +3,9 @@ title: Wireshark Issue Simulations
 date: 2026-06-08 21:00:00 +0800
 categories: [Networking, Packet Analysis]
 tags: [wireshark, pcap, troubleshooting, networking, protocols]
-description: Hands-on experience using Wireshark to simulate, capture, and analyze common real-world network anomalies on a Windows 11 environment. By deliberately breaking or degrading specific network configurations, I analyzed packet-level behaviors to better understand troubleshooting and diagnostic patterns.
+description: Turns out the best way to learn network troubleshooting is to break stuff on purpose! I set up Wireshark on my Windows 11 machine, deliberately messed up specific network configurations, and tracked the packet traffic in real time. It was an awesome hands-on experiment that helped me finally connect the dots between network errors and how to actually diagnose them.
 permalink: /posts/wireshark-issue-simulations
 pin : true
-image:
-    path: /assets/thumbnails/wireshark-issue-simulations.jpg
 ---
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;">
