@@ -1,8 +1,8 @@
 ---
 title: "Network Latency and Packet Loss"
 date: 2026-07-07
-categories: [Wireshark]
-tags: [windows-server, vmware, domain-controller]
+categories: [Networking, Packet Analysis]
+tags: [wireshark, clumsy, packet-loss, latency, icmp, tcp, network-simulation]
 hidden: true
 sitemap: false
 permalink: /posts/ws-1-packet-loss/
@@ -18,23 +18,19 @@ I wanted to see how a degraded network connection (like bad Wi-Fi) looks at the 
 4. From my terminal, I ran **`ping 8.8.8.8 -t`** to generate test traffic. I immediately saw some pings taking half a second while others timed out completely.
 5. After the pings finished, I stopped the capture and turned off Clumsy.
 
-image:
- path: assets/media/images/packet_loss.png
+![Packet Loss](/assets/media/images/packet_loss.png)
 
 ---
 
-### Wireshark Analysis & Filters
+## **Analysis & Findings**
 To isolate the affected traffic and observe the network's reaction to the loss, I used the following display filter:
-```tcp.analysis.flags || icmp```
+**```tcp.analysis.flags || icmp```**
 
----
-
-
-## Analysis & Findings
 * **TCP Retransmissions:** Wireshark highlighted packets in red, indicating that the source had to resend data because the destination never acknowledged it.
 * **Duplicate ACKs:** The receiver kept asking for the missing data packets that were dropped by the simulation.
 * **ICMP Timeouts:** The ping requests showed dropped packets ("Request timed out") and significantly higher round-trip times (RTT).
 
+![TCP Analysis](/assets/media/images/tcp.analysis.flags.png)
 
 ---
 
