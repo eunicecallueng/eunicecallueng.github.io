@@ -13,17 +13,10 @@ I wanted to see how a degraded network connection (like bad Wi-Fi) looks at the 
 ## **Simulation Steps**
 
 1. I opened **Clumsy** as an administrator and set the filter to **`outboound and ip.DstAddr == 8.8.8.8`** to ensure I only messed with my traffic going tp 8.8.8.8
-  
 2. I turned on **Lag** and set it to **`500ms`**, and enabled **Drop** with a **`20%`** chance.
-   
 3. I started a live capture on **Wireshark** using the display filter **`ip.addr == 8.8.8.8`**.
-   
 4. From my terminal, I ran **`ping 8.8.8.8 -t`** to generate test traffic. I immediately saw some pings taking half a second while others timed out completely.
-
 5. After the pings finished, I stopped the capture and turned off Clumsy.
-
-
-
 
 ---
 
