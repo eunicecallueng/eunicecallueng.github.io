@@ -18,6 +18,9 @@ I wanted to see how a degraded network connection (like bad Wi-Fi) looks at the 
 4. From my terminal, I ran **`ping 8.8.8.8 -t`** to generate test traffic. I immediately saw some pings taking half a second while others timed out completely.
 5. After the pings finished, I stopped the capture and turned off Clumsy.
 
+image:
+ path: assets/media/images/packet_loss.png
+
 ---
 
 ### Wireshark Analysis & Filters
