@@ -16,7 +16,6 @@ image:
   <a href="/posts/ws-1-packet-loss/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
       <h3 style="margin-top:0; color: #89b4fa;">Network Latency and Packet Loss</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">Simulation 1</p>
     </div>
   </a>
 
@@ -24,23 +23,20 @@ image:
   <a href="/posts/ws-2-dns-resolution-failure/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
       <h3 style="margin-top:0; color: #a6e3a1;">DNS Resolution Failure</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">Simulation 2</p>
     </div>
   </a>
 
   <!-- Phase 3 Card -->
   <a href="/posts/ws-3-tcp-connection-reset/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
-      <h3 style="margin-top:0; color: #f9e2af;">Simulation 3</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">TCP Connection Reset</p>
+      <h3 style="margin-top:0; color: #f9e2af;">TCP Connection Reset</h3>
     </div>
   </a>
 
   <!-- Phase 4 Card -->
   <a href="/posts/ws-4-http-vs-https" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
-      <h3 style="margin-top:0; color: #f38ba8;">Simulation 4</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">HTTP vs HTTPS</p>
+      <h3 style="margin-top:0; color: #f38ba8;">HTTP vs HTTPS</h3>
     </div>
   </a>
 
