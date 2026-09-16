@@ -1,19 +1,9 @@
-# Wireshark Practice Labs
-
-## Objective
-
-I'm sharing my experience using Wireshark installed on my host computer.
-Each subfolder contains examples of simulated issues for common protocols (TCP, DNS, HTTP, TLS, ARP) that I practiced and documented.
-
-📁 **Protocol Labs**
-***
-* [01.packet-loss](./01.packet-loss)
-* [02.DNS-resolution-failure](./02.DNS-resolution-failure)
-* [03.TCP-connection-reset](./03.TCP-connection-reset)
-* [04.HTTP-vs-HTTPS](./04.HTTP-vs-HTTPS)
-* [ARP Issues](./ARP-Issues)
-
-## Reflection
-***
-This repo is meant to share what I learned while experimenting with packet captures and troubleshooting.
-By walking through these scenarios, I hope others can also pick up practical tips for analyzing and solving common networking problems.
+---
+title: Wireshark Issue Simulations
+date: 2026-06-08 21:00:00 +0800
+categories: [Networking, Packet Analysis]
+tags: [wireshark, pcap, troubleshooting, networking, protocols]
+description: Hands-on experience using Wireshark to simulate, capture, and analyze common real-world network anomalies on a Windows 11 environment. By deliberately breaking or degrading specific network configurations, I analyzed packet-level behaviors to better understand troubleshooting and diagnostic patterns.
+permalink: /posts/wireshark-issue-simulation
+pin: true
+---
