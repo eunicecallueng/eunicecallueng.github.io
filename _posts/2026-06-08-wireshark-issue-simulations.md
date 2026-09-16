@@ -15,16 +15,16 @@ image:
   <!-- Phase 1 Card -->
   <a href="/posts/ws-1-packet-loss/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
-      <h3 style="margin-top:0; color: #89b4fa;">Simulation 1</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">Network Latency and Packet Loss</p>
+      <h3 style="margin-top:0; color: #89b4fa;">Network Latency and Packet Loss</h3>
+      <p style="font-size: 0.9em; color: #cdd6f4;">Simulation 1</p>
     </div>
   </a>
 
   <!-- Phase 2 Card -->
   <a href="/posts/ws-2-dns-resolution-failure/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
-      <h3 style="margin-top:0; color: #a6e3a1;">Simulation 2</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">DNS Resolution Failure</p>
+      <h3 style="margin-top:0; color: #a6e3a1;">DNS Resolution Failure</h3>
+      <p style="font-size: 0.9em; color: #cdd6f4;">Simulation 2</p>
     </div>
   </a>
 
@@ -32,7 +32,7 @@ image:
   <a href="/posts/ws-3-tcp-connection-reset/" style="text-decoration: none; color: inherit;">
     <div style="border: 1px solid #333; border-radius: 8px; padding: 18px; background-color: #1e1e2e;">
       <h3 style="margin-top:0; color: #f9e2af;">Simulation 3</h3>
-      <p style="font-size: 0.9em; color: #cdd6f4;">TCP Conenction Reset</p>
+      <p style="font-size: 0.9em; color: #cdd6f4;">TCP Connection Reset</p>
     </div>
   </a>
 

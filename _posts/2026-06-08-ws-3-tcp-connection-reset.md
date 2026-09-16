@@ -1,5 +1,5 @@
 ---
-title: "TCP Conenction Reset"
+title: "TCP Connection Reset"
 date: 2026-07-07
 categories: [Wireshark]
 tags: [windows-server, vmware, domain-controller]
