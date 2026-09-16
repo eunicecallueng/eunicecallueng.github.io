@@ -8,11 +8,9 @@ sitemap: false
 permalink: /posts/ws-1-packet-loss/
 ---
 
-# Network Latency and Packet Loss Simulation
-
 I wanted to see how a degraded network connection (like bad Wi-Fi) looks at the packet level. To do this, I used a tool called **Clumsy** to deliberately inject lag and drop packets into my connection while targeting a specific IP address.
 
-## Simulation Steps
+## **Simulation Steps**
 
 1. I opened **Clumsy** as an administrator and set the filter to **`outboound and ip.DstAddr == 8.8.8.8`** to ensure I only messed with my traffic going tp 8.8.8.8
   
