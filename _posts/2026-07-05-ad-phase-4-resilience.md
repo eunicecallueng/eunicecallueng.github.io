@@ -18,18 +18,18 @@ Phase 4 is all about turning my Active Directory environment into a **highly ava
 
 To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
-### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
+### <span style="color: #4A90E2;">A. Pre-Requisites & Network Setup</span>
 Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
 * **Static IP Address:** **`192.168.1.110/24`**
 * **Preferred DNS:** **`192.168.1.100`** (Points directly to **`NYCE-DC01`** for initial domain discovery)
 * **Alternate DNS:** `127.0.0.1` (Self-referencing loopback address)
 
-### <span style="color: #4A90E2;">2. Promotion & Active Directory Replication</span>
+### <span style="color: #4A90E2;">B. Promotion & Active Directory Replication</span>
 After installing the **Active Directory Domain Services (AD DS)** role on `NYCE-DC02`, I promoted it by joining it as an additional Domain Controller to the existing domain (**`nycehomelab.local`**). 
 
 Once the promotion completed and the server rebooted, both Domain Controllers immediately began replicating directory data, DNS zones, and SYSVOL shares across the network.
 
-### <span style="color: #4A90E2;">3. Verifying Replication & Health</span>
+### <span style="color: #4A90E2;">C. Verifying Replication & Health</span>
 To verify that domain objects and schema changes were properly syncing between `NYCE-DC01` and `NYCE-DC02`, I ran the following built-in command-line tools:
 
 * **Active Directory Users and Computers (ADUC):** Right after promoting `NYCE-DC02`, opening **`dsa.msc`** confirmed that all previously created Organizational Units (OUs), security groups, and user accounts from `NYCE-DC01` automatically reflected without any manual copying or configuration.
