@@ -32,9 +32,10 @@ To verify that domain objects and schema changes were properly syncing between *
 * **Active Directory Users and Computers (ADUC):** Right after promoting `NYCE-DC02`, opening **`dsa.msc`** confirmed that all previously created Organizational Units (OUs), security groups, and user accounts from `NYCE-DC01` automatically reflected without any manual copying or configuration.
 * **Replication Diagnostics via CLI:** To confirm health status at the network layer, I ran the following commands:
 
-    <div class="callout callout-note">:: Checks the overall replication health across all Domain Controllers<p style="margin-top: 0px; margin-bottom: 0;">
-    <strong>repadmin /replsummary</strong></p>
-    </div>
+    ```powershell
+    :: Checks the overall replication health across all Domain Controllers
+    repadmin /replsummary
+    ```
     <div class="callout callout-note">:: Performs a detailed check on inbound replication neighbors<p style="margin-top: 0px; margin-bottom: 0;">
     <strong>repadmin /showrepl</strong></p>
     </div>
