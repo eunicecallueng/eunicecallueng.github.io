@@ -33,7 +33,7 @@ To verify that domain objects and schema changes were properly syncing between *
 * **Replication Diagnostics via CLI:** To confirm health status at the network layer, I ran the following commands:
 
     <div class="callout callout-note">:: Checks the overall replication health across all Domain Controllers<p style="margin-top: 0px; margin-bottom: 0;">
-    repadmin /replsummary</strong></p>
+    <strong>repadmin /replsummary</strong></p>
     </div>
     <div class="callout callout-note">:: Performs a detailed check on inbound replication neighbors<p style="margin-top: 0px; margin-bottom: 0;">
     <strong>repadmin /showrepl</strong></p>
@@ -75,11 +75,9 @@ A System State backup includes:
 
 ### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
 I documented two distinct restoration approaches depending on the failure type:
+* **Non-Authoritative Restore:** Used when a single DC crashes. You restore the System State, and the DC updates itself by pulling the latest active data from surviving Domain Controllers (like NYCE-DC02).
 
-Non-Authoritative Restore: Used when a single DC crashes. You restore the System State, and the DC updates itself by pulling the latest active data from surviving Domain Controllers (like NYCE-DC02).
+* **Authoritative Restore:** Used if data is accidentally deleted domain-wide (and bypassed the Recycle Bin). You restore the System State in DSRM mode and use ntdsutil to mark specific objects as authoritative, forcing them to replicate back out to all other DCs.
 
-Authoritative Restore: Used if data is accidentally deleted domain-wide (and bypassed the Recycle Bin). You restore the System State in DSRM mode and use ntdsutil to mark specific objects as authoritative, forcing them to replicate back out to all other DCs.
-
-Key Takeaway:
-
-High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.
+<div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 10px; margin-bottom: 0;">High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.
+</div>
