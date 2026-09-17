@@ -17,6 +17,7 @@ To ensure continuous domain availability, I brought a second server online (**`N
 
 ### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
 Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
+
 * **Static IP Address:** **`192.168.1.110/24`**
 * **Preferred DNS:** **`192.168.1.100`** (Points directly to **`NYCE-DC01`** for initial domain discovery)
 * **Alternate DNS:** `127.0.0.1` (Self-referencing loopback address)
@@ -71,7 +72,7 @@ A System State backup includes:
 * Registry, Boot Files, & System Volume
 * DNS Server Data
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="150%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
 I documented two distinct restoration approaches depending on the failure type:
@@ -79,5 +80,5 @@ I documented two distinct restoration approaches depending on the failure type:
 
 * **Authoritative Restore:** Used if data is accidentally deleted domain-wide (and bypassed the Recycle Bin). You restore the System State in DSRM mode and use ntdsutil to mark specific objects as authoritative, forcing them to replicate back out to all other DCs.
 
-<div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 10px; margin-bottom: 0;">High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.
+<div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 10px; margin-bottom: 0;">High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.</p>
 </div>
