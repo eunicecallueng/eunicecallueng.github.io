@@ -18,6 +18,8 @@ Phase 4 is all about turning my Active Directory environment into a **highly ava
 
 To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
+---
+
 ### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
 Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
 * **Static IP Address:** **`192.168.1.110/24`**
