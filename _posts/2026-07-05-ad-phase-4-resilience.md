@@ -18,19 +18,19 @@ Phase 4 is all about turning my Active Directory environment into a **highly ava
 
 To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
-### <span style="color: #4A90E2;">A. Pre-Requisites & Network Setup</span>
+### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
 Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
 * **Static IP Address:** **`192.168.1.110/24`**
 * **Preferred DNS:** **`192.168.1.100`** (Points directly to **`NYCE-DC01`** for initial domain discovery)
 * **Alternate DNS:** `127.0.0.1` (Self-referencing loopback address)
 
-### <span style="color: #4A90E2;">B. Promotion & Active Directory Replication</span>
+### <span style="color: #4A90E2;">2. Promotion & Active Directory Replication</span>
 After installing the **Active Directory Domain Services (AD DS)** role on `NYCE-DC02`, I promoted it by joining it as an additional Domain Controller to the existing domain (**`nycehomelab.local`**). 
 
 Once the promotion completed and the server rebooted, both Domain Controllers immediately began replicating directory data, DNS zones, and SYSVOL shares across the network.
 
-### <span style="color: #4A90E2;">C. Verifying Replication & Health</span>
-To verify that domain objects and schema changes were properly syncing between `NYCE-DC01` and `NYCE-DC02`, I ran the following built-in command-line tools:
+### <span style="color: #4A90E2;">3. Verifying Replication & Health</span>
+To verify that domain objects and schema changes were properly syncing between **`NYCE-DC01`** and **`NYCE-DC02`**, I ran the following built-in command-line tools:
 
 * **Active Directory Users and Computers (ADUC):** Right after promoting `NYCE-DC02`, opening **`dsa.msc`** confirmed that all previously created Organizational Units (OUs), security groups, and user accounts from `NYCE-DC01` automatically reflected without any manual copying or configuration.
 * **Replication Diagnostics via CLI:** To confirm health status at the network layer, I ran the following commands:
@@ -41,6 +41,8 @@ To verify that domain objects and schema changes were properly syncing between `
     <div class="callout callout-note">:: Performs a detailed check on inbound replication neighbors<p style="margin-top: 0px; margin-bottom: 0;">
     <strong>repadmin /showrepl</strong></p>
     </div>
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/ffxAKkCQ20Y?si=Urlm8Eoc62OILctV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -73,3 +75,14 @@ A System State backup includes:
 * SYSVOL Folder Structure (Group Policies & Scripts)
 * Registry, Boot Files, & System Volume
 * DNS Server Data
+
+### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
+I documented two distinct restoration approaches depending on the failure type:
+
+Non-Authoritative Restore: Used when a single DC crashes. You restore the System State, and the DC updates itself by pulling the latest active data from surviving Domain Controllers (like NYCE-DC02).
+
+Authoritative Restore: Used if data is accidentally deleted domain-wide (and bypassed the Recycle Bin). You restore the System State in DSRM mode and use ntdsutil to mark specific objects as authoritative, forcing them to replicate back out to all other DCs.
+
+Key Takeaway:
+
+High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.
