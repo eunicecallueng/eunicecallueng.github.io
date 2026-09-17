@@ -60,8 +60,7 @@ I enabled the Recycle Bin domain-wide via Active Directory Administrative Center
 Enable-ADOptionalFeature -Identity 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target 'nycehomelab.local' -Confirm:$false
 ```
 
-<div class="callout callout-note"><strong>Testing Object Recovery:</strong><p style="margin-top: 10px; margin-bottom: 0;">I created a test user, deleted it, and restored it within seconds using Restore-ADObject without needing to reboot the Domain Controller into Directory Services Restore Mode (DSRM)!</p>
-</div>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/-Q_hlkk4hD0?si=As6p0wlJkqpnqI5x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### <span style="color: #4A90E2;">2. System State Backups via Windows Server Backup</span>
 Active Directory data cannot be backed up like regular files because the database files are constantly open and in use by the OS. I installed the Windows Server Backup feature on `NYCE-DC01` to capture a full System State Backup.
@@ -72,7 +71,7 @@ A System State backup includes:
 * Registry, Boot Files, & System Volume
 * DNS Server Data
 
-<iframe width="150%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
 I documented two distinct restoration approaches depending on the failure type:
