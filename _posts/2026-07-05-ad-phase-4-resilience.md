@@ -32,10 +32,9 @@ To verify that domain objects and schema changes were properly syncing between *
 * **Active Directory Users and Computers (ADUC):** Right after promoting `NYCE-DC02`, opening **`dsa.msc`** confirmed that all previously created Organizational Units (OUs), security groups, and user accounts from `NYCE-DC01` automatically reflected without any manual copying or configuration.
 * **Replication Diagnostics via CLI:** To confirm health status at the network layer, I ran the following commands:
 
-    ```powershell
-    :: Checks the overall replication health across all Domain Controllers
-    repadmin /replsummary
-    ```
+    <div class="callout callout-note">:: Checks the overall replication health across all Domain Controllers<p style="margin-top: 0px; margin-bottom: 0;">
+    repadmin /replsummary</strong></p>
+    </div>
     <div class="callout callout-note">:: Performs a detailed check on inbound replication neighbors<p style="margin-top: 0px; margin-bottom: 0;">
     <strong>repadmin /showrepl</strong></p>
     </div>
@@ -71,6 +70,8 @@ A System State backup includes:
 * SYSVOL Folder Structure (Group Policies & Scripts)
 * Registry, Boot Files, & System Volume
 * DNS Server Data
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
 I documented two distinct restoration approaches depending on the failure type:
