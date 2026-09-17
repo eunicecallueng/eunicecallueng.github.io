@@ -81,3 +81,48 @@ I documented two distinct restoration approaches depending on the failure type:
 
 <div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 10px; margin-bottom: 0;">High availability keeps the network running, but solid backups ensure you can recover when things go totally wrong. Combining the AD Recycle Bin with regular System State backups gives the lab complete data resilience.</p>
 </div>
+
+
+## **Step 3: Centralized Security Auditing & Event Logging**
+
+Once high availability and backups were secured, the next logical step was visibility. In an enterprise network, you can't protect what you can't see. Without proper auditing, unauthorized privilege changes, account lockouts, or suspicious logons go completely unnoticed.
+
+In this step, I configured Advanced Audit Policies across the domain to ensure critical security events are logged, tracked, and ready for analysis.
+
+---
+
+### 1. Configuring Advanced Audit Policies
+Instead of using basic legacy auditing, I used **Advanced Audit Policy Configuration** via Group Policy (`COMP-Audit_Logging`) to capture specific, high-fidelity security events without cluttering the logs with noise.
+
+Key audit subcategories configured:
+* **Account Management:** Tracks user creation, deletion, and group membership changes.
+* **Logon/Logoff:** Tracks interactive logons, network authentication, and failed attempts.
+* **Directory Service Access:** Tracks changes made directly to Active Directory objects.
+* **Privilege Use:** Tracks when administrative rights or sensitive privileges are exercised.
+
+---
+
+### 2. Key Security Event IDs Monitored
+I documented the essential Event IDs every sysadmin and SOC analyst needs to watch inside Windows Event Viewer (`Security` log):
+
+| Event ID | Event Type | Description / Security Context |
+| :--- | :--- | :--- |
+| **4624** | Successful Logon | Confirms user authentication and identifies the logon type (e.g., Type 2 Interactive, Type 10 RDP). |
+| **4625** | Failed Logon | Crucial for detecting brute-force attacks or incorrect password configurations. |
+| **4720** | User Account Created | Alerts when a new user profile is created in Active Directory. |
+| **4728** | Member Added to Group | Tracks when a user is added to a sensitive security group (e.g., `Domain Admins`). |
+| **4740** | Account Locked Out | Identifies when an account is locked out due to repeated failed logon attempts. |
+| **5136** | Directory Object Modified | Logs attribute-level changes made to AD objects for change management. |
+
+---
+
+### 3. Testing Audit Logging in the Lab
+To test my auditing setup:
+1. Created a standard user account on `NYCE-DC01` and added it to a local group.
+2. Verified that Event IDs **4720** and **4728** generated immediately in the Security event log with full details (showing *who* made the change, *when*, and *what* account was modified).
+3. Intentionally entered wrong passwords on `CLIENT01` to confirm Event ID **4625** correctly captured the source IP and target username.
+
+---
+
+> **Key Takeaway:**  
+> Proper event auditing turns Active Directory from a black box into a fully transparent environment. Having these logs active is the first step toward integrating with a SIEM tool (like Microsoft Sentinel or Splunk) in the future!
