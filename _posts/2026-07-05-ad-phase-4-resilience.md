@@ -91,7 +91,7 @@ In this step, I configured Advanced Audit Policies across the domain to ensure c
 
 ---
 
-### 1. Configuring Advanced Audit Policies
+### **<span style="color: #4A90E2;">1. Configuring Advanced Audit Policies**
 Instead of using basic legacy auditing, I used **Advanced Audit Policy Configuration** via Group Policy (`COMP-Audit_Logging`) to capture specific, high-fidelity security events without cluttering the logs with noise.
 
 Key audit subcategories configured:
