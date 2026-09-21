@@ -15,19 +15,19 @@ Phase 4 is all about turning my Active Directory environment into a **highly ava
 ## **Step 1: Secondary Domain Controller Deployment (High Availability)**
 To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
-### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup</span>
+### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup
 Before promoting the server, I configured static network parameters on `NYCE-DC02` so it could talk directly to the primary domain controller:
 
 * **Static IP Address:** **`192.168.1.110/24`**
 * **Preferred DNS:** **`192.168.1.100`** (Points directly to **`NYCE-DC01`** for initial domain discovery)
 * **Alternate DNS:** `127.0.0.1` (Self-referencing loopback address)
 
-### <span style="color: #4A90E2;">2. Promotion & Active Directory Replication</span>
+### <span style="color: #4A90E2;">2. Promotion & Active Directory Replication
 After installing the **Active Directory Domain Services (AD DS)** role on `NYCE-DC02`, I promoted it by joining it as an additional Domain Controller to the existing domain (**`nycehomelab.local`**). 
 
 Once the promotion completed and the server rebooted, both Domain Controllers immediately began replicating directory data, DNS zones, and SYSVOL shares across the network.
 
-### <span style="color: #4A90E2;">3. Verifying Replication & Health</span>
+### <span style="color: #4A90E2;">3. Verifying Replication & Health
 To verify that domain objects and schema changes were properly syncing between **`NYCE-DC01`** and **`NYCE-DC02`**, I ran the following built-in command-line tools:
 
 * **Active Directory Users and Computers (ADUC):** Right after promoting `NYCE-DC02`, opening **`dsa.msc`** confirmed that all previously created Organizational Units (OUs), security groups, and user accounts from `NYCE-DC01` automatically reflected without any manual copying or configuration.
@@ -50,7 +50,7 @@ With two Domain Controllers providing high availability, the next critical step 
 
 To safeguard the environment, I configured built-in backup tools and recovery features to protect the core Active Directory database (**`NTDS.dit`**) and SYSVOL share.
 
-### <span style="color: #4A90E2;">1. Enabling the Active Directory Recycle Bin</span>
+### <span style="color: #4A90E2;">1. Enabling the Active Directory Recycle Bin
 By default, deleting an object in Active Directory (like a user account or OU) marks it as tombstoned, making instant restoration difficult. Enabling the Active Directory Recycle Bin ***allows deleted objects to be restored instantly with all their attributes*** (SID, group memberships, passwords) completely intact.
 
 I enabled the Recycle Bin domain-wide via Active Directory Administrative Center (ADAC) and verified it using PowerShell:
@@ -62,7 +62,7 @@ Enable-ADOptionalFeature -Identity 'Recycle Bin Feature' -Scope ForestOrConfigur
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/-Q_hlkk4hD0?si=As6p0wlJkqpnqI5x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### <span style="color: #4A90E2;">2. System State Backups via Windows Server Backup</span>
+### <span style="color: #4A90E2;">2. System State Backups via Windows Server Backup
 Active Directory data cannot be backed up like regular files because the database files are constantly open and in use by the OS. I installed the Windows Server Backup feature on `NYCE-DC01` to capture a full System State Backup.
 
 A System State backup includes:
@@ -73,7 +73,7 @@ A System State backup includes:
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/dGvy6RddlCg?si=XBlJ92AzgIgk-Vsp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices</span>
+### <span style="color: #4A90E2;">3. Disaster Recovery Scenarios & Best Practices
 I documented two distinct restoration approaches depending on the failure type:
 * **Non-Authoritative Restore:** Used when a single DC crashes. You restore the System State, and the DC updates itself by pulling the latest active data from surviving Domain Controllers (like NYCE-DC02).
 
@@ -91,7 +91,7 @@ In this step, I configured Advanced Audit Policies across the domain to ensure c
 
 ---
 
-### **<span style="color: #4A90E2;">1. Configuring Advanced Audit Policies**
+### <span style="color: #4A90E2;">1. Configuring Advanced Audit Policies
 Instead of using basic legacy auditing, I used **Advanced Audit Policy Configuration** via Group Policy (`COMP-Audit_Logging`) to capture specific, high-fidelity security events without cluttering the logs with noise.
 
 Key audit subcategories configured:
@@ -124,5 +124,6 @@ To test my auditing setup:
 
 ---
 
-> **Key Takeaway:**  
-> Proper event auditing turns Active Directory from a black box into a fully transparent environment. Having these logs active is the first step toward integrating with a SIEM tool (like Microsoft Sentinel or Splunk) in the future!
+<div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 0px; margin-bottom: 0;">
+Proper event auditing turns Active Directory from a black box into a fully transparent environment. Having these logs active is the first step toward integrating with a SIEM tool (like Microsoft Sentinel or Splunk) in the future!</p>
+</div>
