@@ -13,6 +13,7 @@ Having a single Domain Controller running in a lab is great for learning the bas
 Phase 4 is all about turning my Active Directory environment into a **highly available, fault-tolerant enterprise network**. I focused on removing single points of failure, protecting core database files, and ensuring the domain stays resilient against unexpected downtime.
 
 ## **Step 1: Secondary Domain Controller Deployment (High Availability)**
+
 To ensure continuous domain availability, I brought a second server online (**`NYCE-DC02`**) and promoted it as a Secondary Domain Controller to run alongside **`NYCE-DC01`**.
 
 ### <span style="color: #4A90E2;">1. Pre-Requisites & Network Setup
@@ -50,7 +51,7 @@ With two Domain Controllers providing high availability, the next critical step 
 
 To safeguard the environment, I configured built-in backup tools and recovery features to protect the core Active Directory database (**`NTDS.dit`**) and SYSVOL share.
 
-### <span style="color: #4A90E2;">1. Enabling the Active Directory Recycle Bin
+### <span style="color: #4A90E2;">1. Enabling Recycle Bin
 By default, deleting an object in Active Directory (like a user account or OU) marks it as tombstoned, making instant restoration difficult. Enabling the Active Directory Recycle Bin ***allows deleted objects to be restored instantly with all their attributes*** (SID, group memberships, passwords) completely intact.
 
 I enabled the Recycle Bin domain-wide via Active Directory Administrative Center (ADAC) and verified it using PowerShell:
