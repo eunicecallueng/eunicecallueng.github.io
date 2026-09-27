@@ -103,7 +103,7 @@ Key audit subcategories configured:
 
 ---
 
-### 2. Key Security Event IDs Monitored
+### <span style="color: #4A90E2;">2. Key Security Event IDs Monitored
 I documented the essential Event IDs every sysadmin and SOC analyst needs to watch inside Windows Event Viewer (`Security` log):
 
 | Event ID | Event Type | Description / Security Context |
@@ -117,7 +117,7 @@ I documented the essential Event IDs every sysadmin and SOC analyst needs to wat
 
 ---
 
-### 3. Testing Audit Logging in the Lab
+### <span style="color: #4A90E2;">3. Testing Audit Logging in the Lab
 To test my auditing setup:
 1. Created a standard user account on `NYCE-DC01` and added it to a local group.
 2. Verified that Event IDs **4720** and **4728** generated immediately in the Security event log with full details (showing *who* made the change, *when*, and *what* account was modified).
