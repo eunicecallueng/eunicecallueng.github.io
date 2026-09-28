@@ -201,4 +201,4 @@ Here is how I investigated and resolved the issue step-by-step:
 ---
 
 > **Phase 4 Summary & Final Thoughts:**  
-> With Phase 4 complete, my homelab has evolved into a resilient, enterprise-grade architecture. By adding a Secondary Domain Controller, setting up AD Recycle Bin and System State backups, enforcing Advanced Security Auditing, deploying an internal PKI, and securing DHCP with Hot Standby failover, the environment is fully protected against single points of failure!
+> With Phase 4 complete, my homelab has evolved into a resilient, enterprise-grade architecture. By adding a Secondary Domain Controller, setting up AD Recycle Bin and System State backups, enforcing Advanced Security Auditing, and securing DHCP with Hot Standby failover, the environment is fully protected against single points of failure!
