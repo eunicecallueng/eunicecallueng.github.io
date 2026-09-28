@@ -123,8 +123,51 @@ To test my auditing setup:
 2. Verified that Event IDs **4720** and **4728** generated immediately in the Security event log with full details (showing *who* made the change, *when*, and *what* account was modified).
 3. Intentionally entered wrong passwords on `CLIENT01` to confirm Event ID **4625** correctly captured the source IP and target username.
 
----
-
 <div class="callout callout-important"><strong>Key Takeaway:</strong><p style="margin-top: 0px; margin-bottom: 0;">
 Proper event auditing turns Active Directory from a black box into a fully transparent environment. Having these logs active is the first step toward integrating with a SIEM tool (like Microsoft Sentinel or Splunk) in the future!</p>
 </div>
+
+## **Step 4: Core Network Resilience (DHCP Failover & Scope Redundancy)**
+
+Even with two Domain Controllers replicating directory data and DNS, client endpoints still depend on DHCP to receive IP addresses, subnet masks, and default gateways. If the single DHCP server hosting those scopes crashes, new devices cannot join the network and existing endpoints lose network connectivity once their leases expire.
+
+To eliminate this final single point of failure, I deployed a high-availability DHCP setup using **DHCP Failover** between `NYCE-DC01` and `NYCE-DC02`.
+
+---
+
+### <span style="color: #4A90E2;">1. Installing DHCP & Authorizing the Secondary Server
+After installing the DHCP Server role on `NYCE-DC02`, I authorized it in Active Directory so it could safely issue IP addresses alongside the primary server:
+
+1. Opened the DHCP console (**`dhcpmgmt.msc`**) on `NYCE-DC01`.
+2. Authorized `NYCE-DC02` (`192.168.10.110`) within Active Directory.
+3. Verified that both servers were registered under Active Directory Authorized Servers.
+
+---
+
+### <span style="color: #4A90E2;">2. Configuring DHCP Failover Mode
+Instead of setting up a complex split-scope configuration, I used native Windows Server **DHCP Failover** directly on the main scope (**`**192.168.10.0/24`**). 
+
+I evaluated two failover modes:
+* **Load Balance Mode (50/50):** Both servers actively handle client requests simultaneously, splitting the IP pool address load evenly.
+* **Hot Standby Mode:** The primary server (`NYCE-DC01`) handles 100% of the traffic, while the secondary server (`NYCE-DC02`) stays on standby, taking over only if the primary fails.
+
+I selected ***Hot Standby Mode*** with the following parameters:
+* **Partner Server:** **`NYCE-DC02.nycehomelab.local`**
+* **Role:** Active (`NYCE-DC01`) / Standby (`NYCE-DC02`)
+* **Reserve Address Percentage:** `5%` (Allocated for standby leases during failover)
+* **State Switchover Interval (MCLT):** `60 minutes` (Automatic failover delay threshold)
+* **Shared Secret:** Encrypted authentication key between both DHCP servers.
+
+---
+
+### <span style="color: #4A90E2;">3. Failover Verification & Testing
+To test DHCP high availability in the lab:
+
+1. **Replication Check:** Created a new DHCP reservation on `NYCE-DC01`, right-clicked the scope, and selected **Replicate Scope**. Confirmed the reservation appeared instantly on `NYCE-DC02`.
+2. **Failover Simulation:** Temporarily shut down `NYCE-DC01` and released/renewed the IP address on `CLIENT01` using `ipconfig /renew`.
+3. **Verification:** `CLIENT01` successfully received an IP lease from `NYCE-DC02` without any disruption to network services!
+
+---
+
+> **Phase 4 Summary & Final Thoughts:**  
+> With Phase 4 complete, my homelab has evolved into a resilient, enterprise-grade architecture. By adding a Secondary Domain Controller, setting up AD Recycle Bin and System State backups, enforcing Advanced Security Auditing, deploying an internal PKI, and securing DHCP with Hot Standby failover, the environment is fully protected against single points of failure!
