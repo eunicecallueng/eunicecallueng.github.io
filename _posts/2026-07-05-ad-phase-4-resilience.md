@@ -168,6 +168,8 @@ I selected ***Hot Standby Mode*** with the following parameters:
 * **State Switchover Interval (MCLT):** `60 minutes` (Automatic failover delay threshold)
 * **Shared Secret:** Encrypted authentication key between both DHCP servers.
 
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/1qFyKjncRzA?si=Hed5jpDrBZ7-ykrZ" title="Configuring DHCP Failover Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ---
 
 ### <span style="color: #4A90E2;">3. Failover Troubleshooting "Lost Contact with Partner"
@@ -182,7 +184,6 @@ Here is how I investigated and resolved the issue step-by-step:
     ```powershell
         Enable-NetFirewallRule -DisplayGroup "DHCP Server"
     ```
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/1qFyKjncRzA?si=Hed5jpDrBZ7-ykrZ" title="Configuring DHCP Failover Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 * **Step B: Spotting the Configuration Misstep**
     
@@ -193,9 +194,11 @@ Here is how I investigated and resolved the issue step-by-step:
     To fix this loop, I re-did the configuration properly: Right-clicked the scope on NYCE-DC01 and selected **Deconfigure Failover**. Right-clicked the scope again and selected **Configure Failover**....
     In the wizard, instead of typing the name manually, I selected NYCE-DC02 directly from the list of **authorized Active Directory DHCP servers.**
 
+    After reconfiguration, both servers successfully communicated and updated their status to Normal!
+
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/D8STyFE6aRs?si=JeWneJybDL9WZI3o" title="Failover TS   Lost Contact with Partner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Right away, both servers successfully communicated and updated their status to Normal!
+
 
 
 
