@@ -144,18 +144,18 @@ I wanted to practice two different ways to deploy roles in Windows Server, so I 
 
 * **Secondary Server (NYCE-DC02):** To speed things up, I jumped straight into PowerShell on DC02 and installed the role with a single command:
 
-> Install-WindowsFeature -Name DHCP -IncludeManagementTools
+```powershell
+    Install-WindowsFeature -Name DHCP -IncludeManagementTools
+```
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/Wo0NsmCf1rk?si=8iQa-c3EBE5KzNqD" title="Installing DHCP Server Role via Powershell" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 * **Double-Checking My Work:** I opened the DHCP Console (dhcpmgmt.msc) on DC01 and verified that both NYCE-DC01 and NYCE-DC02 showed up as trusted, authorized servers in Active Directory
 
-
-
 ---
 
 ### <span style="color: #4A90E2;">2. Configuring DHCP Failover Mode
-Instead of setting up a complex split-scope configuration, I used native Windows Server **DHCP Failover** directly on the main scope (**`**192.168.10.0/24`**). 
+Instead of setting up a complex split-scope configuration, I used native Windows Server **DHCP Failover** directly on the main scope (**`192.168.10.0/24`**). 
 
 I evaluated two failover modes:
 * **Load Balance Mode (50/50):** Both servers actively handle client requests simultaneously, splitting the IP pool address load evenly.
@@ -170,12 +170,36 @@ I selected ***Hot Standby Mode*** with the following parameters:
 
 ---
 
-### <span style="color: #4A90E2;">3. Failover Verification & Testing
-To test DHCP high availability in the lab:
+### <span style="color: #4A90E2;">3. Failover Troubleshooting "Lost Contact with Partner"
+Right after set up the failover, I hit an unexpected roadblock: **both Domain Controllers showed a state of *"Lost contact with partner"***.
 
-1. **Replication Check:** Created a new DHCP reservation on `NYCE-DC01`, right-clicked the scope, and selected **Replicate Scope**. Confirmed the reservation appeared instantly on `NYCE-DC02`.
-2. **Failover Simulation:** Temporarily shut down `NYCE-DC01` and released/renewed the IP address on `CLIENT01` using `ipconfig /renew`.
-3. **Verification:** `CLIENT01` successfully received an IP lease from `NYCE-DC02` without any disruption to network services!
+Here is how I investigated and resolved the issue step-by-step:
+
+* **Step A: Unblocking Firewall Rules**
+
+    I suspected that Windows Firewall might be blocking the failover communication traffic **`(UDP Port 647)`**. To rule this out, I ran this PowerShell command on both `NYCE-DC01` and `NYCE-DC02` to allow all DHCP-related traffic:
+
+    ```powershell
+        Enable-NetFirewallRule -DisplayGroup "DHCP Server"
+    ```
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/1qFyKjncRzA?si=Hed5jpDrBZ7-ykrZ" title="Configuring DHCP Failover Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+* **Step B: Spotting the Configuration Misstep**
+    
+    Even after enabling the firewall rules, the status remained stuck on "Lost contact with partner". I opened the scope properties and looked closer at the **Failover tab**. That’s when I noticed the issue: the **Partner Server was incorrectly pointing back to NYCE-DC01 instead of NYCE-DC02!** The server was trying to establish a failover relationship with itself.
+
+* **Step C: Re-configuring the Relationship**
+    
+    To fix this loop, I re-did the configuration properly: Right-clicked the scope on NYCE-DC01 and selected **Deconfigure Failover**. Right-clicked the scope again and selected **Configure Failover**....
+    In the wizard, instead of typing the name manually, I selected NYCE-DC02 directly from the list of **authorized Active Directory DHCP servers.**
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/D8STyFE6aRs?si=JeWneJybDL9WZI3o" title="Failover TS   Lost Contact with Partner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Right away, both servers successfully communicated and updated their status to Normal!
+
+
+
+
 
 ---
 
