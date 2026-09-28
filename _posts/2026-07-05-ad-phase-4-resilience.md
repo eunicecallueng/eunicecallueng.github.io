@@ -58,7 +58,7 @@ I enabled the Recycle Bin domain-wide via Active Directory Administrative Center
 
 ```powershell
 :: Enable Active Directory Recycle Bin for the domain
-Enable-ADOptionalFeature -Identity 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target 'nycehomelab.local' -Confirm:$false
+    Enable-ADOptionalFeature -Identity 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target 'nycehomelab.local' -Confirm:$false
 ```
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/-Q_hlkk4hD0?si=As6p0wlJkqpnqI5x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -197,12 +197,6 @@ Here is how I investigated and resolved the issue step-by-step:
     After reconfiguration, both servers successfully communicated and updated their status to Normal!
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/D8STyFE6aRs?si=JeWneJybDL9WZI3o" title="Failover TS   Lost Contact with Partner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-
-
-
-
 
 ---
 
