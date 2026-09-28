@@ -129,20 +129,28 @@ Proper event auditing turns Active Directory from a black box into a fully trans
 
 ## **Step 4: Core Network Resilience (DHCP Failover & Scope Redundancy)**
 
-Even with two Domain Controllers replicating directory data and DNS, client endpoints still depend on DHCP to receive IP addresses, subnet masks, and default gateways. If the single DHCP server hosting those scopes crashes, new devices cannot join the network and existing endpoints lose network connectivity once their leases expire.
+Having two Domain Controllers replicating directory data and DNS was a huge milestone, but I realized client PCs still had a single point of failure: DHCP. If the single server handing out IP addresses went down, new devices wouldn't be able to get online, and existing devices would lose connection as soon as their leases expired.
 
-To eliminate this final single point of failure, I deployed a high-availability DHCP setup using **DHCP Failover** between `NYCE-DC01` and `NYCE-DC02`.
+To make the lab network truly resilient, I decided to set up high-availability **DHCP Failover** between `NYCE-DC01` and `NYCE-DC02`
 
 ---
 
 ### <span style="color: #4A90E2;">1. Installing DHCP & Authorizing the Secondary Server
-After installing the DHCP Server role on `NYCE-DC02`, I authorized it in Active Directory so it could safely issue IP addresses alongside the primary server:
+I wanted to practice two different ways to deploy roles in Windows Server, so I used the traditional GUI on the primary server and PowerShell on the secondary one:
 
-1. Opened the DHCP console (**`dhcpmgmt.msc`**) on `NYCE-DC01`.
-2. Authorized `NYCE-DC02` (`192.168.10.110`) within Active Directory.
-3. Verified that both servers were registered under Active Directory Authorized Servers.
+* **Primary Server (NYCE-DC01):** I installed the DHCP Server role using the **Server Manager GUI** (`Add Roles and Features Wizard`) and set up the initial IPv4 scope.
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/0Y9DuZmjJ84?si=C9mRmGpCEmKpLK7m" title="Enabling DHCP Server Role" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/0Y9DuZmjJ84?si=C9mRmGpCEmKpLK7m" title="Installing DHCP Server Role via GUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+* **Secondary Server (NYCE-DC02):** To speed things up, I jumped straight into PowerShell on DC02 and installed the role with a single command:
+
+> Install-WindowsFeature -Name DHCP -IncludeManagementTools
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/Wo0NsmCf1rk?si=8iQa-c3EBE5KzNqD" title="Installing DHCP Server Role via Powershell" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+* **Double-Checking My Work:** I opened the DHCP Console (dhcpmgmt.msc) on DC01 and verified that both NYCE-DC01 and NYCE-DC02 showed up as trusted, authorized servers in Active Directory
+
+
 
 ---
 
