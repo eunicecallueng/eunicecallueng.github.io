@@ -142,7 +142,7 @@ After installing the DHCP Server role on `NYCE-DC02`, I authorized it in Active 
 2. Authorized `NYCE-DC02` (`192.168.10.110`) within Active Directory.
 3. Verified that both servers were registered under Active Directory Authorized Servers.
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/0Y9DuZmjJ84?si=C9mRmGpCEmKpLK7m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/0Y9DuZmjJ84?si=C9mRmGpCEmKpLK7m" title="Enabling DHCP Server Role" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
