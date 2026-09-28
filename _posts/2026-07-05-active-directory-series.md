@@ -1,5 +1,5 @@
 ---
-title: "Enterprise Active Directory Architecture: A 4-Phase Implementation Guide"
+title: "Getting Started with Active Directory Architecture: A 4-Phase Beginner's Journey"
 date: 2026-07-05
 description: Ever decided to spin up a Windows Server just to see what happens, and suddenly find yourself deep-diving into Active Directory architecture? Yeah, that was me.
 categories: [Homelab, Active Directory]
